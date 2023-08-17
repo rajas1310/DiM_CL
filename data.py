@@ -31,7 +31,7 @@ class ImageDataset(Dataset):
         label = self.label_list[idx]
         return img, label
 
-class DiM_CL_Dataset(Dataset):
+class DiM_CL_Dataset():
     def __init__(self, tasknum, data_dir, task_dict=task_dict):
         self.task_dict = task_dict
         self.task_num = tasknum

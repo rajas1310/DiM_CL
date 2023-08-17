@@ -20,6 +20,7 @@ from gan_model import Generator, Discriminator
 from utils import AverageMeter, accuracy, Normalize, Logger, rand_bbox
 from augment import DiffAug
 
+from data import DiM_CL_Dataset
 
 def str2bool(v):
     """Cast string to boolean
@@ -37,7 +38,7 @@ def str2bool(v):
 def load_data(args):
     '''Obtain data
     '''
-    transform_train = transforms.Compose([
+    """transform_train = transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
     ])
@@ -90,7 +91,9 @@ def load_data(args):
         trainset = datasets.MNIST(args.data_dir, train=True, download=True,
                                  transform=transform_train)
         testset = datasets.MNIST(args.data_dir, train=False, download=True,
-                                 transform=transform_train)
+                                 transform=transform_train)"""
+
+    trainset, testset = DiM_CL_Dataset(args.tasknum, args.data_dir)
 
     trainloader = torch.utils.data.DataLoader(
         trainset, batch_size=args.batch_size, shuffle=True,
@@ -402,6 +405,8 @@ if __name__ == '__main__':
     parser.add_argument('--beta', type=float, default=1.0)
     parser.add_argument('--tag', type=str, default='test')
     parser.add_argument('--seed', type=int, default=3407)
+
+    parser.add_argument('--tasknum', type=int, default=1)
     args = parser.parse_args()
 
     random.seed(args.seed)
