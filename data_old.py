@@ -32,23 +32,27 @@ class ImageDataset(Dataset):
         return img, label
 
 class DiM_CL_Dataset():
-    def __init__(self, tasknum, data_dir, tag='train', task_dict=task_dict):
-        self.tag = tag
-        if self.tag not in ['train', 'test']:
-            self.tag = 'train'
+    def __init__(self, tasknum, data_dir, task_dict=task_dict):
         self.task_dict = task_dict
         self.task_num = tasknum
         self.data_dir = data_dir
-        self.data_images, self.data_labels = [],[]
+        self.train_images, self.train_labels = [],[]
+        self.test_images, self.test_labels = [],[]
         self.get_lists()
         
     def  get_lists(self):
         classes = self.task_dict[self.task_num]
         for clas in classes:
-            clas_images = glob.glob(f"{self.data_dir}/{self.tag}/{clas}/*.png")
-            self.data_images += clas_images
-            self.data_labels += [clas for i in range(len(clas_images))]
+            clas_images = glob.glob(f"{self.data_dir}/train/{clas}/*.png")
+            self.train_images += clas_images
+            self.train_labels += [clas for i in range(len(clas_images))]
 
-    def get_dataset(self):
-        print(f"INFO : Loaded {(self.tag).upper()} data for TASK {self.task_num}")
-        return ImageDataset(self.data_images, self.data_labels, tag=self.tag)
+        for t in range(1,self.task_num):
+            classes += self.task_dict[self.task_num]
+        for clas in classes:
+            clas_images = glob.glob(f"{self.data_dir}/test/{clas}/*.png")
+            self.test_images += clas_images
+            self.test_labels += [clas for i in range(len(clas_images))]
+    
+    def get_datasets(self):
+        return ImageDataset(self.train_images, self.train_labels), ImageDataset(self.test_images, self.test_labels)

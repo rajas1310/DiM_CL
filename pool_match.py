@@ -94,8 +94,12 @@ def load_data(args):
         testset = datasets.MNIST(args.data_dir, train=False, download=True,
                                  transform=transform_train)"""
                                  
-    trainset, testset = DiM_CL_Dataset(args.tasknum, args.data_dir)
+    dataset_obj = DiM_CL_Dataset(args.tasknum, args.data_dir, tag='train')
+    trainset = dataset_obj.get_dataset()
+    dataset_obj = DiM_CL_Dataset(args.tasknum, args.data_dir, tag='test')
+    testset = dataset_obj.get_dataset()
 
+    #current task dataloaders for training and validation
     trainloader = torch.utils.data.DataLoader(
         trainset, batch_size=args.batch_size, shuffle=True,
         num_workers=args.num_workers, drop_last=True
@@ -105,7 +109,19 @@ def load_data(args):
         num_workers=args.num_workers
     )
 
-    return trainloader, testloader
+    #previous task dataloaders for validation
+    prevtasks_loaders = []
+    for prevtasknum in range(1,args.tasknum):
+        dataset_obj = DiM_CL_Dataset(prevtasknum, args.data_dir, tag='test')
+        prevtask_testset = dataset_obj.get_dataset()
+        prevtask_testloader = torch.utils.data.DataLoader(
+                                testset, batch_size=args.batch_size, shuffle=False,
+                                num_workers=args.num_workers
+                            )
+        
+        prevtasks_loaders.append(prevtask_testloader)
+
+    return trainloader, testloader, prevtasks_loaders
 
 
 def define_model(args, num_classes, e_model=None):
@@ -543,7 +559,7 @@ if __name__ == '__main__':
 
     print(args)
 
-    trainloader, testloader = load_data(args)
+    trainloader, testloader, prevtask_loaders = load_data(args)
 
     generator = Generator(args).cuda()
     discriminator = Discriminator(args).cuda()
