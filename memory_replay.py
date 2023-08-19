@@ -8,10 +8,11 @@ def unbatch(half_batch):
 
     Args:
         batch: A batch of examples with the structure :
-        [torch.Tensor, torch.Tensor, torch.Tensor]
+        [[torch.Tensor, torch.Tensor, torch.Tensor, ...],
+         [torch.Tensor, torch.Tensor, torch.Tensor, ...]]
 
     Returns:
-        list of unbatched examples: [[torch.Tensor, torch.Tensor, torch.Tensor], [torch.Tensor, torch.Tensor, torch.Tensor], [torch.Tensor, torch.Tensor, torch.Tensor]]
+        list of unbatched examples: [[torch.Tensor, torch.Tensor], [torch.Tensor, torch.Tensor], [torch.Tensor, torch.Tensor],...]
 
     """
     list_of_examples = []
@@ -19,7 +20,7 @@ def unbatch(half_batch):
     num_examples = len(half_batch[0])
 
     for idx in range(num_examples):
-        list_of_examples.append([half_batch[0][idx], half_batch[1][idx], half_batch[2][idx]])
+        list_of_examples.append([half_batch[0][idx], half_batch[1][idx]])
 
     return list_of_examples
 
@@ -29,40 +30,39 @@ def batch(list_of_examples):
     Batches unbatched examples into one
 
     Args:
-        list_of_examples: list of unbatched examples: [[torch.Tensor, torch.Tensor, torch.Tensor], [torch.Tensor, torch.Tensor, torch.Tensor], [torch.Tensor, torch.Tensor, torch.Tensor]]
+        list_of_examples: list of unbatched examples: [[torch.Tensor, torch.Tensor], [torch.Tensor, torch.Tensor], [torch.Tensor, torch.Tensor],...]
 
     Returns:
-        A batch of examples with the structure :
-        [torch.Tensor, torch.Tensor, torch.Tensor]
+        A batch of examples with the structure : 
+        [[torch.Tensor, torch.Tensor, torch.Tensor, ...],
+         [torch.Tensor, torch.Tensor, torch.Tensor, ...]]
     """
     img_feats = []
-    q_feats = []
     labels = []
     for example in list_of_examples:
         img_feats.append(example[0])
-        q_feats.append(example[1])
-        labels.append(example[2])
+        labels.append(example[1])
 
-    return torch.concat(img_feats), torch.concat(q_feats), torch.concat(labels)
+    return torch.concat(img_feats),torch.concat(labels)
 
 
 def combine_batch_and_list(half_batch, list_of_examples):
     for example in list_of_examples:
         half_batch[0] = torch.concat([half_batch[0], example[0].unsqueeze(0)], dim=0)
         half_batch[1] = torch.concat([half_batch[1], example[1].unsqueeze(0)], dim=0)
-        half_batch[2] = torch.concat([half_batch[2], example[2].unsqueeze(0)], dim=0)
     return half_batch
 
 class ExperienceReplay:
-    def __init__(self, samples_per_class=10, num_classes=20, half_batch_size=8):
+    def __init__(self, samples_per_class=10, num_classes=20, half_batch_size=8, memory=[]):
         self.samples_per_class = samples_per_class
         self.num_classes = num_classes
         self.half_batch_size = half_batch_size
 
         self.memory_size = self.samples_per_class * self.num_classes
 
-        self.memory = []
+        self.memory = memory
 
+    # Replace random samples from memory by samples from new task
     def update_memory(self, current_batch, elapsed_examples=0):
         list_of_examples = unbatch(current_batch)
 
@@ -77,7 +77,8 @@ class ExperienceReplay:
                     self.memory[idx] = example
 
             counter += 1
-        return None
-
+        return self.memory
+    
+    # Select random samples from memory for adding to a batch while training
     def get_from_memory(self, num_samples):
         return random.choices(self.memory, k=num_samples)

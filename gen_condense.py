@@ -20,7 +20,10 @@ from gan_model import Generator, Discriminator
 from utils import AverageMeter, accuracy, Normalize, Logger, rand_bbox
 from augment import DiffAug
 
-from data import DiM_CL_Dataset
+from data import DiM_CL_Dataset #Continual
+import pickle #Continual
+from memory_replay import ExperienceReplay, combine_batch_and_list #Continual
+from copy import deepcopy
 
 def str2bool(v):
     """Cast string to boolean
@@ -226,7 +229,7 @@ def diffaug(args, device='cuda'):
     return aug_batch, aug_rand
 
 
-def train(args, epoch, generator, discriminator, optim_g, optim_d, trainloader, criterion, aug, aug_rand):
+def train(args, epoch, generator, discriminator, optim_g, optim_d, trainloader, criterion, exp_replay, aug, aug_rand):
     '''The main training function for the generator
     '''
     generator.train()
@@ -235,7 +238,16 @@ def train(args, epoch, generator, discriminator, optim_g, optim_d, trainloader, 
     top1 = AverageMeter()
     top5 = AverageMeter()
 
-    for batch_idx, (img_real, lab_real) in enumerate(trainloader):
+    for batch_idx, batch in enumerate(trainloader):
+        # TODO: combine batch and memory
+        preserved_batch = deepcopy(batch)
+
+        if args.tasknum > 1:
+            batch = combine_batch_and_list(
+                batch, exp_replay.get_from_memory(args.half_batch_size)
+            )
+
+        (img_real, lab_real) = batch
         img_real = img_real.cuda()
         lab_real = lab_real.cuda()
 
@@ -297,7 +309,7 @@ def train(args, epoch, generator, discriminator, optim_g, optim_d, trainloader, 
             print('[Train Epoch {} Iter {}] G Loss: {:.3f}({:.3f}) D Loss: {:.3f}({:.3f}) D Acc: {:.3f}({:.3f})'.format(
                 epoch, batch_idx + 1, gen_losses.val, gen_losses.avg, disc_losses.val, disc_losses.avg, top1.val, top1.avg)
             )
-
+    return preserved_batch
 
 def test(args, model, testloader, criterion):
     '''Calculate accuracy
@@ -422,7 +434,15 @@ if __name__ == '__main__':
     parser.add_argument('--tag', type=str, default='test')
     parser.add_argument('--seed', type=int, default=3407)
 
-    parser.add_argument('--tasknum', type=int, default=1)
+    parser.add_argument('--tasknum', type=int, default=1) # Continual Learning
+    parser.add_argument('--memory-filepath', type=int, default=None) # Continual Learning
+    parser.add_argument('--samples-per-class', type=int, default=10) # Continual Learning
+    parser.add_argument('--classes-per-task', type=int, default=2) # Continual Learning
+
+    
+    args = parser.parse_args()
+
+    parser.add_argument('--half-batch', type=int, default=args.batch_size) # Continual Learning
     args = parser.parse_args()
 
     random.seed(args.seed)
@@ -447,6 +467,25 @@ if __name__ == '__main__':
 
     print(args)
 
+    #Load memory from previous task         #Continual Learning
+    if args.memory_filepath == None:
+        if args.tasknum == 1:
+            memory = []
+        else:
+            print(f"Continual-ERROR: Memory file is not specified for Task-{args.tasknum}")
+            raise FileNotFoundError
+    else:
+        try:
+            memory = pickle.load(open(args.memory_filepath, 'rb'))
+        except Exception as e:
+            print(e)
+
+
+    exp_replay = ExperienceReplay(samples_per_class=args.samples_per_class, 
+                                num_classes=args.num_classes, 
+                                half_batch_size=args.half_batch_size, 
+                                memory = memory)
+
     trainloader, testloader, prevtask_loaders = load_data(args)
 
     generator = Generator(args).cuda()
@@ -464,7 +503,17 @@ if __name__ == '__main__':
     for epoch in range(args.epochs):
         generator.train()
         discriminator.train()
-        train(args, epoch, generator, discriminator, optim_g, optim_d, trainloader, criterion, aug, aug_rand)
+        preserved_batch = train(args, epoch, generator, discriminator, optim_g, optim_d, trainloader, criterion, exp_replay, aug, aug_rand)
+        
+        # Continual Learning
+        if epoch == args.epochs - 1: # if last epoch is done
+            #TODO : Return last batch from training of the last epoch 
+            #        and Call update MEMORY function using that batch
+            memory = exp_replay.update_memory(preserved_batch, elapsed_examples=counter)
+            with open('memory.pkl', 'rb') as f: # this file will be read and updated with the successive tasks 
+                pickle.dump(memory, f)
+            with open(f'memory_task_{args.tasknum}.pkl', 'rb') as f: #for saving a copy that will not be used later
+                pickle.dump(memory, f)
 
         # save image for visualization
         generator.eval()
@@ -489,11 +538,21 @@ if __name__ == '__main__':
                 os.path.join(args.output_dir, 'model_dict_{}.pth'.format(epoch)))
             print("img and data saved!")
 
+            #Validate Current Task
             top1s, top5s = validate(args, generator, testloader, criterion, aug_rand)
             for e_idx, e_model in enumerate(args.eval_model):
                 if top1s[e_idx] > best_top1s[e_idx]:
                     best_top1s[e_idx] = top1s[e_idx]
                     best_top5s[e_idx] = top5s[e_idx]
                     best_epochs[e_idx] = epoch
-                print('Current Best Epoch for {}: {}, Top1: {:.3f}, Top5: {:.3f}'.format(e_model, best_epochs[e_idx], best_top1s[e_idx], best_top5s[e_idx]))
+                print('Task-{} (current), Current Best Epoch for {}: {}, Top1: {:.3f}, Top5: {:.3f}'.format(args.tasknum, e_model, best_epochs[e_idx], best_top1s[e_idx], best_top5s[e_idx])) #Continual Learning
 
+            #Validate all Previous Tasks #Continual Learning
+            for tnum, taskloader in enumerate(prevtask_loaders):
+                top1s, top5s = validate(args, generator, taskloader, criterion, aug_rand)
+                for e_idx, e_model in enumerate(args.eval_model):
+                    if top1s[e_idx] > best_top1s[e_idx]:
+                        best_top1s[e_idx] = top1s[e_idx]
+                        best_top5s[e_idx] = top5s[e_idx]
+                        best_epochs[e_idx] = epoch
+                    print('Task-{} (old), Current Best Epoch for {}: {}, Top1: {:.3f}, Top5: {:.3f}'.format(tnum, e_model, best_epochs[e_idx], best_top1s[e_idx], best_top5s[e_idx])) #Continual Learning
