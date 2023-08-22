@@ -473,7 +473,7 @@ if __name__ == '__main__':
     args.logs_dir = args.logs_dir + args.tag
     if not os.path.exists(args.logs_dir):
         os.makedirs(args.logs_dir)
-    sys.stdout = Logger(os.path.join(args.logs_dir, 'logs.txt'))
+    sys.stdout = Logger(os.path.join(args.logs_dir, 'logs-task-{}.txt'.format(args.tasknum)))
 
     #continual learning # LR and decay as per task
     if args.tasknum == 1:
