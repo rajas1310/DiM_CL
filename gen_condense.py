@@ -523,9 +523,9 @@ if __name__ == '__main__':
             #TODO : Return last batch from training of the last epoch 
             #        and Call update MEMORY function using that batch
             memory = exp_replay.update_memory(preserved_batch, elapsed_examples=args.tasknum*args.samples_per_task)
-            with open('memory.pkl', 'rb') as f: # this file will be read and updated with the successive tasks 
+            with open('memory.pkl', 'wb') as f: # this file will be read and updated with the successive tasks 
                 pickle.dump(memory, f)
-            with open(f'memory_task_{args.tasknum}.pkl', 'rb') as f: #for saving a copy that will not be used later
+            with open(f'memory_task_{args.tasknum}.pkl', 'wb') as f: #for saving a copy that will not be used later
                 pickle.dump(memory, f)
 
         # save image for visualization
