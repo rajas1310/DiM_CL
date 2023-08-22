@@ -444,7 +444,7 @@ if __name__ == '__main__':
     
     args = parser.parse_args()
 
-    parser.add_argument('--half-batch', type=int, default=args.batch_size) # Continual Learning
+    parser.add_argument('--half-batch-size', type=int, default=args.batch_size) # Continual Learning
     args = parser.parse_args()
 
     random.seed(args.seed)
