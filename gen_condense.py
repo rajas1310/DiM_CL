@@ -100,14 +100,14 @@ def load_data(args):
     trainset = dataset_obj.get_dataset()
     dataset_obj = DiM_CL_Dataset(args.tasknum, args.data_dir, tag='test')
     testset = dataset_obj.get_dataset()
-
+    print("HALF BS : ", args.half_batch_size)
     #current task dataloaders for training and validation
     trainloader = torch.utils.data.DataLoader(
-        trainset, batch_size=args.batch_size, shuffle=True,
+        trainset, batch_size=args.half_batch_size, shuffle=True,
         num_workers=args.num_workers, drop_last=True
     )
     testloader = torch.utils.data.DataLoader(
-        testset, batch_size=args.batch_size, shuffle=False,
+        testset, batch_size=args.half_batch_size, shuffle=False,
         num_workers=args.num_workers
     )
 
@@ -117,7 +117,7 @@ def load_data(args):
         dataset_obj = DiM_CL_Dataset(prevtasknum, args.data_dir, tag='test')
         prevtask_testset = dataset_obj.get_dataset()
         prevtask_testloader = torch.utils.data.DataLoader(
-                                testset, batch_size=args.batch_size, shuffle=False,
+                                testset, batch_size=args.half_batch_size, shuffle=False,
                                 num_workers=args.num_workers
                             )
         
@@ -246,11 +246,14 @@ def train(args, epoch, generator, discriminator, optim_g, optim_d, trainloader, 
             batch = combine_batch_and_list(
                 batch, exp_replay.get_from_memory(args.half_batch_size)
             )
-
+        # print("Shape: ", len(batch[0]), len(batch[1]))
         img_real, lab_real = torch.Tensor(batch[0]), torch.Tensor(batch[1])        
-        # print(lab_real)
+
         img_real = img_real.cuda()
         lab_real = lab_real.cuda()
+
+        # curr_batch_size = len(batch[0])
+
         
         # train the generator
         discriminator.eval()
@@ -446,7 +449,7 @@ if __name__ == '__main__':
     
     args = parser.parse_args()
 
-    parser.add_argument('--half-batch-size', type=int, default=args.batch_size) # Continual Learning
+    parser.add_argument('--half-batch-size', type=int, default=args.batch_size//2) # Continual Learning
     args = parser.parse_args()
 
     random.seed(args.seed)
@@ -457,6 +460,9 @@ if __name__ == '__main__':
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir)
     args.output_dir = args.output_dir + args.tag
+    if not os.path.exists(args.output_dir):
+        os.makedirs(args.output_dir)
+    args.output_dir = args.output_dir + '/task-{}'.format(args.tasknum)
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir)
     if not os.path.exists(args.output_dir + '/outputs'):
@@ -471,6 +477,7 @@ if __name__ == '__main__':
 
     #continual learning # LR and decay as per task
     if args.tasknum == 1:
+        args.batch_size = args.half_batch_size
         args.lr = 1e-4
         args.weight_decay = 1e-5  
     else:
