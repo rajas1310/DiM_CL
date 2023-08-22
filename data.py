@@ -41,13 +41,18 @@ class DiM_CL_Dataset():
         self.data_dir = data_dir
         self.data_images, self.data_labels = [],[]
         self.get_lists()
+        self.label2int = { 'airplane' : 0, 'automobile' : 1,
+         'bird' : 2, 'cat' : 3,
+         'deer' : 4, 'dog' : 5,
+         'frog' : 6, 'horse' : 7,
+         'ship' : 8, 'truck' : 9}
         
     def  get_lists(self):
         classes = self.task_dict[self.task_num]
         for clas in classes:
             clas_images = glob.glob(f"{self.data_dir}/{self.tag}/{clas}/*.png")
             self.data_images += clas_images
-            self.data_labels += [clas for i in range(len(clas_images))]
+            self.data_labels += [self.label2int[clas] for i in range(len(clas_images))]
 
     def get_dataset(self):
         print(f"INFO : Loaded {(self.tag).upper()} data for TASK {self.task_num}")
