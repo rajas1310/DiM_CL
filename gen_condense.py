@@ -247,10 +247,11 @@ def train(args, epoch, generator, discriminator, optim_g, optim_d, trainloader, 
                 batch, exp_replay.get_from_memory(args.half_batch_size)
             )
 
-        (img_real, lab_real) = batch
+        img_real, lab_real = torch.Tensor(batch[0]), torch.Tensor(batch[1])        
+        # print(lab_real)
         img_real = img_real.cuda()
         lab_real = lab_real.cuda()
-
+        
         # train the generator
         discriminator.eval()
         optim_g.zero_grad()
@@ -317,7 +318,8 @@ def test(args, model, testloader, criterion):
     losses = AverageMeter()
     top1 = AverageMeter()
     top5 = AverageMeter()
-    for batch_idx, (img, lab) in enumerate(testloader):
+    for batch_idx, batch in enumerate(testloader):
+        img, lab = torch.Tensor(batch[0]), torch.Tensor(batch[1])
         img = img.cuda()
         lab = lab.cuda()
 
