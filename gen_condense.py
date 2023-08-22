@@ -434,10 +434,12 @@ if __name__ == '__main__':
     parser.add_argument('--tag', type=str, default='test')
     parser.add_argument('--seed', type=int, default=3407)
 
-    parser.add_argument('--tasknum', type=int, default=1) # Continual Learning
-    parser.add_argument('--memory-filepath', type=int, default=None) # Continual Learning
+    parser.add_argument('--tasknum', type=int) # Continual Learning
+    parser.add_argument('--memory-filepath', type=str, default=None) # Continual Learning
     parser.add_argument('--samples-per-class', type=int, default=10) # Continual Learning
     parser.add_argument('--classes-per-task', type=int, default=2) # Continual Learning
+    parser.add_argument('--samples-per-task', type=int, default=10000) # Continual Learning
+    # parser.add_argument('--counter', type=int) # Continual Learning
 
     
     args = parser.parse_args()
@@ -465,7 +467,15 @@ if __name__ == '__main__':
         os.makedirs(args.logs_dir)
     sys.stdout = Logger(os.path.join(args.logs_dir, 'logs.txt'))
 
-    print(args)
+    #continual learning # LR and decay as per task
+    if args.tasknum == 1:
+        args.lr = 1e-4
+        args.weight_decay = 1e-5  
+    else:
+        args.lr = 5e-6
+        args.weight_decay = 2e-5
+
+    
 
     #Load memory from previous task         #Continual Learning
     if args.memory_filepath == None:
@@ -480,6 +490,7 @@ if __name__ == '__main__':
         except Exception as e:
             print(e)
 
+    print(args)
 
     exp_replay = ExperienceReplay(samples_per_class=args.samples_per_class, 
                                 num_classes=args.num_classes, 
@@ -509,7 +520,7 @@ if __name__ == '__main__':
         if epoch == args.epochs - 1: # if last epoch is done
             #TODO : Return last batch from training of the last epoch 
             #        and Call update MEMORY function using that batch
-            memory = exp_replay.update_memory(preserved_batch, elapsed_examples=counter)
+            memory = exp_replay.update_memory(preserved_batch, elapsed_examples=args.tasknum*args.samples_per_task)
             with open('memory.pkl', 'rb') as f: # this file will be read and updated with the successive tasks 
                 pickle.dump(memory, f)
             with open(f'memory_task_{args.tasknum}.pkl', 'rb') as f: #for saving a copy that will not be used later
