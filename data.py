@@ -5,11 +5,11 @@ from PIL import Image
 from torchvision import transforms
 from torch.utils.data import Dataset
 
-task_dict = {1 : ['airplane', 'automobile'],
-         2 : ['bird', 'cat'],
-         3 : ['deer', 'dog'],
-         4 : ['frog', 'horse'],
-         5 : ['ship', 'truck']}
+task_dict = {0 : ['airplane', 'automobile'],
+         1 : ['bird', 'cat'],
+         2 : ['deer', 'dog'],
+         3 : ['frog', 'horse'],
+         4 : ['ship', 'truck']}
 
 class ImageDataset(Dataset):
     def __init__(self, image_list, label_list, tag='train'):

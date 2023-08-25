@@ -113,7 +113,7 @@ def load_data(args):
 
     #previous task dataloaders for validation
     prevtasks_loaders = []
-    for prevtasknum in range(1,args.tasknum):
+    for prevtasknum in range(0,args.tasknum):
         dataset_obj = DiM_CL_Dataset(prevtasknum, args.data_dir, tag='test')
         prevtask_testset = dataset_obj.get_dataset()
         prevtask_testloader = torch.utils.data.DataLoader(
@@ -241,12 +241,12 @@ def train(args, epoch, generator, discriminator, optim_g, optim_d, trainloader, 
     for batch_idx, batch in enumerate(trainloader):
         # TODO: combine batch and memory
         preserved_batch = deepcopy(batch)
-
-        if args.tasknum > 1:
+        # print("Shape 1: ", len(batch[0]), len(batch[1]))
+        if args.tasknum > 0:
             batch = combine_batch_and_list(
                 batch, exp_replay.get_from_memory(args.half_batch_size)
             )
-        # print("Shape: ", len(batch[0]), len(batch[1]))
+        # print("Shape 2: ", len(batch[0]), len(batch[1]))
         img_real, lab_real = torch.Tensor(batch[0]), torch.Tensor(batch[1])        
 
         img_real = img_real.cuda()
@@ -412,10 +412,10 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--ipc', type=int, default=50)
     parser.add_argument('--batch-size', type=int, default=128)
-    parser.add_argument('--epochs', type=int, default=150)
-    parser.add_argument('--epochs-eval', type=int, default=1000)
+    parser.add_argument('--epochs', type=int, default=100) #150
+    parser.add_argument('--epochs-eval', type=int, default=100) #100
     parser.add_argument('--lr', type=float, default=1e-4)
-    parser.add_argument('--eval-lr', type=float, default=0.01)
+    parser.add_argument('--eval-lr', type=float, default=3e-4) #0.01
     parser.add_argument('--momentum', type=float, default=0.9)
     parser.add_argument('--weight-decay', type=float, default=5e-4)
     parser.add_argument('--eval-model', type=str, nargs='+', default=['convnet'])
@@ -423,7 +423,7 @@ if __name__ == '__main__':
     parser.add_argument('--num-workers', type=int, default=4)
     parser.add_argument('--print-freq', type=int, default=50)
     parser.add_argument('--eval-interval', type=int, default=10)
-    parser.add_argument('--test-interval', type=int, default=200)
+    parser.add_argument('--test-interval', type=int, default=20) #200
 
     parser.add_argument('--data', type=str, default='cifar10')
     parser.add_argument('--num-classes', type=int, default=10)
@@ -476,7 +476,7 @@ if __name__ == '__main__':
     sys.stdout = Logger(os.path.join(args.logs_dir, 'logs-task-{}.txt'.format(args.tasknum)))
 
     #continual learning # LR and decay as per task
-    if args.tasknum == 1:
+    if args.tasknum == 0:
         args.batch_size = args.half_batch_size
         args.lr = 1e-4
         args.weight_decay = 1e-5  
@@ -488,7 +488,7 @@ if __name__ == '__main__':
 
     #Load memory from previous task         #Continual Learning
     if args.memory_filepath == None:
-        if args.tasknum == 1:
+        if args.tasknum == 0:
             memory = []
         else:
             print(f"Continual-ERROR: Memory file is not specified for Task-{args.tasknum}")
