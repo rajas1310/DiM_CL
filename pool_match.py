@@ -553,7 +553,7 @@ if __name__ == '__main__':
     parser.add_argument('--fc', type=str2bool, default=False)
     parser.add_argument('--mix-p', type=float, default=-1.0)
     parser.add_argument('--beta', type=float, default=1.0)
-    parser.add_argument('--tag', type=str, default='test')
+    parser.add_argument('--tag', type=str, default='pool-match-test')
     parser.add_argument('--seed', type=int, default=3407)
 
     parser.add_argument('--tasknum', type=int) # Continual Learning
@@ -576,6 +576,10 @@ if __name__ == '__main__':
 
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir)
+
+    if args.weight == '':
+        args.weight=os.path.join(args.output_dir,'test','task-{}'.format(args.tasknum), 'best.pth')
+
     args.output_dir = args.output_dir + args.tag
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir)
@@ -590,7 +594,7 @@ if __name__ == '__main__':
     args.logs_dir = args.logs_dir + args.tag
     if not os.path.exists(args.logs_dir):
         os.makedirs(args.logs_dir)
-    sys.stdout = Logger(os.path.join(args.logs_dir, 'logs.txt'))
+    sys.stdout = Logger(os.path.join(args.logs_dir, 'logs-task-{}.txt'.format(args.tasknum)))
 
     #continual learning # LR and decay as per task
     if args.tasknum == 0:
@@ -632,8 +636,6 @@ if __name__ == '__main__':
     optim_g = torch.optim.Adam(generator.parameters(), lr=args.lr, betas=(0, 0.9))
     optim_d = torch.optim.Adam(discriminator.parameters(), lr=args.lr, betas=(0, 0.9))
 
-    if args.weight == '':
-        args.weight=os.path.join(args.output_dir, 'best.pth')
 
     model_dict = torch.load(args.weight)
     generator.load_state_dict(model_dict['generator'])
