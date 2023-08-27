@@ -302,7 +302,7 @@ def diffaug(args, device='cuda'):
     return aug_batch, aug_rand
 
 
-def train(args, epoch, generator, discriminator, optim_g, optim_d, trainloader, exp_replay, criterion, aug, aug_rand):
+def train(args, epoch, generator, discriminator, optim_g, optim_d, trainloader, criterion, exp_replay, aug, aug_rand):
     '''The main training function for the generator
     '''
     generator.train()
@@ -553,7 +553,7 @@ if __name__ == '__main__':
     parser.add_argument('--fc', type=str2bool, default=False)
     parser.add_argument('--mix-p', type=float, default=-1.0)
     parser.add_argument('--beta', type=float, default=1.0)
-    parser.add_argument('--tag', type=str, default='pool-match-test')
+    parser.add_argument('--tag', type=str, default='test')
     parser.add_argument('--seed', type=int, default=3407)
 
     parser.add_argument('--tasknum', type=int) # Continual Learning
