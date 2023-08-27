@@ -45,15 +45,26 @@ class DiM_CL_Dataset():
          'deer' : 4, 'dog' : 5,
          'frog' : 6, 'horse' : 7,
          'ship' : 8, 'truck' : 9}
-
-        self.get_lists()
         
+        if isinstance(tasknum, int):
+            self.get_lists()
+        elif isinstance(tasknum, list):
+            self.get_alltask_lists()
+
     def  get_lists(self):
         classes = self.task_dict[self.task_num]
         for clas in classes:
             clas_images = glob.glob(f"{self.data_dir}/{self.tag}/{clas}/*.png")
             self.data_images += clas_images
             self.data_labels += [self.label2int[clas] for i in range(len(clas_images))]
+
+    def  get_alltask_lists(self):
+        for tnum in self.tasknum:
+            classes = self.task_dict[tnum]
+            for clas in classes:
+                clas_images = glob.glob(f"{self.data_dir}/{self.tag}/{clas}/*.png")
+                self.data_images += clas_images
+                self.data_labels += [self.label2int[clas] for i in range(len(clas_images))]
 
     def get_dataset(self):
         print(f"INFO : Loaded {(self.tag).upper()} data for TASK {self.task_num}")

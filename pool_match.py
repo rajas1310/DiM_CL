@@ -119,7 +119,7 @@ def load_data(args):
         dataset_obj = DiM_CL_Dataset(prevtasknum, args.data_dir, tag='test')
         prevtask_testset = dataset_obj.get_dataset()
         prevtask_testloader = torch.utils.data.DataLoader(
-                                testset, batch_size=args.half_batch_size, shuffle=False,
+                                prevtask_testset, batch_size=args.half_batch_size, shuffle=False,
                                 num_workers=args.num_workers
                             )
         
@@ -631,6 +631,9 @@ if __name__ == '__main__':
 
     optim_g = torch.optim.Adam(generator.parameters(), lr=args.lr, betas=(0, 0.9))
     optim_d = torch.optim.Adam(discriminator.parameters(), lr=args.lr, betas=(0, 0.9))
+
+    if args.weight == '':
+        args.weight=os.path.join(args.output_dir, 'best.pth')
 
     model_dict = torch.load(args.weight)
     generator.load_state_dict(model_dict['generator'])
