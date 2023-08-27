@@ -59,7 +59,7 @@ class DiM_CL_Dataset():
             self.data_labels += [self.label2int[clas] for i in range(len(clas_images))]
 
     def  get_alltask_lists(self):
-        for tnum in self.tasknum:
+        for tnum in self.task_num:
             classes = self.task_dict[tnum]
             for clas in classes:
                 clas_images = glob.glob(f"{self.data_dir}/{self.tag}/{clas}/*.png")
