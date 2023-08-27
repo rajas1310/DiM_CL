@@ -613,7 +613,7 @@ if __name__ == '__main__':
     if args.tasknum > 0:
         best_epoch = int(best_epochs['all'][e_idx])
     else:
-        best_epoch = int(best_epochs[arg.tasknum][e_idx])
+        best_epoch = int(best_epochs[args.tasknum][e_idx])
     shutil.copy2(os.path.join(args.output_dir, 'model_dict_{}.pth'.format(best_epoch)),
                 os.path.join(args.output_dir, 'best.pth'))
     print("Saving epoch-{} of Generator as best.pth".format(best_epoch))
