@@ -534,7 +534,7 @@ if __name__ == '__main__':
     parser.add_argument('--eval-model', type=str, nargs='+', default=['convnet', 'resnet10', 'resnet18'])
     parser.add_argument('--dim-noise', type=int, default=100)
     parser.add_argument('--num-workers', type=int, default=4)
-    parser.add_argument('--print-freq', type=int, default=50)
+    parser.add_argument('--print-freq', type=int, default=100)
     parser.add_argument('--eval-interval', type=int, default=10)
     parser.add_argument('--test-interval', type=int, default=20) #200
     parser.add_argument('--fix-disc', action='store_true', default=False)
