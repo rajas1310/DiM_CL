@@ -396,6 +396,10 @@ def validate(args, generator, testloader, criterion, aug_rand):
                 optim_model.step()
 
             if (epoch_idx + 1) % args.test_interval == 0:
+                #save syn_imgs used for training the eval-model #Continual Learning
+                img_syn_grid = make_grid(img_syn, nrow=10)
+                save_image(img_syn_grid, os.path.join(args.output_dir, 'outputs/eval_img_{}.png'.format(epoch_idx)))
+
                 test_top1, test_top5, test_loss = test(args, model, testloader, criterion)
                 print('[Test Epoch {}] Top1: {:.3f} Top5: {:.3f}'.format(epoch_idx + 1, test_top1, test_top5))
                 if test_top1 > best_top1:
@@ -517,9 +521,17 @@ if __name__ == '__main__':
 
     aug, aug_rand = diffaug(args)
 
-    best_top1s = np.zeros((len(args.eval_model),))
-    best_top5s = np.zeros((len(args.eval_model),))
-    best_epochs = np.zeros((len(args.eval_model),))
+    
+
+    #continual learning
+    best_top1s = {}
+    best_top5s = {}
+    best_epochs = {}
+    for i in range(args.tasknum+1):
+        best_top1s[i] = np.zeros((len(args.eval_model),))
+        best_top5s[i] = np.zeros((len(args.eval_model),))
+        best_epochs[i] = np.zeros((len(args.eval_model),))
+
     for epoch in range(args.epochs):
         generator.train()
         discriminator.train()
@@ -557,22 +569,24 @@ if __name__ == '__main__':
                 model_dict,
                 os.path.join(args.output_dir, 'model_dict_{}.pth'.format(epoch)))
             print("img and data saved!")
-
-            #Validate Current Task
-            top1s, top5s = validate(args, generator, testloader, criterion, aug_rand)
-            for e_idx, e_model in enumerate(args.eval_model):
-                if top1s[e_idx] > best_top1s[e_idx]:
-                    best_top1s[e_idx] = top1s[e_idx]
-                    best_top5s[e_idx] = top5s[e_idx]
-                    best_epochs[e_idx] = epoch
-                print('Task-{} (current), Current Best Epoch for {}: {}, Top1: {:.3f}, Top5: {:.3f}'.format(args.tasknum, e_model, best_epochs[e_idx], best_top1s[e_idx], best_top5s[e_idx])) #Continual Learning
-
+            
             #Validate all Previous Tasks #Continual Learning
             for tnum, taskloader in enumerate(prevtask_loaders):
                 top1s, top5s = validate(args, generator, taskloader, criterion, aug_rand)
                 for e_idx, e_model in enumerate(args.eval_model):
-                    if top1s[e_idx] > best_top1s[e_idx]:
-                        best_top1s[e_idx] = top1s[e_idx]
-                        best_top5s[e_idx] = top5s[e_idx]
-                        best_epochs[e_idx] = epoch
-                    print('Task-{} (old), Current Best Epoch for {}: {}, Top1: {:.3f}, Top5: {:.3f}'.format(tnum, e_model, best_epochs[e_idx], best_top1s[e_idx], best_top5s[e_idx])) #Continual Learning
+                    if top1s[e_idx] > best_top1s[tnum][e_idx]:
+                        best_top1s[tnum][e_idx] = top1s[e_idx]
+                        best_top5s[tnum][e_idx] = top5s[e_idx]
+                        best_epochs[tnum][e_idx] = epoch
+                    print('Task-{} (old), Current Best Epoch for {}: {}, Top1: {:.3f}, Top5: {:.3f}'.format(tnum, e_model, best_epochs[tnum][e_idx], best_top1s[tnum][e_idx], best_top5s[tnum][e_idx])) #Continual Learning
+            
+            #Validate Current Task
+            top1s, top5s = validate(args, generator, testloader, criterion, aug_rand)
+            for e_idx, e_model in enumerate(args.eval_model):
+                if top1s[e_idx] > best_top1s[args.tasknum][e_idx]:
+                    best_top1s[args.tasknum][e_idx] = top1s[e_idx]
+                    best_top5s[args.tasknum][e_idx] = top5s[e_idx]
+                    best_epochs[args.tasknum][e_idx] = epoch
+                print('Task-{} (current), Current Best Epoch for {}: {}, Top1: {:.3f}, Top5: {:.3f}'.format(args.tasknum, e_model, best_epochs[args.tasknum][e_idx], best_top1s[args.tasknum][e_idx], best_top5s[args.tasknum][e_idx])) #Continual Learning
+
+            
