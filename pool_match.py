@@ -21,7 +21,10 @@ from gan_model import Generator, Discriminator
 from utils import AverageMeter, accuracy, Normalize, Logger, rand_bbox
 from augment import DiffAug
 
-from data import DiM_CL_Dataset
+from data import DiM_CL_Dataset #Continual
+import pickle #Continual
+from memory_replay import ExperienceReplay, combine_batch_and_list #Continual
+from copy import deepcopy
 
 def str2bool(v):
     """Cast string to boolean
@@ -98,24 +101,25 @@ def load_data(args):
     trainset = dataset_obj.get_dataset()
     dataset_obj = DiM_CL_Dataset(args.tasknum, args.data_dir, tag='test')
     testset = dataset_obj.get_dataset()
+    print("HALF BS : ", args.half_batch_size)
 
     #current task dataloaders for training and validation
     trainloader = torch.utils.data.DataLoader(
-        trainset, batch_size=args.batch_size, shuffle=True,
+        trainset, batch_size=args.half_batch_size, shuffle=True,
         num_workers=args.num_workers, drop_last=True
     )
     testloader = torch.utils.data.DataLoader(
-        testset, batch_size=args.batch_size, shuffle=False,
+        testset, batch_size=args.half_batch_size, shuffle=False,
         num_workers=args.num_workers
     )
 
     #previous task dataloaders for validation
     prevtasks_loaders = []
-    for prevtasknum in range(1,args.tasknum):
+    for prevtasknum in range(0,args.tasknum):
         dataset_obj = DiM_CL_Dataset(prevtasknum, args.data_dir, tag='test')
         prevtask_testset = dataset_obj.get_dataset()
         prevtask_testloader = torch.utils.data.DataLoader(
-                                testset, batch_size=args.batch_size, shuffle=False,
+                                testset, batch_size=args.half_batch_size, shuffle=False,
                                 num_workers=args.num_workers
                             )
         
@@ -298,7 +302,7 @@ def diffaug(args, device='cuda'):
     return aug_batch, aug_rand
 
 
-def train(args, epoch, generator, discriminator, optim_g, optim_d, trainloader, criterion, aug, aug_rand):
+def train(args, epoch, generator, discriminator, optim_g, optim_d, trainloader, exp_replay, criterion, aug, aug_rand):
     '''The main training function for the generator
     '''
     generator.train()
@@ -311,7 +315,17 @@ def train(args, epoch, generator, discriminator, optim_g, optim_d, trainloader, 
     optim_model = torch.optim.SGD(model.parameters(), args.eval_lr, momentum=args.momentum,
                                   weight_decay=args.weight_decay)
 
-    for batch_idx, (img_real, lab_real) in enumerate(trainloader):
+    for batch_idx, batch in enumerate(trainloader):
+
+        preserved_batch = deepcopy(batch) #continual learning
+        # print("Shape 1: ", len(batch[0]), len(batch[1]))
+        if args.tasknum > 0:
+            batch = combine_batch_and_list(
+                batch, exp_replay.get_from_memory(args.half_batch_size)
+            )
+        # print("Shape 2: ", len(batch[0]), len(batch[1]))
+        img_real, lab_real = torch.Tensor(batch[0]), torch.Tensor(batch[1])    
+
         img_real = img_real.cuda()
         lab_real = lab_real.cuda()
 
@@ -384,15 +398,16 @@ def train(args, epoch, generator, discriminator, optim_g, optim_d, trainloader, 
             print('[Train Epoch {} Iter {}] G Loss: {:.3f}({:.3f}) D Loss: {:.3f}({:.3f}) D Acc: {:.3f}({:.3f})'.format(
                 epoch, batch_idx + 1, gen_losses.val, gen_losses.avg, disc_losses.val, disc_losses.avg, top1.val, top1.avg)
             )
-
+    return preserved_batch
 
 def train_match_model(args, model, optim_model, trainloader, criterion, aug_rand):
     '''The training function for the match model
     '''
-    for batch_idx, (img, lab) in enumerate(trainloader):
+    for batch_idx, batch in enumerate(trainloader):
         if batch_idx == args.epochs_match_train:
             break
 
+        img, lab = torch.Tensor(batch[0]), torch.Tensor(batch[1])
         img = img.cuda()
         lab = lab.cuda()
 
@@ -410,7 +425,8 @@ def test(args, model, testloader, criterion):
     losses = AverageMeter()
     top1 = AverageMeter()
     top5 = AverageMeter()
-    for batch_idx, (img, lab) in enumerate(testloader):
+    for batch_idx, batch in enumerate(testloader):
+        img, lab = torch.Tensor(batch[0]), torch.Tensor(batch[1])
         img = img.cuda()
         lab = lab.cuda()
 
@@ -484,6 +500,10 @@ def validate(args, generator, testloader, criterion, aug_rand):
                 optim_model.step()
 
             if (epoch_idx + 1) % args.test_interval == 0:
+                #save syn_imgs used for training the eval-model #Continual Learning
+                img_syn_grid = make_grid(img_syn, nrow=10)
+                save_image(img_syn_grid, os.path.join(args.output_dir, 'outputs/eval_img_{}.png'.format(epoch_idx)))
+
                 test_top1, test_top5, test_loss = test(args, model, testloader, criterion)
                 print('[Test Epoch {}] Top1: {:.3f} Top5: {:.3f}'.format(epoch_idx + 1, test_top1, test_top5))
                 if test_top1 > best_top1:
@@ -533,8 +553,20 @@ if __name__ == '__main__':
     parser.add_argument('--fc', type=str2bool, default=False)
     parser.add_argument('--mix-p', type=float, default=-1.0)
     parser.add_argument('--beta', type=float, default=1.0)
-    parser.add_argument('--tag', type=str, default='test')
+    parser.add_argument('--tag', type=str, default='pool-match-test')
     parser.add_argument('--seed', type=int, default=3407)
+
+    parser.add_argument('--tasknum', type=int) # Continual Learning
+    parser.add_argument('--memory-filepath', type=str, default=None) # Continual Learning
+    parser.add_argument('--samples-per-class', type=int, default=10) # Continual Learning
+    parser.add_argument('--classes-per-task', type=int, default=2) # Continual Learning
+    parser.add_argument('--samples-per-task', type=int, default=10000) # Continual Learning
+    # parser.add_argument('--counter', type=int) # Continual Learning
+
+    
+    args = parser.parse_args()
+
+    parser.add_argument('--half-batch-size', type=int, default=args.batch_size//2) # Continual Learning
     args = parser.parse_args()
 
     random.seed(args.seed)
@@ -547,6 +579,9 @@ if __name__ == '__main__':
     args.output_dir = args.output_dir + args.tag
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir)
+    args.output_dir = args.output_dir + '/task-{}'.format(args.tasknum)
+    if not os.path.exists(args.output_dir):
+        os.makedirs(args.output_dir)
     if not os.path.exists(args.output_dir + '/outputs'):
         os.makedirs(args.output_dir + '/outputs')
 
@@ -557,7 +592,37 @@ if __name__ == '__main__':
         os.makedirs(args.logs_dir)
     sys.stdout = Logger(os.path.join(args.logs_dir, 'logs.txt'))
 
+    #continual learning # LR and decay as per task
+    if args.tasknum == 0:
+        args.batch_size = args.half_batch_size
+        args.lr = 1e-4
+        args.weight_decay = 1e-5  
+    else:
+        args.lr = 5e-6
+        args.weight_decay = 2e-5
+
+    
+
+    #Load memory from previous task         #Continual Learning
+    if args.memory_filepath == None:
+        if args.tasknum == 0:
+            memory = []
+        else:
+            print(f"Continual-ERROR: Memory file is not specified for Task-{args.tasknum}")
+            raise FileNotFoundError
+    else:
+        try:
+            memory = pickle.load(open(args.memory_filepath, 'rb'))
+        except Exception as e:
+            print(e)
+
     print(args)
+
+    exp_replay = ExperienceReplay(samples_per_class=args.samples_per_class, 
+                                num_classes=args.num_classes, 
+                                half_batch_size=args.half_batch_size, 
+                                memory = memory)
+
 
     trainloader, testloader, prevtask_loaders = load_data(args)
 
@@ -580,13 +645,29 @@ if __name__ == '__main__':
 
     aug, aug_rand = diffaug(args)
 
-    best_top1s = np.zeros((len(args.eval_model),))
-    best_top5s = np.zeros((len(args.eval_model),))
-    best_epochs = np.zeros((len(args.eval_model),))
+    #continual learning
+    best_top1s = {}
+    best_top5s = {}
+    best_epochs = {}
+    for i in range(args.tasknum+1):
+        best_top1s[i] = np.zeros((len(args.eval_model),))
+        best_top5s[i] = np.zeros((len(args.eval_model),))
+        best_epochs[i] = np.zeros((len(args.eval_model),))
+
     for epoch in range(args.epochs):
         generator.train()
         discriminator.train()
-        train(args, epoch, generator, discriminator, optim_g, optim_d, trainloader, criterion, aug, aug_rand)
+        preserved_batch = train(args, epoch, generator, discriminator, optim_g, optim_d, trainloader, criterion, exp_replay, aug, aug_rand)
+
+        # Continual Learning
+        if epoch == args.epochs - 1: # if last epoch is done
+            #Return last batch from training of the last epoch 
+            #        and Call update MEMORY function using that batch
+            memory = exp_replay.update_memory(preserved_batch, elapsed_examples=args.tasknum*args.samples_per_task)
+            with open('memory.pkl', 'wb') as f: # this file will be read and updated with the successive tasks 
+                pickle.dump(memory, f)
+            with open(f'memory_task_{args.tasknum}.pkl', 'wb') as f: #for saving a copy that will not be used later
+                pickle.dump(memory, f)
 
         # save image for visualization
         generator.eval()
@@ -602,12 +683,33 @@ if __name__ == '__main__':
         generator.train()
 
         if (epoch + 1) % args.eval_interval == 0:
+             #Validate all Previous Tasks #Continual Learning
+            for tnum, taskloader in enumerate(prevtask_loaders):
+                top1s, top5s = validate(args, generator, taskloader, criterion, aug_rand)
+                for e_idx, e_model in enumerate(args.eval_model):
+                    if top1s[e_idx] > best_top1s[tnum][e_idx]:
+                        best_top1s[tnum][e_idx] = top1s[e_idx]
+                        best_top5s[tnum][e_idx] = top5s[e_idx]
+                        best_epochs[tnum][e_idx] = epoch
+
+                        model_dict = {'generator': generator.state_dict(),
+                                  'discriminator': discriminator.state_dict(),
+                                  'optim_g': optim_g.state_dict(),
+                                  'optim_d': optim_d.state_dict()}
+                        torch.save(
+                            model_dict,
+                            os.path.join(args.output_dir, 'model_dict_{}.pth'.format(e_model)))
+                        print('Save model for {}'.format(e_model))
+
+                    print('Task-{} (old), Current Best Epoch for {}: {}, Top1: {:.3f}, Top5: {:.3f}'.format(tnum, e_model, best_epochs[tnum][e_idx], best_top1s[tnum][e_idx], best_top5s[tnum][e_idx])) #Continual Learning
+            
+            #Validate Current Task
             top1s, top5s = validate(args, generator, testloader, criterion, aug_rand)
             for e_idx, e_model in enumerate(args.eval_model):
-                if top1s[e_idx] > best_top1s[e_idx]:
-                    best_top1s[e_idx] = top1s[e_idx]
-                    best_top5s[e_idx] = top5s[e_idx]
-                    best_epochs[e_idx] = epoch
+                if top1s[e_idx] > best_top1s[args.tasknum][e_idx]:
+                    best_top1s[args.tasknum][e_idx] = top1s[e_idx]
+                    best_top5s[args.tasknum][e_idx] = top5s[e_idx]
+                    best_epochs[args.tasknum][e_idx] = epoch
 
                     model_dict = {'generator': generator.state_dict(),
                                   'discriminator': discriminator.state_dict(),
@@ -618,5 +720,4 @@ if __name__ == '__main__':
                         os.path.join(args.output_dir, 'model_dict_{}.pth'.format(e_model)))
                     print('Save model for {}'.format(e_model))
 
-                print('Current Best Epoch for {}: {}, Top1: {:.3f}, Top5: {:.3f}'.format(e_model, best_epochs[e_idx], best_top1s[e_idx], best_top5s[e_idx]))
-
+                print('Task-{} (current), Current Best Epoch for {}: {}, Top1: {:.3f}, Top5: {:.3f}'.format(args.tasknum, e_model, best_epochs[args.tasknum][e_idx], best_top1s[args.tasknum][e_idx], best_top5s[args.tasknum][e_idx])) #Continual Learning
