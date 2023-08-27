@@ -610,8 +610,10 @@ if __name__ == '__main__':
                         best_epochs['all'][e_idx] = epoch
                     print('Task- 0 to {} (all), Current Best Epoch for {}: {}, Top1: {:.3f}, Top5: {:.3f}'.format(args.tasknum, e_model, best_epochs['all'][e_idx], best_top1s['all'][e_idx], best_top5s['all'][e_idx])) #Continual Learning
 
-    
-    best_epoch = int(best_epochs['all'][e_idx])
+    if args.tasknum > 0:
+        best_epoch = int(best_epochs['all'][e_idx])
+    else:
+        best_epoch = int(best_epochs[arg.tasknum][e_idx])
     shutil.copy2(os.path.join(args.output_dir, 'model_dict_{}.pth'.format(best_epoch)),
                 os.path.join(args.output_dir, 'best.pth'))
     print("Saving epoch-{} of Generator as best.pth".format(best_epoch))
