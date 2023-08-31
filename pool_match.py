@@ -546,7 +546,7 @@ if __name__ == '__main__':
     parser.add_argument('--logs-dir', type=str, default='./logs/')
     parser.add_argument('--weight', type=str, default='')
     parser.add_argument('--match-aug', action='store_true', default=False)
-    parser.add_argument('--aug-type', type=str, default='color_crop_cutout')
+    parser.add_argument('--aug-type', type=str, default='')
     parser.add_argument('--mixup-net', type=str, default='cut')
     parser.add_argument('--metric', type=str, default='l1')
     parser.add_argument('--bias', type=str2bool, default=False)
@@ -578,7 +578,7 @@ if __name__ == '__main__':
         os.makedirs(args.output_dir)
 
     if args.weight == '':
-        args.weight=os.path.join(args.output_dir,'test','task-{}'.format(args.tasknum), 'best.pth')
+        args.weight=os.path.join(args.output_dir,'test','task-{}'.format(args.tasknum), 'last.pth')
 
     args.output_dir = args.output_dir + args.tag
     if not os.path.exists(args.output_dir):
