@@ -445,7 +445,7 @@ if __name__ == '__main__':
     parser.add_argument('--data-dir', type=str, default='./data')
     parser.add_argument('--output-dir', type=str, default='./results/')
     parser.add_argument('--logs-dir', type=str, default='./logs/')
-    parser.add_argument('--aug-type', type=str, default='color_crop_cutout')
+    parser.add_argument('--aug-type', type=str, default='')
     parser.add_argument('--mixup-net', type=str, default='cut')
     parser.add_argument('--bias', type=str2bool, default=False)
     parser.add_argument('--fc', type=str2bool, default=False)
@@ -579,6 +579,10 @@ if __name__ == '__main__':
             torch.save(
                 model_dict,
                 os.path.join(args.output_dir, 'model_dict_{}.pth'.format(epoch)))
+            if epoch == args.epoch - 1:
+                torch.save(
+                    model_dict,
+                    os.path.join(args.output_dir, 'model_dict_last.pth'.format))
             print("img and data saved!")
             
             #Validate all Previous Tasks #Continual Learning
