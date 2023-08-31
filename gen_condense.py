@@ -579,10 +579,7 @@ if __name__ == '__main__':
             torch.save(
                 model_dict,
                 os.path.join(args.output_dir, 'model_dict_{}.pth'.format(epoch)))
-            if epoch == args.epoch - 1:
-                torch.save(
-                    model_dict,
-                    os.path.join(args.output_dir, 'model_dict_last.pth'.format))
+            
             print("img and data saved!")
             
             #Validate all Previous Tasks #Continual Learning
@@ -620,5 +617,7 @@ if __name__ == '__main__':
         best_epoch = int(best_epochs[args.tasknum][e_idx])
     shutil.copy2(os.path.join(args.output_dir, 'model_dict_{}.pth'.format(best_epoch)),
                 os.path.join(args.output_dir, 'best.pth'))
+    shutil.copy2(os.path.join(args.output_dir, 'model_dict_{}.pth'.format(args.epochs - 1)),
+                os.path.join(args.output_dir, 'last.pth'))
     print("Saving epoch-{} of Generator as best.pth".format(best_epoch))
     
