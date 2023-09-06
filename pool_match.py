@@ -442,6 +442,12 @@ def test(args, model, testloader, criterion):
 
 
 def validate(args, generator, testloader, criterion, aug_rand):
+
+    def get_uniform_distr_labels():
+        curr_num_classes = (args.tasknum + 1) * args.classes_per_task
+        lab_syn = torch.randint(curr_num_classes, (args.batch_size,))
+        return lab_syn
+
     '''Validate the generator performance
     '''
     all_best_top1 = []
@@ -462,7 +468,10 @@ def validate(args, generator, testloader, criterion, aug_rand):
         for epoch_idx in range(args.epochs_eval):
             for batch_idx in range(10 * args.ipc // args.batch_size + 1):
                 # obtain pseudo samples with the generator
-                lab_syn = torch.randint(args.num_classes, (args.batch_size,))
+                # lab_syn = torch.randint(args.num_classes, (args.batch_size,))
+
+                lab_syn = get_uniform_distr_labels()
+
                 noise = torch.normal(0, 1, (args.batch_size, args.dim_noise))
                 lab_onehot = torch.zeros((args.batch_size, args.num_classes))
                 lab_onehot[torch.arange(args.batch_size), lab_syn] = 1
