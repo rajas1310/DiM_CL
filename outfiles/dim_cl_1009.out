@@ -1,0 +1,3157 @@
+/srv/share/skhose3/miniconda3/envs/dim2/lib/python3.10/site-packages/torch/utils/data/dataloader.py:560: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Namespace(ipc=50, batch_size=100, epochs=50, epochs_eval=100, lr=0.0001, eval_lr=0.0003, momentum=0.9, weight_decay=1e-05, eval_model=['convnet'], dim_noise=100, num_workers=4, print_freq=50, eval_interval=10, test_interval=20, data='cifar10', num_classes=10, data_dir='./cifar10', output_dir='./results/test/task-0', logs_dir='./logs/test', aug_type='', mixup_net='cut', bias=False, fc=False, mix_p=-1.0, beta=1.0, tag='test', seed=3407, tasknum=0, memory_filepath=None, samples_per_class=10, classes_per_task=2, samples_per_task=10000, half_batch_size=100)
+INFO : Loaded TRAIN data for TASK 0
+INFO : Loaded TEST data for TASK 0
+HALF BS :  100
+INFO : Loaded TEST data for TASK [0]
+Augmentataion Matching:  
+Augmentataion Net update:  
+[Train Epoch 0 Iter 50] G Loss: 6.002(2.247) D Loss: 2.689(3.546) D Acc: 67.000(57.040)
+[Train Epoch 0 Iter 100] G Loss: -3.374(1.088) D Loss: 4.672(3.862) D Acc: 54.000(59.320)
+[Train Epoch 1 Iter 50] G Loss: 2.263(0.466) D Loss: 2.442(3.963) D Acc: 56.000(65.000)
+[Train Epoch 1 Iter 100] G Loss: 1.754(0.548) D Loss: 1.721(3.665) D Acc: 74.000(67.460)
+[Train Epoch 2 Iter 50] G Loss: 3.487(0.705) D Loss: 2.582(3.408) D Acc: 80.000(73.440)
+[Train Epoch 2 Iter 100] G Loss: 0.555(0.505) D Loss: 2.609(3.364) D Acc: 72.000(73.670)
+usage: gen_condense.py [-h] [--ipc IPC] [--batch-size BATCH_SIZE]
+                       [--epochs EPOCHS] [--epochs-eval EPOCHS_EVAL] [--lr LR]
+                       [--eval-lr EVAL_LR] [--momentum MOMENTUM]
+                       [--weight-decay WEIGHT_DECAY]
+                       [--eval-model EVAL_MODEL [EVAL_MODEL ...]]
+                       [--dim-noise DIM_NOISE] [--num-workers NUM_WORKERS]
+                       [--print-freq PRINT_FREQ]
+                       [--eval-interval EVAL_INTERVAL]
+                       [--test-interval TEST_INTERVAL] [--data DATA]
+                       [--num-classes NUM_CLASSES] [--data-dir DATA_DIR]
+                       [--output-dir OUTPUT_DIR] [--logs-dir LOGS_DIR]
+                       [--aug-type AUG_TYPE] [--mixup-net MIXUP_NET]
+                       [--bias BIAS] [--fc FC] [--mix-p MIX_P] [--beta BETA]
+                       [--tag TAG] [--seed SEED] [--tasknum TASKNUM]
+                       [--memory-filepath MEMORY_FILEPATH]
+                       [--samples-per-class SAMPLES_PER_CLASS]
+                       [--classes-per-task CLASSES_PER_TASK]
+                       [--samples-per-task SAMPLES_PER_TASK]
+gen_condense.py: error: unrecognized arguments: --batch_size=512
+usage: pool_match.py [-h] [--ipc IPC] [--batch-size BATCH_SIZE]
+                     [--epochs EPOCHS] [--epochs-eval EPOCHS_EVAL]
+                     [--epochs-match EPOCHS_MATCH]
+                     [--epochs-match-train EPOCHS_MATCH_TRAIN] [--lr LR]
+                     [--eval-lr EVAL_LR] [--momentum MOMENTUM]
+                     [--weight-decay WEIGHT_DECAY] [--match-coeff MATCH_COEFF]
+                     [--match-model MATCH_MODEL] [--match MATCH]
+                     [--eval-model EVAL_MODEL [EVAL_MODEL ...]]
+                     [--dim-noise DIM_NOISE] [--num-workers NUM_WORKERS]
+                     [--print-freq PRINT_FREQ] [--eval-interval EVAL_INTERVAL]
+                     [--test-interval TEST_INTERVAL] [--fix-disc]
+                     [--data DATA] [--num-classes NUM_CLASSES]
+                     [--data-dir DATA_DIR] [--output-dir OUTPUT_DIR]
+                     [--logs-dir LOGS_DIR] [--weight WEIGHT] [--match-aug]
+                     [--aug-type AUG_TYPE] [--mixup-net MIXUP_NET]
+                     [--metric METRIC] [--bias BIAS] [--fc FC] [--mix-p MIX_P]
+                     [--beta BETA] [--tag TAG] [--seed SEED]
+                     [--tasknum TASKNUM] [--memory-filepath MEMORY_FILEPATH]
+                     [--samples-per-class SAMPLES_PER_CLASS]
+                     [--classes-per-task CLASSES_PER_TASK]
+                     [--samples-per-task SAMPLES_PER_TASK]
+pool_match.py: error: unrecognized arguments: --batch_size=512
+usage: gen_condense.py [-h] [--ipc IPC] [--batch-size BATCH_SIZE]
+                       [--epochs EPOCHS] [--epochs-eval EPOCHS_EVAL] [--lr LR]
+                       [--eval-lr EVAL_LR] [--momentum MOMENTUM]
+                       [--weight-decay WEIGHT_DECAY]
+                       [--eval-model EVAL_MODEL [EVAL_MODEL ...]]
+                       [--dim-noise DIM_NOISE] [--num-workers NUM_WORKERS]
+                       [--print-freq PRINT_FREQ]
+                       [--eval-interval EVAL_INTERVAL]
+                       [--test-interval TEST_INTERVAL] [--data DATA]
+                       [--num-classes NUM_CLASSES] [--data-dir DATA_DIR]
+                       [--output-dir OUTPUT_DIR] [--logs-dir LOGS_DIR]
+                       [--aug-type AUG_TYPE] [--mixup-net MIXUP_NET]
+                       [--bias BIAS] [--fc FC] [--mix-p MIX_P] [--beta BETA]
+                       [--tag TAG] [--seed SEED] [--tasknum TASKNUM]
+                       [--memory-filepath MEMORY_FILEPATH]
+                       [--samples-per-class SAMPLES_PER_CLASS]
+                       [--classes-per-task CLASSES_PER_TASK]
+                       [--samples-per-task SAMPLES_PER_TASK]
+gen_condense.py: error: unrecognized arguments: --batch_size=512
+usage: pool_match.py [-h] [--ipc IPC] [--batch-size BATCH_SIZE]
+                     [--epochs EPOCHS] [--epochs-eval EPOCHS_EVAL]
+                     [--epochs-match EPOCHS_MATCH]
+                     [--epochs-match-train EPOCHS_MATCH_TRAIN] [--lr LR]
+                     [--eval-lr EVAL_LR] [--momentum MOMENTUM]
+                     [--weight-decay WEIGHT_DECAY] [--match-coeff MATCH_COEFF]
+                     [--match-model MATCH_MODEL] [--match MATCH]
+                     [--eval-model EVAL_MODEL [EVAL_MODEL ...]]
+                     [--dim-noise DIM_NOISE] [--num-workers NUM_WORKERS]
+                     [--print-freq PRINT_FREQ] [--eval-interval EVAL_INTERVAL]
+                     [--test-interval TEST_INTERVAL] [--fix-disc]
+                     [--data DATA] [--num-classes NUM_CLASSES]
+                     [--data-dir DATA_DIR] [--output-dir OUTPUT_DIR]
+                     [--logs-dir LOGS_DIR] [--weight WEIGHT] [--match-aug]
+                     [--aug-type AUG_TYPE] [--mixup-net MIXUP_NET]
+                     [--metric METRIC] [--bias BIAS] [--fc FC] [--mix-p MIX_P]
+                     [--beta BETA] [--tag TAG] [--seed SEED]
+                     [--tasknum TASKNUM] [--memory-filepath MEMORY_FILEPATH]
+                     [--samples-per-class SAMPLES_PER_CLASS]
+                     [--classes-per-task CLASSES_PER_TASK]
+                     [--samples-per-task SAMPLES_PER_TASK]
+pool_match.py: error: unrecognized arguments: --batch_size=512
+usage: gen_condense.py [-h] [--ipc IPC] [--batch-size BATCH_SIZE]
+                       [--epochs EPOCHS] [--epochs-eval EPOCHS_EVAL] [--lr LR]
+                       [--eval-lr EVAL_LR] [--momentum MOMENTUM]
+                       [--weight-decay WEIGHT_DECAY]
+                       [--eval-model EVAL_MODEL [EVAL_MODEL ...]]
+                       [--dim-noise DIM_NOISE] [--num-workers NUM_WORKERS]
+                       [--print-freq PRINT_FREQ]
+                       [--eval-interval EVAL_INTERVAL]
+                       [--test-interval TEST_INTERVAL] [--data DATA]
+                       [--num-classes NUM_CLASSES] [--data-dir DATA_DIR]
+                       [--output-dir OUTPUT_DIR] [--logs-dir LOGS_DIR]
+                       [--aug-type AUG_TYPE] [--mixup-net MIXUP_NET]
+                       [--bias BIAS] [--fc FC] [--mix-p MIX_P] [--beta BETA]
+                       [--tag TAG] [--seed SEED] [--tasknum TASKNUM]
+                       [--memory-filepath MEMORY_FILEPATH]
+                       [--samples-per-class SAMPLES_PER_CLASS]
+                       [--classes-per-task CLASSES_PER_TASK]
+                       [--samples-per-task SAMPLES_PER_TASK]
+gen_condense.py: error: unrecognized arguments: --batch_size=512
+usage: pool_match.py [-h] [--ipc IPC] [--batch-size BATCH_SIZE]
+                     [--epochs EPOCHS] [--epochs-eval EPOCHS_EVAL]
+                     [--epochs-match EPOCHS_MATCH]
+                     [--epochs-match-train EPOCHS_MATCH_TRAIN] [--lr LR]
+                     [--eval-lr EVAL_LR] [--momentum MOMENTUM]
+                     [--weight-decay WEIGHT_DECAY] [--match-coeff MATCH_COEFF]
+                     [--match-model MATCH_MODEL] [--match MATCH]
+                     [--eval-model EVAL_MODEL [EVAL_MODEL ...]]
+                     [--dim-noise DIM_NOISE] [--num-workers NUM_WORKERS]
+                     [--print-freq PRINT_FREQ] [--eval-interval EVAL_INTERVAL]
+                     [--test-interval TEST_INTERVAL] [--fix-disc]
+                     [--data DATA] [--num-classes NUM_CLASSES]
+                     [--data-dir DATA_DIR] [--output-dir OUTPUT_DIR]
+                     [--logs-dir LOGS_DIR] [--weight WEIGHT] [--match-aug]
+                     [--aug-type AUG_TYPE] [--mixup-net MIXUP_NET]
+                     [--metric METRIC] [--bias BIAS] [--fc FC] [--mix-p MIX_P]
+                     [--beta BETA] [--tag TAG] [--seed SEED]
+                     [--tasknum TASKNUM] [--memory-filepath MEMORY_FILEPATH]
+                     [--samples-per-class SAMPLES_PER_CLASS]
+                     [--classes-per-task CLASSES_PER_TASK]
+                     [--samples-per-task SAMPLES_PER_TASK]
+pool_match.py: error: unrecognized arguments: --batch_size=512
+usage: gen_condense.py [-h] [--ipc IPC] [--batch-size BATCH_SIZE]
+                       [--epochs EPOCHS] [--epochs-eval EPOCHS_EVAL] [--lr LR]
+                       [--eval-lr EVAL_LR] [--momentum MOMENTUM]
+                       [--weight-decay WEIGHT_DECAY]
+                       [--eval-model EVAL_MODEL [EVAL_MODEL ...]]
+                       [--dim-noise DIM_NOISE] [--num-workers NUM_WORKERS]
+                       [--print-freq PRINT_FREQ]
+                       [--eval-interval EVAL_INTERVAL]
+                       [--test-interval TEST_INTERVAL] [--data DATA]
+                       [--num-classes NUM_CLASSES] [--data-dir DATA_DIR]
+                       [--output-dir OUTPUT_DIR] [--logs-dir LOGS_DIR]
+                       [--aug-type AUG_TYPE] [--mixup-net MIXUP_NET]
+                       [--bias BIAS] [--fc FC] [--mix-p MIX_P] [--beta BETA]
+                       [--tag TAG] [--seed SEED] [--tasknum TASKNUM]
+                       [--memory-filepath MEMORY_FILEPATH]
+                       [--samples-per-class SAMPLES_PER_CLASS]
+                       [--classes-per-task CLASSES_PER_TASK]
+                       [--samples-per-task SAMPLES_PER_TASK]
+gen_condense.py: error: unrecognized arguments: --batch_size=512
+usage: pool_match.py [-h] [--ipc IPC] [--batch-size BATCH_SIZE]
+                     [--epochs EPOCHS] [--epochs-eval EPOCHS_EVAL]
+                     [--epochs-match EPOCHS_MATCH]
+                     [--epochs-match-train EPOCHS_MATCH_TRAIN] [--lr LR]
+                     [--eval-lr EVAL_LR] [--momentum MOMENTUM]
+                     [--weight-decay WEIGHT_DECAY] [--match-coeff MATCH_COEFF]
+                     [--match-model MATCH_MODEL] [--match MATCH]
+                     [--eval-model EVAL_MODEL [EVAL_MODEL ...]]
+                     [--dim-noise DIM_NOISE] [--num-workers NUM_WORKERS]
+                     [--print-freq PRINT_FREQ] [--eval-interval EVAL_INTERVAL]
+                     [--test-interval TEST_INTERVAL] [--fix-disc]
+                     [--data DATA] [--num-classes NUM_CLASSES]
+                     [--data-dir DATA_DIR] [--output-dir OUTPUT_DIR]
+                     [--logs-dir LOGS_DIR] [--weight WEIGHT] [--match-aug]
+                     [--aug-type AUG_TYPE] [--mixup-net MIXUP_NET]
+                     [--metric METRIC] [--bias BIAS] [--fc FC] [--mix-p MIX_P]
+                     [--beta BETA] [--tag TAG] [--seed SEED]
+                     [--tasknum TASKNUM] [--memory-filepath MEMORY_FILEPATH]
+                     [--samples-per-class SAMPLES_PER_CLASS]
+                     [--classes-per-task CLASSES_PER_TASK]
+                     [--samples-per-task SAMPLES_PER_TASK]
+pool_match.py: error: unrecognized arguments: --batch_size=512
+usage: gen_condense.py [-h] [--ipc IPC] [--batch-size BATCH_SIZE]
+                       [--epochs EPOCHS] [--epochs-eval EPOCHS_EVAL] [--lr LR]
+                       [--eval-lr EVAL_LR] [--momentum MOMENTUM]
+                       [--weight-decay WEIGHT_DECAY]
+                       [--eval-model EVAL_MODEL [EVAL_MODEL ...]]
+                       [--dim-noise DIM_NOISE] [--num-workers NUM_WORKERS]
+                       [--print-freq PRINT_FREQ]
+                       [--eval-interval EVAL_INTERVAL]
+                       [--test-interval TEST_INTERVAL] [--data DATA]
+                       [--num-classes NUM_CLASSES] [--data-dir DATA_DIR]
+                       [--output-dir OUTPUT_DIR] [--logs-dir LOGS_DIR]
+                       [--aug-type AUG_TYPE] [--mixup-net MIXUP_NET]
+                       [--bias BIAS] [--fc FC] [--mix-p MIX_P] [--beta BETA]
+                       [--tag TAG] [--seed SEED] [--tasknum TASKNUM]
+                       [--memory-filepath MEMORY_FILEPATH]
+                       [--samples-per-class SAMPLES_PER_CLASS]
+                       [--classes-per-task CLASSES_PER_TASK]
+                       [--samples-per-task SAMPLES_PER_TASK]
+gen_condense.py: error: unrecognized arguments: --batch_size=512
+usage: pool_match.py [-h] [--ipc IPC] [--batch-size BATCH_SIZE]
+                     [--epochs EPOCHS] [--epochs-eval EPOCHS_EVAL]
+                     [--epochs-match EPOCHS_MATCH]
+                     [--epochs-match-train EPOCHS_MATCH_TRAIN] [--lr LR]
+                     [--eval-lr EVAL_LR] [--momentum MOMENTUM]
+                     [--weight-decay WEIGHT_DECAY] [--match-coeff MATCH_COEFF]
+                     [--match-model MATCH_MODEL] [--match MATCH]
+                     [--eval-model EVAL_MODEL [EVAL_MODEL ...]]
+                     [--dim-noise DIM_NOISE] [--num-workers NUM_WORKERS]
+                     [--print-freq PRINT_FREQ] [--eval-interval EVAL_INTERVAL]
+                     [--test-interval TEST_INTERVAL] [--fix-disc]
+                     [--data DATA] [--num-classes NUM_CLASSES]
+                     [--data-dir DATA_DIR] [--output-dir OUTPUT_DIR]
+                     [--logs-dir LOGS_DIR] [--weight WEIGHT] [--match-aug]
+                     [--aug-type AUG_TYPE] [--mixup-net MIXUP_NET]
+                     [--metric METRIC] [--bias BIAS] [--fc FC] [--mix-p MIX_P]
+                     [--beta BETA] [--tag TAG] [--seed SEED]
+                     [--tasknum TASKNUM] [--memory-filepath MEMORY_FILEPATH]
+                     [--samples-per-class SAMPLES_PER_CLASS]
+                     [--classes-per-task CLASSES_PER_TASK]
+                     [--samples-per-task SAMPLES_PER_TASK]
+pool_match.py: error: unrecognized arguments: --batch_size=512
+usage: gen_condense.py [-h] [--ipc IPC] [--batch-size BATCH_SIZE]
+                       [--epochs EPOCHS] [--epochs-eval EPOCHS_EVAL] [--lr LR]
+                       [--eval-lr EVAL_LR] [--momentum MOMENTUM]
+                       [--weight-decay WEIGHT_DECAY]
+                       [--eval-model EVAL_MODEL [EVAL_MODEL ...]]
+                       [--dim-noise DIM_NOISE] [--num-workers NUM_WORKERS]
+                       [--print-freq PRINT_FREQ]
+                       [--eval-interval EVAL_INTERVAL]
+                       [--test-interval TEST_INTERVAL] [--data DATA]
+                       [--num-classes NUM_CLASSES] [--data-dir DATA_DIR]
+                       [--output-dir OUTPUT_DIR] [--logs-dir LOGS_DIR]
+                       [--aug-type AUG_TYPE] [--mixup-net MIXUP_NET]
+                       [--bias BIAS] [--fc FC] [--mix-p MIX_P] [--beta BETA]
+                       [--tag TAG] [--seed SEED] [--tasknum TASKNUM]
+                       [--memory-filepath MEMORY_FILEPATH]
+                       [--samples-per-class SAMPLES_PER_CLASS]
+                       [--classes-per-task CLASSES_PER_TASK]
+                       [--samples-per-task SAMPLES_PER_TASK]
+gen_condense.py: error: unrecognized arguments: --batch_size=512
+usage: pool_match.py [-h] [--ipc IPC] [--batch-size BATCH_SIZE]
+                     [--epochs EPOCHS] [--epochs-eval EPOCHS_EVAL]
+                     [--epochs-match EPOCHS_MATCH]
+                     [--epochs-match-train EPOCHS_MATCH_TRAIN] [--lr LR]
+                     [--eval-lr EVAL_LR] [--momentum MOMENTUM]
+                     [--weight-decay WEIGHT_DECAY] [--match-coeff MATCH_COEFF]
+                     [--match-model MATCH_MODEL] [--match MATCH]
+                     [--eval-model EVAL_MODEL [EVAL_MODEL ...]]
+                     [--dim-noise DIM_NOISE] [--num-workers NUM_WORKERS]
+                     [--print-freq PRINT_FREQ] [--eval-interval EVAL_INTERVAL]
+                     [--test-interval TEST_INTERVAL] [--fix-disc]
+                     [--data DATA] [--num-classes NUM_CLASSES]
+                     [--data-dir DATA_DIR] [--output-dir OUTPUT_DIR]
+                     [--logs-dir LOGS_DIR] [--weight WEIGHT] [--match-aug]
+                     [--aug-type AUG_TYPE] [--mixup-net MIXUP_NET]
+                     [--metric METRIC] [--bias BIAS] [--fc FC] [--mix-p MIX_P]
+                     [--beta BETA] [--tag TAG] [--seed SEED]
+                     [--tasknum TASKNUM] [--memory-filepath MEMORY_FILEPATH]
+                     [--samples-per-class SAMPLES_PER_CLASS]
+                     [--classes-per-task CLASSES_PER_TASK]
+                     [--samples-per-task SAMPLES_PER_TASK]
+pool_match.py: error: unrecognized arguments: --batch_size=512
+usage: gen_condense.py [-h] [--ipc IPC] [--batch-size BATCH_SIZE]
+                       [--epochs EPOCHS] [--epochs-eval EPOCHS_EVAL] [--lr LR]
+                       [--eval-lr EVAL_LR] [--momentum MOMENTUM]
+                       [--weight-decay WEIGHT_DECAY]
+                       [--eval-model EVAL_MODEL [EVAL_MODEL ...]]
+                       [--dim-noise DIM_NOISE] [--num-workers NUM_WORKERS]
+                       [--print-freq PRINT_FREQ]
+                       [--eval-interval EVAL_INTERVAL]
+                       [--test-interval TEST_INTERVAL] [--data DATA]
+                       [--num-classes NUM_CLASSES] [--data-dir DATA_DIR]
+                       [--output-dir OUTPUT_DIR] [--logs-dir LOGS_DIR]
+                       [--aug-type AUG_TYPE] [--mixup-net MIXUP_NET]
+                       [--bias BIAS] [--fc FC] [--mix-p MIX_P] [--beta BETA]
+                       [--tag TAG] [--seed SEED] [--tasknum TASKNUM]
+                       [--memory-filepath MEMORY_FILEPATH]
+                       [--samples-per-class SAMPLES_PER_CLASS]
+                       [--classes-per-task CLASSES_PER_TASK]
+                       [--samples-per-task SAMPLES_PER_TASK]
+gen_condense.py: error: unrecognized arguments: --batch_size=512
+usage: pool_match.py [-h] [--ipc IPC] [--batch-size BATCH_SIZE]
+                     [--epochs EPOCHS] [--epochs-eval EPOCHS_EVAL]
+                     [--epochs-match EPOCHS_MATCH]
+                     [--epochs-match-train EPOCHS_MATCH_TRAIN] [--lr LR]
+                     [--eval-lr EVAL_LR] [--momentum MOMENTUM]
+                     [--weight-decay WEIGHT_DECAY] [--match-coeff MATCH_COEFF]
+                     [--match-model MATCH_MODEL] [--match MATCH]
+                     [--eval-model EVAL_MODEL [EVAL_MODEL ...]]
+                     [--dim-noise DIM_NOISE] [--num-workers NUM_WORKERS]
+                     [--print-freq PRINT_FREQ] [--eval-interval EVAL_INTERVAL]
+                     [--test-interval TEST_INTERVAL] [--fix-disc]
+                     [--data DATA] [--num-classes NUM_CLASSES]
+                     [--data-dir DATA_DIR] [--output-dir OUTPUT_DIR]
+                     [--logs-dir LOGS_DIR] [--weight WEIGHT] [--match-aug]
+                     [--aug-type AUG_TYPE] [--mixup-net MIXUP_NET]
+                     [--metric METRIC] [--bias BIAS] [--fc FC] [--mix-p MIX_P]
+                     [--beta BETA] [--tag TAG] [--seed SEED]
+                     [--tasknum TASKNUM] [--memory-filepath MEMORY_FILEPATH]
+                     [--samples-per-class SAMPLES_PER_CLASS]
+                     [--classes-per-task CLASSES_PER_TASK]
+                     [--samples-per-task SAMPLES_PER_TASK]
+pool_match.py: error: unrecognized arguments: --batch_size=512
+usage: gen_condense.py [-h] [--ipc IPC] [--batch-size BATCH_SIZE]
+                       [--epochs EPOCHS] [--epochs-eval EPOCHS_EVAL] [--lr LR]
+                       [--eval-lr EVAL_LR] [--momentum MOMENTUM]
+                       [--weight-decay WEIGHT_DECAY]
+                       [--eval-model EVAL_MODEL [EVAL_MODEL ...]]
+                       [--dim-noise DIM_NOISE] [--num-workers NUM_WORKERS]
+                       [--print-freq PRINT_FREQ]
+                       [--eval-interval EVAL_INTERVAL]
+                       [--test-interval TEST_INTERVAL] [--data DATA]
+                       [--num-classes NUM_CLASSES] [--data-dir DATA_DIR]
+                       [--output-dir OUTPUT_DIR] [--logs-dir LOGS_DIR]
+                       [--aug-type AUG_TYPE] [--mixup-net MIXUP_NET]
+                       [--bias BIAS] [--fc FC] [--mix-p MIX_P] [--beta BETA]
+                       [--tag TAG] [--seed SEED] [--tasknum TASKNUM]
+                       [--memory-filepath MEMORY_FILEPATH]
+                       [--samples-per-class SAMPLES_PER_CLASS]
+                       [--classes-per-task CLASSES_PER_TASK]
+                       [--samples-per-task SAMPLES_PER_TASK]
+gen_condense.py: error: unrecognized arguments: --batch_size=512
+usage: pool_match.py [-h] [--ipc IPC] [--batch-size BATCH_SIZE]
+                     [--epochs EPOCHS] [--epochs-eval EPOCHS_EVAL]
+                     [--epochs-match EPOCHS_MATCH]
+                     [--epochs-match-train EPOCHS_MATCH_TRAIN] [--lr LR]
+                     [--eval-lr EVAL_LR] [--momentum MOMENTUM]
+                     [--weight-decay WEIGHT_DECAY] [--match-coeff MATCH_COEFF]
+                     [--match-model MATCH_MODEL] [--match MATCH]
+                     [--eval-model EVAL_MODEL [EVAL_MODEL ...]]
+                     [--dim-noise DIM_NOISE] [--num-workers NUM_WORKERS]
+                     [--print-freq PRINT_FREQ] [--eval-interval EVAL_INTERVAL]
+                     [--test-interval TEST_INTERVAL] [--fix-disc]
+                     [--data DATA] [--num-classes NUM_CLASSES]
+                     [--data-dir DATA_DIR] [--output-dir OUTPUT_DIR]
+                     [--logs-dir LOGS_DIR] [--weight WEIGHT] [--match-aug]
+                     [--aug-type AUG_TYPE] [--mixup-net MIXUP_NET]
+                     [--metric METRIC] [--bias BIAS] [--fc FC] [--mix-p MIX_P]
+                     [--beta BETA] [--tag TAG] [--seed SEED]
+                     [--tasknum TASKNUM] [--memory-filepath MEMORY_FILEPATH]
+                     [--samples-per-class SAMPLES_PER_CLASS]
+                     [--classes-per-task CLASSES_PER_TASK]
+                     [--samples-per-task SAMPLES_PER_TASK]
+pool_match.py: error: unrecognized arguments: --batch_size=512
+usage: gen_condense.py [-h] [--ipc IPC] [--batch-size BATCH_SIZE]
+                       [--epochs EPOCHS] [--epochs-eval EPOCHS_EVAL] [--lr LR]
+                       [--eval-lr EVAL_LR] [--momentum MOMENTUM]
+                       [--weight-decay WEIGHT_DECAY]
+                       [--eval-model EVAL_MODEL [EVAL_MODEL ...]]
+                       [--dim-noise DIM_NOISE] [--num-workers NUM_WORKERS]
+                       [--print-freq PRINT_FREQ]
+                       [--eval-interval EVAL_INTERVAL]
+                       [--test-interval TEST_INTERVAL] [--data DATA]
+                       [--num-classes NUM_CLASSES] [--data-dir DATA_DIR]
+                       [--output-dir OUTPUT_DIR] [--logs-dir LOGS_DIR]
+                       [--aug-type AUG_TYPE] [--mixup-net MIXUP_NET]
+                       [--bias BIAS] [--fc FC] [--mix-p MIX_P] [--beta BETA]
+                       [--tag TAG] [--seed SEED] [--tasknum TASKNUM]
+                       [--memory-filepath MEMORY_FILEPATH]
+                       [--samples-per-class SAMPLES_PER_CLASS]
+                       [--classes-per-task CLASSES_PER_TASK]
+                       [--samples-per-task SAMPLES_PER_TASK]
+gen_condense.py: error: unrecognized arguments: --batch_size=512
+usage: pool_match.py [-h] [--ipc IPC] [--batch-size BATCH_SIZE]
+                     [--epochs EPOCHS] [--epochs-eval EPOCHS_EVAL]
+                     [--epochs-match EPOCHS_MATCH]
+                     [--epochs-match-train EPOCHS_MATCH_TRAIN] [--lr LR]
+                     [--eval-lr EVAL_LR] [--momentum MOMENTUM]
+                     [--weight-decay WEIGHT_DECAY] [--match-coeff MATCH_COEFF]
+                     [--match-model MATCH_MODEL] [--match MATCH]
+                     [--eval-model EVAL_MODEL [EVAL_MODEL ...]]
+                     [--dim-noise DIM_NOISE] [--num-workers NUM_WORKERS]
+                     [--print-freq PRINT_FREQ] [--eval-interval EVAL_INTERVAL]
+                     [--test-interval TEST_INTERVAL] [--fix-disc]
+                     [--data DATA] [--num-classes NUM_CLASSES]
+                     [--data-dir DATA_DIR] [--output-dir OUTPUT_DIR]
+                     [--logs-dir LOGS_DIR] [--weight WEIGHT] [--match-aug]
+                     [--aug-type AUG_TYPE] [--mixup-net MIXUP_NET]
+                     [--metric METRIC] [--bias BIAS] [--fc FC] [--mix-p MIX_P]
+                     [--beta BETA] [--tag TAG] [--seed SEED]
+                     [--tasknum TASKNUM] [--memory-filepath MEMORY_FILEPATH]
+                     [--samples-per-class SAMPLES_PER_CLASS]
+                     [--classes-per-task CLASSES_PER_TASK]
+                     [--samples-per-task SAMPLES_PER_TASK]
+pool_match.py: error: unrecognized arguments: --batch_size=512
+usage: gen_condense.py [-h] [--ipc IPC] [--batch-size BATCH_SIZE]
+                       [--epochs EPOCHS] [--epochs-eval EPOCHS_EVAL] [--lr LR]
+                       [--eval-lr EVAL_LR] [--momentum MOMENTUM]
+                       [--weight-decay WEIGHT_DECAY]
+                       [--eval-model EVAL_MODEL [EVAL_MODEL ...]]
+                       [--dim-noise DIM_NOISE] [--num-workers NUM_WORKERS]
+                       [--print-freq PRINT_FREQ]
+                       [--eval-interval EVAL_INTERVAL]
+                       [--test-interval TEST_INTERVAL] [--data DATA]
+                       [--num-classes NUM_CLASSES] [--data-dir DATA_DIR]
+                       [--output-dir OUTPUT_DIR] [--logs-dir LOGS_DIR]
+                       [--aug-type AUG_TYPE] [--mixup-net MIXUP_NET]
+                       [--bias BIAS] [--fc FC] [--mix-p MIX_P] [--beta BETA]
+                       [--tag TAG] [--seed SEED] [--tasknum TASKNUM]
+                       [--memory-filepath MEMORY_FILEPATH]
+                       [--samples-per-class SAMPLES_PER_CLASS]
+                       [--classes-per-task CLASSES_PER_TASK]
+                       [--samples-per-task SAMPLES_PER_TASK]
+gen_condense.py: error: unrecognized arguments: --batch_size=512
+usage: pool_match.py [-h] [--ipc IPC] [--batch-size BATCH_SIZE]
+                     [--epochs EPOCHS] [--epochs-eval EPOCHS_EVAL]
+                     [--epochs-match EPOCHS_MATCH]
+                     [--epochs-match-train EPOCHS_MATCH_TRAIN] [--lr LR]
+                     [--eval-lr EVAL_LR] [--momentum MOMENTUM]
+                     [--weight-decay WEIGHT_DECAY] [--match-coeff MATCH_COEFF]
+                     [--match-model MATCH_MODEL] [--match MATCH]
+                     [--eval-model EVAL_MODEL [EVAL_MODEL ...]]
+                     [--dim-noise DIM_NOISE] [--num-workers NUM_WORKERS]
+                     [--print-freq PRINT_FREQ] [--eval-interval EVAL_INTERVAL]
+                     [--test-interval TEST_INTERVAL] [--fix-disc]
+                     [--data DATA] [--num-classes NUM_CLASSES]
+                     [--data-dir DATA_DIR] [--output-dir OUTPUT_DIR]
+                     [--logs-dir LOGS_DIR] [--weight WEIGHT] [--match-aug]
+                     [--aug-type AUG_TYPE] [--mixup-net MIXUP_NET]
+                     [--metric METRIC] [--bias BIAS] [--fc FC] [--mix-p MIX_P]
+                     [--beta BETA] [--tag TAG] [--seed SEED]
+                     [--tasknum TASKNUM] [--memory-filepath MEMORY_FILEPATH]
+                     [--samples-per-class SAMPLES_PER_CLASS]
+                     [--classes-per-task CLASSES_PER_TASK]
+                     [--samples-per-task SAMPLES_PER_TASK]
+pool_match.py: error: unrecognized arguments: --batch_size=512
+/srv/share/skhose3/miniconda3/envs/dim2/lib/python3.10/site-packages/torch/utils/data/dataloader.py:560: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Namespace(ipc=50, batch_size=256, epochs=50, epochs_eval=100, lr=0.0001, eval_lr=0.0003, momentum=0.9, weight_decay=1e-05, eval_model=['convnet'], dim_noise=100, num_workers=4, print_freq=50, eval_interval=10, test_interval=20, data='cifar10', num_classes=10, data_dir='./cifar10', output_dir='./results/test/task-0', logs_dir='./logs/test', aug_type='', mixup_net='cut', bias=False, fc=False, mix_p=-1.0, beta=1.0, tag='test', seed=3407, tasknum=0, memory_filepath=None, samples_per_class=10, classes_per_task=2, samples_per_task=10000, half_batch_size=256)
+INFO : Loaded TRAIN data for TASK 0
+INFO : Loaded TEST data for TASK 0
+HALF BS :  256
+INFO : Loaded TEST data for TASK [0]
+Augmentataion Matching:  
+Augmentataion Net update:  
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 67.100 Top5: 100.000
+[Test Epoch 40] Top1: 67.150 Top5: 100.000
+[Test Epoch 60] Top1: 67.100 Top5: 100.000
+[Test Epoch 80] Top1: 67.250 Top5: 100.000
+[Test Epoch 100] Top1: 67.000 Top5: 100.000
+Task-0 (current), Current Best Epoch for convnet: 9.0, Top1: 67.250, Top5: 100.000
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 63.250 Top5: 100.000
+[Test Epoch 40] Top1: 63.850 Top5: 100.000
+[Test Epoch 60] Top1: 64.200 Top5: 100.000
+[Test Epoch 80] Top1: 64.250 Top5: 100.000
+[Test Epoch 100] Top1: 64.250 Top5: 100.000
+Task-0 (current), Current Best Epoch for convnet: 9.0, Top1: 67.250, Top5: 100.000
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 39.650 Top5: 100.000
+[Test Epoch 40] Top1: 39.000 Top5: 100.000
+[Test Epoch 60] Top1: 38.850 Top5: 100.000
+[Test Epoch 80] Top1: 38.900 Top5: 100.000
+[Test Epoch 100] Top1: 38.900 Top5: 100.000
+Task-0 (current), Current Best Epoch for convnet: 9.0, Top1: 67.250, Top5: 100.000
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 53.750 Top5: 100.000
+[Test Epoch 40] Top1: 54.000 Top5: 100.000
+[Test Epoch 60] Top1: 54.100 Top5: 100.000
+[Test Epoch 80] Top1: 54.100 Top5: 100.000
+[Test Epoch 100] Top1: 54.100 Top5: 100.000
+Task-0 (current), Current Best Epoch for convnet: 9.0, Top1: 67.250, Top5: 100.000
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 63.650 Top5: 100.000
+[Test Epoch 40] Top1: 62.300 Top5: 100.000
+[Test Epoch 60] Top1: 62.050 Top5: 100.000
+[Test Epoch 80] Top1: 61.700 Top5: 100.000
+[Test Epoch 100] Top1: 61.800 Top5: 100.000
+Task-0 (current), Current Best Epoch for convnet: 9.0, Top1: 67.250, Top5: 100.000
+Saving epoch-9 of Generator as best.pth
+/srv/share/skhose3/miniconda3/envs/dim2/lib/python3.10/site-packages/torch/utils/data/dataloader.py:560: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Namespace(ipc=50, batch_size=256, epochs=50, epochs_eval=100, epochs_match=100, epochs_match_train=16, lr=0.0001, eval_lr=0.0003, momentum=0.9, weight_decay=1e-05, match_coeff=0.001, match_model='convnet', match='grad', eval_model=['convnet', 'resnet10', 'resnet18'], dim_noise=100, num_workers=4, print_freq=100, eval_interval=10, test_interval=20, fix_disc=False, data='cifar10', num_classes=10, data_dir='./cifar10', output_dir='./results/pool-match-test/task-0', logs_dir='./logs/pool-match-test', weight='./results/test/task-0/last.pth', match_aug=False, aug_type='', mixup_net='cut', metric='l1', bias=False, fc=False, mix_p=-1.0, beta=1.0, tag='pool-match-test', seed=3407, tasknum=0, memory_filepath=None, samples_per_class=10, classes_per_task=2, samples_per_task=10000, half_batch_size=256)
+INFO : Loaded TRAIN data for TASK 0
+INFO : Loaded TEST data for TASK 0
+HALF BS :  256
+Augmentataion Matching:  
+Augmentataion Net update:  
+Random model: convnet
+Random model: resnet10_ap
+Random model: resnet10
+Random model: resnet18
+Random model: resnet10
+Random model: resnet10_ap
+Random model: resnet18
+Random model: resnet18_ap
+Random model: resnet18
+Random model: resnet10
+Evaluating convnet
+[Test Epoch 20] Top1: 68.450 Top5: 100.000
+[Test Epoch 40] Top1: 68.800 Top5: 100.000
+[Test Epoch 60] Top1: 68.950 Top5: 100.000
+[Test Epoch 80] Top1: 69.050 Top5: 100.000
+[Test Epoch 100] Top1: 69.100 Top5: 100.000
+Evaluating resnet10
+[Test Epoch 20] Top1: 54.400 Top5: 100.000
+[Test Epoch 40] Top1: 53.300 Top5: 100.000
+[Test Epoch 60] Top1: 52.600 Top5: 100.000
+[Test Epoch 80] Top1: 52.600 Top5: 100.000
+[Test Epoch 100] Top1: 52.700 Top5: 100.000
+Evaluating resnet18
+[Test Epoch 20] Top1: 52.300 Top5: 100.000
+[Test Epoch 40] Top1: 52.150 Top5: 100.000
+[Test Epoch 60] Top1: 51.650 Top5: 100.000
+[Test Epoch 80] Top1: 51.450 Top5: 100.000
+[Test Epoch 100] Top1: 51.500 Top5: 100.000
+Save model for convnet
+Task-0 (current), Current Best Epoch for convnet: 9.0, Top1: 69.100, Top5: 100.000
+Save model for resnet10
+Task-0 (current), Current Best Epoch for resnet10: 9.0, Top1: 54.400, Top5: 100.000
+Save model for resnet18
+Task-0 (current), Current Best Epoch for resnet18: 9.0, Top1: 52.300, Top5: 100.000
+Random model: resnet10_ap
+Random model: resnet18_ap
+Random model: resnet10_ap
+Random model: resnet18
+Random model: resnet18
+Random model: resnet10
+Random model: convnet
+Random model: resnet18
+Random model: resnet10
+Random model: resnet18
+Evaluating convnet
+[Test Epoch 20] Top1: 70.800 Top5: 100.000
+[Test Epoch 40] Top1: 70.550 Top5: 100.000
+[Test Epoch 60] Top1: 71.050 Top5: 100.000
+[Test Epoch 80] Top1: 71.150 Top5: 100.000
+[Test Epoch 100] Top1: 71.050 Top5: 100.000
+Evaluating resnet10
+[Test Epoch 20] Top1: 54.700 Top5: 100.000
+[Test Epoch 40] Top1: 53.350 Top5: 100.000
+[Test Epoch 60] Top1: 53.050 Top5: 100.000
+[Test Epoch 80] Top1: 52.900 Top5: 100.000
+[Test Epoch 100] Top1: 52.550 Top5: 100.000
+Evaluating resnet18
+[Test Epoch 20] Top1: 53.300 Top5: 100.000
+[Test Epoch 40] Top1: 53.250 Top5: 100.000
+[Test Epoch 60] Top1: 52.900 Top5: 100.000
+[Test Epoch 80] Top1: 52.800 Top5: 100.000
+[Test Epoch 100] Top1: 52.600 Top5: 100.000
+Save model for convnet
+Task-0 (current), Current Best Epoch for convnet: 19.0, Top1: 71.150, Top5: 100.000
+Save model for resnet10
+Task-0 (current), Current Best Epoch for resnet10: 19.0, Top1: 54.700, Top5: 100.000
+Save model for resnet18
+Task-0 (current), Current Best Epoch for resnet18: 19.0, Top1: 53.300, Top5: 100.000
+Random model: resnet18_ap
+Random model: convnet
+Random model: convnet
+Random model: resnet18_ap
+Random model: resnet10
+Random model: resnet18
+Random model: convnet
+Random model: convnet
+Random model: resnet18
+Random model: resnet18_ap
+Evaluating convnet
+[Test Epoch 20] Top1: 70.250 Top5: 100.000
+[Test Epoch 40] Top1: 70.400 Top5: 100.000
+[Test Epoch 60] Top1: 70.200 Top5: 100.000
+[Test Epoch 80] Top1: 70.400 Top5: 100.000
+[Test Epoch 100] Top1: 70.400 Top5: 100.000
+Evaluating resnet10
+[Test Epoch 20] Top1: 55.150 Top5: 100.000
+[Test Epoch 40] Top1: 54.150 Top5: 100.000
+[Test Epoch 60] Top1: 53.650 Top5: 100.000
+[Test Epoch 80] Top1: 53.950 Top5: 100.000
+[Test Epoch 100] Top1: 53.400 Top5: 100.000
+Evaluating resnet18
+[Test Epoch 20] Top1: 52.400 Top5: 100.000
+[Test Epoch 40] Top1: 52.050 Top5: 100.000
+[Test Epoch 60] Top1: 51.600 Top5: 100.000
+[Test Epoch 80] Top1: 51.200 Top5: 100.000
+[Test Epoch 100] Top1: 51.200 Top5: 100.000
+Task-0 (current), Current Best Epoch for convnet: 19.0, Top1: 71.150, Top5: 100.000
+Save model for resnet10
+Task-0 (current), Current Best Epoch for resnet10: 29.0, Top1: 55.150, Top5: 100.000
+Task-0 (current), Current Best Epoch for resnet18: 19.0, Top1: 53.300, Top5: 100.000
+Random model: convnet
+Random model: convnet
+Random model: resnet10
+Random model: resnet18_ap
+Random model: resnet10
+Random model: resnet10_ap
+Random model: resnet18_ap
+Random model: resnet18
+Random model: resnet18_ap
+Random model: resnet10
+Evaluating convnet
+[Test Epoch 20] Top1: 63.400 Top5: 100.000
+[Test Epoch 40] Top1: 62.400 Top5: 100.000
+[Test Epoch 60] Top1: 62.150 Top5: 100.000
+[Test Epoch 80] Top1: 61.900 Top5: 100.000
+[Test Epoch 100] Top1: 61.700 Top5: 100.000
+Evaluating resnet10
+[Test Epoch 20] Top1: 53.850 Top5: 100.000
+[Test Epoch 40] Top1: 52.950 Top5: 100.000
+[Test Epoch 60] Top1: 52.450 Top5: 100.000
+[Test Epoch 80] Top1: 52.700 Top5: 100.000
+[Test Epoch 100] Top1: 52.150 Top5: 100.000
+Evaluating resnet18
+[Test Epoch 20] Top1: 51.400 Top5: 100.000
+[Test Epoch 40] Top1: 51.700 Top5: 100.000
+[Test Epoch 60] Top1: 52.350 Top5: 100.000
+[Test Epoch 80] Top1: 52.400 Top5: 100.000
+[Test Epoch 100] Top1: 51.850 Top5: 100.000
+Task-0 (current), Current Best Epoch for convnet: 19.0, Top1: 71.150, Top5: 100.000
+Task-0 (current), Current Best Epoch for resnet10: 29.0, Top1: 55.150, Top5: 100.000
+Task-0 (current), Current Best Epoch for resnet18: 19.0, Top1: 53.300, Top5: 100.000
+Random model: resnet10
+Random model: resnet10_ap
+Random model: resnet18_ap
+Random model: resnet18_ap
+Random model: resnet18_ap
+Random model: resnet10_ap
+Random model: convnet
+Random model: resnet10_ap
+Random model: resnet10_ap
+Random model: resnet18
+Evaluating convnet
+[Test Epoch 20] Top1: 69.350 Top5: 100.000
+[Test Epoch 40] Top1: 69.850 Top5: 100.000
+[Test Epoch 60] Top1: 69.750 Top5: 100.000
+[Test Epoch 80] Top1: 69.750 Top5: 100.000
+[Test Epoch 100] Top1: 69.800 Top5: 100.000
+Evaluating resnet10
+[Test Epoch 20] Top1: 53.150 Top5: 100.000
+[Test Epoch 40] Top1: 50.800 Top5: 100.000
+[Test Epoch 60] Top1: 51.400 Top5: 100.000
+[Test Epoch 80] Top1: 51.250 Top5: 100.000
+[Test Epoch 100] Top1: 51.300 Top5: 100.000
+Evaluating resnet18
+[Test Epoch 20] Top1: 49.100 Top5: 100.000
+[Test Epoch 40] Top1: 49.500 Top5: 100.000
+[Test Epoch 60] Top1: 50.050 Top5: 100.000
+[Test Epoch 80] Top1: 50.100 Top5: 100.000
+[Test Epoch 100] Top1: 50.150 Top5: 100.000
+Task-0 (current), Current Best Epoch for convnet: 19.0, Top1: 71.150, Top5: 100.000
+Task-0 (current), Current Best Epoch for resnet10: 29.0, Top1: 55.150, Top5: 100.000
+Task-0 (current), Current Best Epoch for resnet18: 19.0, Top1: 53.300, Top5: 100.000
+/srv/share/skhose3/miniconda3/envs/dim2/lib/python3.10/site-packages/torch/utils/data/dataloader.py:560: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Namespace(ipc=50, batch_size=512, epochs=50, epochs_eval=100, lr=5e-06, eval_lr=0.0003, momentum=0.9, weight_decay=2e-05, eval_model=['convnet'], dim_noise=100, num_workers=4, print_freq=50, eval_interval=10, test_interval=20, data='cifar10', num_classes=10, data_dir='./cifar10', output_dir='./results/test/task-1', logs_dir='./logs/test', aug_type='', mixup_net='cut', bias=False, fc=False, mix_p=-1.0, beta=1.0, tag='test', seed=3407, tasknum=1, memory_filepath='./memory.pkl', samples_per_class=10, classes_per_task=2, samples_per_task=10000, half_batch_size=256)
+INFO : Loaded TRAIN data for TASK 1
+INFO : Loaded TEST data for TASK 1
+HALF BS :  256
+INFO : Loaded TEST data for TASK 0
+INFO : Loaded TEST data for TASK [0, 1]
+Augmentataion Matching:  
+Augmentataion Net update:  
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 29.300 Top5: 100.000
+[Test Epoch 40] Top1: 26.150 Top5: 100.000
+[Test Epoch 60] Top1: 29.200 Top5: 100.000
+[Test Epoch 80] Top1: 24.300 Top5: 100.000
+[Test Epoch 100] Top1: 21.900 Top5: 100.000
+Task-0 (old), Current Best Epoch for convnet: 9.0, Top1: 29.300, Top5: 100.000
+Evaluating convnet
+[Test Epoch 20] Top1: 33.250 Top5: 100.000
+[Test Epoch 40] Top1: 31.900 Top5: 100.000
+[Test Epoch 60] Top1: 28.300 Top5: 100.000
+[Test Epoch 80] Top1: 30.100 Top5: 100.000
+[Test Epoch 100] Top1: 32.450 Top5: 100.000
+Task-1 (current), Current Best Epoch for convnet: 9.0, Top1: 33.250, Top5: 100.000
+Evaluating convnet
+[Test Epoch 20] Top1: 28.625 Top5: 100.000
+[Test Epoch 40] Top1: 26.750 Top5: 100.000
+[Test Epoch 60] Top1: 24.675 Top5: 100.000
+[Test Epoch 80] Top1: 24.150 Top5: 100.000
+[Test Epoch 100] Top1: 22.450 Top5: 100.000
+Task- 0 to 1 (all), Current Best Epoch for convnet: 9.0, Top1: 28.625, Top5: 100.000
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 24.400 Top5: 100.000
+[Test Epoch 40] Top1: 21.350 Top5: 100.000
+[Test Epoch 60] Top1: 21.350 Top5: 100.000
+[Test Epoch 80] Top1: 24.300 Top5: 100.000
+[Test Epoch 100] Top1: 24.500 Top5: 100.000
+Task-0 (old), Current Best Epoch for convnet: 9.0, Top1: 29.300, Top5: 100.000
+Evaluating convnet
+[Test Epoch 20] Top1: 33.000 Top5: 99.950
+[Test Epoch 40] Top1: 29.300 Top5: 100.000
+[Test Epoch 60] Top1: 29.350 Top5: 100.000
+[Test Epoch 80] Top1: 31.950 Top5: 100.000
+[Test Epoch 100] Top1: 30.350 Top5: 100.000
+Task-1 (current), Current Best Epoch for convnet: 9.0, Top1: 33.250, Top5: 100.000
+Evaluating convnet
+[Test Epoch 20] Top1: 30.375 Top5: 100.000
+[Test Epoch 40] Top1: 31.275 Top5: 100.000
+[Test Epoch 60] Top1: 30.875 Top5: 100.000
+[Test Epoch 80] Top1: 30.650 Top5: 100.000
+[Test Epoch 100] Top1: 29.975 Top5: 100.000
+Task- 0 to 1 (all), Current Best Epoch for convnet: 19.0, Top1: 31.275, Top5: 100.000
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 35.750 Top5: 100.000
+[Test Epoch 40] Top1: 38.400 Top5: 100.000
+[Test Epoch 60] Top1: 38.250 Top5: 100.000
+[Test Epoch 80] Top1: 36.300 Top5: 100.000
+[Test Epoch 100] Top1: 37.250 Top5: 100.000
+Task-0 (old), Current Best Epoch for convnet: 29.0, Top1: 38.400, Top5: 100.000
+Evaluating convnet
+[Test Epoch 20] Top1: 37.050 Top5: 100.000
+[Test Epoch 40] Top1: 33.850 Top5: 100.000
+[Test Epoch 60] Top1: 35.550 Top5: 100.000
+[Test Epoch 80] Top1: 32.450 Top5: 100.000
+[Test Epoch 100] Top1: 35.650 Top5: 100.000
+Task-1 (current), Current Best Epoch for convnet: 29.0, Top1: 37.050, Top5: 100.000
+Evaluating convnet
+[Test Epoch 20] Top1: 30.750 Top5: 100.000
+[Test Epoch 40] Top1: 33.150 Top5: 100.000
+[Test Epoch 60] Top1: 33.100 Top5: 100.000
+[Test Epoch 80] Top1: 33.675 Top5: 100.000
+[Test Epoch 100] Top1: 33.475 Top5: 100.000
+Task- 0 to 1 (all), Current Best Epoch for convnet: 29.0, Top1: 33.675, Top5: 100.000
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 31.550 Top5: 100.000
+[Test Epoch 40] Top1: 34.950 Top5: 100.000
+[Test Epoch 60] Top1: 34.650 Top5: 100.000
+[Test Epoch 80] Top1: 37.000 Top5: 100.000
+[Test Epoch 100] Top1: 36.650 Top5: 100.000
+Task-0 (old), Current Best Epoch for convnet: 29.0, Top1: 38.400, Top5: 100.000
+Evaluating convnet
+[Test Epoch 20] Top1: 37.300 Top5: 100.000
+[Test Epoch 40] Top1: 40.700 Top5: 100.000
+[Test Epoch 60] Top1: 41.450 Top5: 100.000
+[Test Epoch 80] Top1: 40.650 Top5: 100.000
+[Test Epoch 100] Top1: 40.450 Top5: 100.000
+Task-1 (current), Current Best Epoch for convnet: 39.0, Top1: 41.450, Top5: 100.000
+Evaluating convnet
+[Test Epoch 20] Top1: 30.700 Top5: 100.000
+[Test Epoch 40] Top1: 32.600 Top5: 100.000
+[Test Epoch 60] Top1: 34.300 Top5: 100.000
+[Test Epoch 80] Top1: 34.450 Top5: 100.000
+[Test Epoch 100] Top1: 34.650 Top5: 100.000
+Task- 0 to 1 (all), Current Best Epoch for convnet: 39.0, Top1: 34.650, Top5: 100.000
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 31.950 Top5: 100.000
+[Test Epoch 40] Top1: 32.450 Top5: 100.000
+[Test Epoch 60] Top1: 32.650 Top5: 100.000
+[Test Epoch 80] Top1: 34.250 Top5: 100.000
+[Test Epoch 100] Top1: 33.300 Top5: 100.000
+Task-0 (old), Current Best Epoch for convnet: 29.0, Top1: 38.400, Top5: 100.000
+Evaluating convnet
+[Test Epoch 20] Top1: 32.350 Top5: 100.000
+[Test Epoch 40] Top1: 33.250 Top5: 100.000
+[Test Epoch 60] Top1: 34.050 Top5: 100.000
+[Test Epoch 80] Top1: 34.500 Top5: 100.000
+[Test Epoch 100] Top1: 34.550 Top5: 100.000
+Task-1 (current), Current Best Epoch for convnet: 39.0, Top1: 41.450, Top5: 100.000
+Evaluating convnet
+[Test Epoch 20] Top1: 34.800 Top5: 100.000
+[Test Epoch 40] Top1: 34.850 Top5: 100.000
+[Test Epoch 60] Top1: 34.700 Top5: 100.000
+[Test Epoch 80] Top1: 34.550 Top5: 100.000
+[Test Epoch 100] Top1: 35.250 Top5: 100.000
+Task- 0 to 1 (all), Current Best Epoch for convnet: 49.0, Top1: 35.250, Top5: 100.000
+Saving epoch-49 of Generator as best.pth
+/srv/share/skhose3/miniconda3/envs/dim2/lib/python3.10/site-packages/torch/utils/data/dataloader.py:560: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Namespace(ipc=50, batch_size=512, epochs=50, epochs_eval=100, epochs_match=100, epochs_match_train=16, lr=5e-06, eval_lr=0.0003, momentum=0.9, weight_decay=2e-05, match_coeff=0.001, match_model='convnet', match='grad', eval_model=['convnet', 'resnet10', 'resnet18'], dim_noise=100, num_workers=4, print_freq=100, eval_interval=10, test_interval=20, fix_disc=False, data='cifar10', num_classes=10, data_dir='./cifar10', output_dir='./results/pool-match-test/task-1', logs_dir='./logs/pool-match-test', weight='./results/test/task-1/last.pth', match_aug=False, aug_type='', mixup_net='cut', metric='l1', bias=False, fc=False, mix_p=-1.0, beta=1.0, tag='pool-match-test', seed=3407, tasknum=1, memory_filepath='./memory.pkl', samples_per_class=10, classes_per_task=2, samples_per_task=10000, half_batch_size=256)
+INFO : Loaded TRAIN data for TASK 1
+INFO : Loaded TEST data for TASK 1
+HALF BS :  256
+INFO : Loaded TEST data for TASK 0
+Augmentataion Matching:  
+Augmentataion Net update:  
+Random model: convnet
+Random model: convnet
+Random model: resnet10
+Random model: resnet18_ap
+Random model: resnet10_ap
+Random model: convnet
+Random model: resnet10_ap
+Random model: resnet18
+Random model: resnet18
+Random model: resnet18
+Evaluating convnet
+[Test Epoch 20] Top1: 45.100 Top5: 100.000
+[Test Epoch 40] Top1: 48.850 Top5: 100.000
+[Test Epoch 60] Top1: 47.550 Top5: 100.000
+[Test Epoch 80] Top1: 48.950 Top5: 100.000
+[Test Epoch 100] Top1: 48.400 Top5: 100.000
+Evaluating resnet10
+[Test Epoch 20] Top1: 3.450 Top5: 99.900
+[Test Epoch 40] Top1: 12.600 Top5: 100.000
+[Test Epoch 60] Top1: 29.500 Top5: 100.000
+[Test Epoch 80] Top1: 30.750 Top5: 100.000
+[Test Epoch 100] Top1: 29.150 Top5: 100.000
+Evaluating resnet18
+[Test Epoch 20] Top1: 43.900 Top5: 100.000
+[Test Epoch 40] Top1: 24.550 Top5: 100.000
+[Test Epoch 60] Top1: 22.750 Top5: 100.000
+[Test Epoch 80] Top1: 24.100 Top5: 100.000
+[Test Epoch 100] Top1: 24.850 Top5: 100.000
+Save model for convnet
+Task-0 (old), Current Best Epoch for convnet: 9.0, Top1: 48.950, Top5: 100.000
+Save model for resnet10
+Task-0 (old), Current Best Epoch for resnet10: 9.0, Top1: 30.750, Top5: 100.000
+Save model for resnet18
+Task-0 (old), Current Best Epoch for resnet18: 9.0, Top1: 43.900, Top5: 100.000
+Evaluating convnet
+[Test Epoch 20] Top1: 33.850 Top5: 100.000
+[Test Epoch 40] Top1: 38.500 Top5: 100.000
+[Test Epoch 60] Top1: 39.000 Top5: 100.000
+[Test Epoch 80] Top1: 39.650 Top5: 100.000
+[Test Epoch 100] Top1: 38.150 Top5: 100.000
+Evaluating resnet10
+[Test Epoch 20] Top1: 11.250 Top5: 99.900
+[Test Epoch 40] Top1: 19.000 Top5: 100.000
+[Test Epoch 60] Top1: 23.200 Top5: 100.000
+[Test Epoch 80] Top1: 21.350 Top5: 100.000
+[Test Epoch 100] Top1: 20.000 Top5: 100.000
+Evaluating resnet18
+[Test Epoch 20] Top1: 45.250 Top5: 100.000
+[Test Epoch 40] Top1: 25.350 Top5: 100.000
+[Test Epoch 60] Top1: 27.100 Top5: 100.000
+[Test Epoch 80] Top1: 32.700 Top5: 100.000
+[Test Epoch 100] Top1: 28.400 Top5: 100.000
+Save model for convnet
+Task-1 (current), Current Best Epoch for convnet: 9.0, Top1: 39.650, Top5: 100.000
+Save model for resnet10
+Task-1 (current), Current Best Epoch for resnet10: 9.0, Top1: 23.200, Top5: 100.000
+Save model for resnet18
+Task-1 (current), Current Best Epoch for resnet18: 9.0, Top1: 45.250, Top5: 100.000
+Random model: resnet10
+Random model: convnet
+Random model: resnet18
+Random model: resnet18_ap
+Random model: resnet18_ap
+Random model: resnet10_ap
+Random model: resnet18
+Random model: resnet10
+Random model: resnet18_ap
+Random model: resnet18
+Evaluating convnet
+[Test Epoch 20] Top1: 40.950 Top5: 100.000
+[Test Epoch 40] Top1: 43.950 Top5: 100.000
+[Test Epoch 60] Top1: 45.050 Top5: 100.000
+[Test Epoch 80] Top1: 43.300 Top5: 100.000
+[Test Epoch 100] Top1: 44.100 Top5: 100.000
+Evaluating resnet10
+[Test Epoch 20] Top1: 39.450 Top5: 96.950
+[Test Epoch 40] Top1: 28.500 Top5: 100.000
+[Test Epoch 60] Top1: 26.850 Top5: 100.000
+[Test Epoch 80] Top1: 27.200 Top5: 100.000
+[Test Epoch 100] Top1: 27.150 Top5: 100.000
+Evaluating resnet18
+[Test Epoch 20] Top1: 17.350 Top5: 100.000
+[Test Epoch 40] Top1: 24.250 Top5: 100.000
+[Test Epoch 60] Top1: 22.150 Top5: 100.000
+[Test Epoch 80] Top1: 24.850 Top5: 100.000
+[Test Epoch 100] Top1: 20.100 Top5: 100.000
+Task-0 (old), Current Best Epoch for convnet: 9.0, Top1: 48.950, Top5: 100.000
+Save model for resnet10
+Task-0 (old), Current Best Epoch for resnet10: 19.0, Top1: 39.450, Top5: 96.950
+Task-0 (old), Current Best Epoch for resnet18: 9.0, Top1: 43.900, Top5: 100.000
+Evaluating convnet
+[Test Epoch 20] Top1: 30.550 Top5: 100.000
+[Test Epoch 40] Top1: 30.300 Top5: 100.000
+[Test Epoch 60] Top1: 32.750 Top5: 100.000
+[Test Epoch 80] Top1: 31.900 Top5: 100.000
+[Test Epoch 100] Top1: 31.650 Top5: 100.000
+Evaluating resnet10
+[Test Epoch 20] Top1: 32.650 Top5: 93.450
+[Test Epoch 40] Top1: 23.150 Top5: 100.000
+[Test Epoch 60] Top1: 21.300 Top5: 100.000
+[Test Epoch 80] Top1: 20.250 Top5: 100.000
+[Test Epoch 100] Top1: 21.100 Top5: 100.000
+Evaluating resnet18
+[Test Epoch 20] Top1: 33.650 Top5: 100.000
+[Test Epoch 40] Top1: 18.150 Top5: 100.000
+[Test Epoch 60] Top1: 22.650 Top5: 100.000
+[Test Epoch 80] Top1: 25.550 Top5: 100.000
+[Test Epoch 100] Top1: 25.100 Top5: 100.000
+Task-1 (current), Current Best Epoch for convnet: 9.0, Top1: 39.650, Top5: 100.000
+Save model for resnet10
+Task-1 (current), Current Best Epoch for resnet10: 19.0, Top1: 32.650, Top5: 93.450
+Task-1 (current), Current Best Epoch for resnet18: 9.0, Top1: 45.250, Top5: 100.000
+Random model: convnet
+Random model: convnet
+Random model: resnet18_ap
+Random model: convnet
+Random model: resnet10_ap
+Random model: resnet18
+Random model: convnet
+Random model: resnet10_ap
+Random model: resnet18
+Random model: resnet18_ap
+Evaluating convnet
+[Test Epoch 20] Top1: 40.000 Top5: 100.000
+[Test Epoch 40] Top1: 38.500 Top5: 100.000
+[Test Epoch 60] Top1: 38.700 Top5: 100.000
+[Test Epoch 80] Top1: 39.400 Top5: 100.000
+[Test Epoch 100] Top1: 39.900 Top5: 100.000
+Evaluating resnet10
+[Test Epoch 20] Top1: 42.450 Top5: 99.550
+[Test Epoch 40] Top1: 37.900 Top5: 100.000
+[Test Epoch 60] Top1: 31.700 Top5: 100.000
+[Test Epoch 80] Top1: 27.150 Top5: 100.000
+[Test Epoch 100] Top1: 27.250 Top5: 100.000
+Evaluating resnet18
+[Test Epoch 20] Top1: 31.100 Top5: 100.000
+[Test Epoch 40] Top1: 24.350 Top5: 100.000
+[Test Epoch 60] Top1: 28.300 Top5: 100.000
+[Test Epoch 80] Top1: 29.800 Top5: 100.000
+[Test Epoch 100] Top1: 27.600 Top5: 100.000
+Task-0 (old), Current Best Epoch for convnet: 9.0, Top1: 48.950, Top5: 100.000
+Save model for resnet10
+Task-0 (old), Current Best Epoch for resnet10: 29.0, Top1: 42.450, Top5: 99.550
+Task-0 (old), Current Best Epoch for resnet18: 9.0, Top1: 43.900, Top5: 100.000
+Evaluating convnet
+[Test Epoch 20] Top1: 40.300 Top5: 100.000
+[Test Epoch 40] Top1: 41.200 Top5: 100.000
+[Test Epoch 60] Top1: 41.150 Top5: 100.000
+[Test Epoch 80] Top1: 40.300 Top5: 100.000
+[Test Epoch 100] Top1: 40.600 Top5: 100.000
+Evaluating resnet10
+[Test Epoch 20] Top1: 50.300 Top5: 100.000
+[Test Epoch 40] Top1: 44.200 Top5: 100.000
+[Test Epoch 60] Top1: 31.000 Top5: 100.000
+[Test Epoch 80] Top1: 30.000 Top5: 100.000
+[Test Epoch 100] Top1: 29.150 Top5: 100.000
+Evaluating resnet18
+[Test Epoch 20] Top1: 10.000 Top5: 99.950
+[Test Epoch 40] Top1: 28.600 Top5: 100.000
+[Test Epoch 60] Top1: 26.100 Top5: 100.000
+[Test Epoch 80] Top1: 25.950 Top5: 100.000
+[Test Epoch 100] Top1: 26.750 Top5: 100.000
+Save model for convnet
+Task-1 (current), Current Best Epoch for convnet: 29.0, Top1: 41.200, Top5: 100.000
+Save model for resnet10
+Task-1 (current), Current Best Epoch for resnet10: 29.0, Top1: 50.300, Top5: 100.000
+Task-1 (current), Current Best Epoch for resnet18: 9.0, Top1: 45.250, Top5: 100.000
+Random model: resnet10
+Random model: resnet18_ap
+Random model: resnet18_ap
+Random model: resnet18_ap
+Random model: resnet18_ap
+Random model: resnet10_ap
+Random model: resnet10_ap
+Random model: convnet
+Random model: resnet18
+Random model: resnet10
+Evaluating convnet
+[Test Epoch 20] Top1: 47.850 Top5: 100.000
+[Test Epoch 40] Top1: 47.500 Top5: 100.000
+[Test Epoch 60] Top1: 48.000 Top5: 100.000
+[Test Epoch 80] Top1: 47.500 Top5: 100.000
+[Test Epoch 100] Top1: 47.700 Top5: 100.000
+Evaluating resnet10
+[Test Epoch 20] Top1: 42.450 Top5: 97.450
+[Test Epoch 40] Top1: 40.500 Top5: 100.000
+[Test Epoch 60] Top1: 35.550 Top5: 100.000
+[Test Epoch 80] Top1: 33.050 Top5: 100.000
+[Test Epoch 100] Top1: 30.350 Top5: 100.000
+Evaluating resnet18
+[Test Epoch 20] Top1: 0.850 Top5: 100.000
+[Test Epoch 40] Top1: 33.500 Top5: 100.000
+[Test Epoch 60] Top1: 26.750 Top5: 100.000
+[Test Epoch 80] Top1: 23.200 Top5: 100.000
+[Test Epoch 100] Top1: 26.000 Top5: 100.000
+Task-0 (old), Current Best Epoch for convnet: 9.0, Top1: 48.950, Top5: 100.000
+Save model for resnet10
+Task-0 (old), Current Best Epoch for resnet10: 39.0, Top1: 42.450, Top5: 97.450
+Task-0 (old), Current Best Epoch for resnet18: 9.0, Top1: 43.900, Top5: 100.000
+Evaluating convnet
+[Test Epoch 20] Top1: 25.350 Top5: 100.000
+[Test Epoch 40] Top1: 29.900 Top5: 100.000
+[Test Epoch 60] Top1: 30.750 Top5: 100.000
+[Test Epoch 80] Top1: 32.200 Top5: 100.000
+[Test Epoch 100] Top1: 32.400 Top5: 100.000
+Evaluating resnet10
+[Test Epoch 20] Top1: 39.950 Top5: 99.700
+[Test Epoch 40] Top1: 22.300 Top5: 100.000
+[Test Epoch 60] Top1: 19.400 Top5: 100.000
+[Test Epoch 80] Top1: 21.650 Top5: 100.000
+[Test Epoch 100] Top1: 25.150 Top5: 100.000
+Evaluating resnet18
+[Test Epoch 20] Top1: 6.500 Top5: 100.000
+[Test Epoch 40] Top1: 28.150 Top5: 100.000
+[Test Epoch 60] Top1: 28.200 Top5: 100.000
+[Test Epoch 80] Top1: 26.550 Top5: 100.000
+[Test Epoch 100] Top1: 28.000 Top5: 100.000
+Task-1 (current), Current Best Epoch for convnet: 29.0, Top1: 41.200, Top5: 100.000
+Task-1 (current), Current Best Epoch for resnet10: 29.0, Top1: 50.300, Top5: 100.000
+Task-1 (current), Current Best Epoch for resnet18: 9.0, Top1: 45.250, Top5: 100.000
+Random model: resnet18_ap
+Random model: resnet10
+Random model: resnet18
+Random model: resnet18_ap
+Random model: convnet
+Random model: convnet
+Random model: convnet
+Random model: resnet18_ap
+Random model: resnet18
+Random model: resnet10
+Evaluating convnet
+[Test Epoch 20] Top1: 42.800 Top5: 100.000
+[Test Epoch 40] Top1: 41.200 Top5: 100.000
+[Test Epoch 60] Top1: 42.750 Top5: 100.000
+[Test Epoch 80] Top1: 41.150 Top5: 100.000
+[Test Epoch 100] Top1: 41.250 Top5: 100.000
+Evaluating resnet10
+[Test Epoch 20] Top1: 37.500 Top5: 100.000
+[Test Epoch 40] Top1: 32.300 Top5: 100.000
+[Test Epoch 60] Top1: 28.100 Top5: 100.000
+[Test Epoch 80] Top1: 26.950 Top5: 100.000
+[Test Epoch 100] Top1: 27.350 Top5: 100.000
+Evaluating resnet18
+[Test Epoch 20] Top1: 26.800 Top5: 100.000
+[Test Epoch 40] Top1: 21.950 Top5: 100.000
+[Test Epoch 60] Top1: 24.150 Top5: 100.000
+[Test Epoch 80] Top1: 23.200 Top5: 100.000
+[Test Epoch 100] Top1: 24.350 Top5: 100.000
+Task-0 (old), Current Best Epoch for convnet: 9.0, Top1: 48.950, Top5: 100.000
+Task-0 (old), Current Best Epoch for resnet10: 39.0, Top1: 42.450, Top5: 97.450
+Task-0 (old), Current Best Epoch for resnet18: 9.0, Top1: 43.900, Top5: 100.000
+Evaluating convnet
+[Test Epoch 20] Top1: 34.550 Top5: 100.000
+[Test Epoch 40] Top1: 42.600 Top5: 100.000
+[Test Epoch 60] Top1: 42.650 Top5: 100.000
+[Test Epoch 80] Top1: 43.400 Top5: 100.000
+[Test Epoch 100] Top1: 43.600 Top5: 100.000
+Evaluating resnet10
+[Test Epoch 20] Top1: 46.650 Top5: 99.950
+[Test Epoch 40] Top1: 29.150 Top5: 100.000
+[Test Epoch 60] Top1: 20.500 Top5: 100.000
+[Test Epoch 80] Top1: 23.300 Top5: 100.000
+[Test Epoch 100] Top1: 24.050 Top5: 100.000
+Evaluating resnet18
+[Test Epoch 20] Top1: 3.000 Top5: 100.000
+[Test Epoch 40] Top1: 22.850 Top5: 100.000
+[Test Epoch 60] Top1: 24.450 Top5: 100.000
+[Test Epoch 80] Top1: 26.650 Top5: 100.000
+[Test Epoch 100] Top1: 28.650 Top5: 100.000
+Save model for convnet
+Task-1 (current), Current Best Epoch for convnet: 49.0, Top1: 43.600, Top5: 100.000
+Task-1 (current), Current Best Epoch for resnet10: 29.0, Top1: 50.300, Top5: 100.000
+Task-1 (current), Current Best Epoch for resnet18: 9.0, Top1: 45.250, Top5: 100.000
+/srv/share/skhose3/miniconda3/envs/dim2/lib/python3.10/site-packages/torch/utils/data/dataloader.py:560: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Namespace(ipc=50, batch_size=512, epochs=50, epochs_eval=100, lr=5e-06, eval_lr=0.0003, momentum=0.9, weight_decay=2e-05, eval_model=['convnet'], dim_noise=100, num_workers=4, print_freq=50, eval_interval=10, test_interval=20, data='cifar10', num_classes=10, data_dir='./cifar10', output_dir='./results/test/task-2', logs_dir='./logs/test', aug_type='', mixup_net='cut', bias=False, fc=False, mix_p=-1.0, beta=1.0, tag='test', seed=3407, tasknum=2, memory_filepath='./memory.pkl', samples_per_class=10, classes_per_task=2, samples_per_task=10000, half_batch_size=256)
+INFO : Loaded TRAIN data for TASK 2
+INFO : Loaded TEST data for TASK 2
+HALF BS :  256
+INFO : Loaded TEST data for TASK 0
+INFO : Loaded TEST data for TASK 1
+INFO : Loaded TEST data for TASK [0, 1, 2]
+Augmentataion Matching:  
+Augmentataion Net update:  
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 2.200 Top5: 67.100
+[Test Epoch 40] Top1: 2.300 Top5: 67.250
+[Test Epoch 60] Top1: 2.350 Top5: 66.550
+[Test Epoch 80] Top1: 2.500 Top5: 66.400
+[Test Epoch 100] Top1: 3.000 Top5: 67.250
+Task-0 (old), Current Best Epoch for convnet: 9.0, Top1: 3.000, Top5: 67.250
+Evaluating convnet
+[Test Epoch 20] Top1: 18.450 Top5: 85.000
+[Test Epoch 40] Top1: 21.550 Top5: 86.200
+[Test Epoch 60] Top1: 23.300 Top5: 90.350
+[Test Epoch 80] Top1: 21.550 Top5: 87.750
+[Test Epoch 100] Top1: 23.750 Top5: 89.250
+Task-1 (old), Current Best Epoch for convnet: 9.0, Top1: 23.750, Top5: 89.250
+Evaluating convnet
+[Test Epoch 20] Top1: 23.350 Top5: 98.300
+[Test Epoch 40] Top1: 24.800 Top5: 98.450
+[Test Epoch 60] Top1: 24.250 Top5: 96.600
+[Test Epoch 80] Top1: 23.700 Top5: 96.400
+[Test Epoch 100] Top1: 25.750 Top5: 96.500
+Task-2 (current), Current Best Epoch for convnet: 9.0, Top1: 25.750, Top5: 96.500
+Evaluating convnet
+[Test Epoch 20] Top1: 14.833 Top5: 84.450
+[Test Epoch 40] Top1: 14.350 Top5: 84.517
+[Test Epoch 60] Top1: 14.367 Top5: 84.783
+[Test Epoch 80] Top1: 14.033 Top5: 85.133
+[Test Epoch 100] Top1: 15.183 Top5: 84.083
+Task- 0 to 2 (all), Current Best Epoch for convnet: 9.0, Top1: 15.183, Top5: 84.083
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 22.950 Top5: 91.600
+[Test Epoch 40] Top1: 27.350 Top5: 92.200
+[Test Epoch 60] Top1: 27.600 Top5: 89.950
+[Test Epoch 80] Top1: 27.050 Top5: 91.900
+[Test Epoch 100] Top1: 24.650 Top5: 91.900
+Task-0 (old), Current Best Epoch for convnet: 19.0, Top1: 27.600, Top5: 89.950
+Evaluating convnet
+[Test Epoch 20] Top1: 19.400 Top5: 94.300
+[Test Epoch 40] Top1: 26.700 Top5: 95.000
+[Test Epoch 60] Top1: 30.250 Top5: 95.150
+[Test Epoch 80] Top1: 26.600 Top5: 95.150
+[Test Epoch 100] Top1: 30.500 Top5: 96.700
+Task-1 (old), Current Best Epoch for convnet: 19.0, Top1: 30.500, Top5: 96.700
+Evaluating convnet
+[Test Epoch 20] Top1: 18.850 Top5: 88.150
+[Test Epoch 40] Top1: 7.550 Top5: 88.300
+[Test Epoch 60] Top1: 12.450 Top5: 88.750
+[Test Epoch 80] Top1: 14.900 Top5: 90.750
+[Test Epoch 100] Top1: 10.550 Top5: 90.650
+Task-2 (current), Current Best Epoch for convnet: 9.0, Top1: 25.750, Top5: 96.500
+Evaluating convnet
+[Test Epoch 20] Top1: 18.083 Top5: 85.483
+[Test Epoch 40] Top1: 18.250 Top5: 86.100
+[Test Epoch 60] Top1: 19.200 Top5: 86.333
+[Test Epoch 80] Top1: 19.433 Top5: 86.833
+[Test Epoch 100] Top1: 19.817 Top5: 87.150
+Task- 0 to 2 (all), Current Best Epoch for convnet: 19.0, Top1: 19.817, Top5: 87.150
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 19.600 Top5: 88.600
+[Test Epoch 40] Top1: 24.700 Top5: 87.350
+[Test Epoch 60] Top1: 25.500 Top5: 87.550
+[Test Epoch 80] Top1: 32.150 Top5: 88.700
+[Test Epoch 100] Top1: 27.200 Top5: 86.500
+Task-0 (old), Current Best Epoch for convnet: 29.0, Top1: 32.150, Top5: 88.700
+Evaluating convnet
+[Test Epoch 20] Top1: 23.400 Top5: 94.250
+[Test Epoch 40] Top1: 25.750 Top5: 94.250
+[Test Epoch 60] Top1: 17.450 Top5: 94.500
+[Test Epoch 80] Top1: 17.250 Top5: 96.450
+[Test Epoch 100] Top1: 17.750 Top5: 97.200
+Task-1 (old), Current Best Epoch for convnet: 19.0, Top1: 30.500, Top5: 96.700
+Evaluating convnet
+[Test Epoch 20] Top1: 26.950 Top5: 88.200
+[Test Epoch 40] Top1: 36.400 Top5: 93.650
+[Test Epoch 60] Top1: 30.700 Top5: 89.850
+[Test Epoch 80] Top1: 30.700 Top5: 89.400
+[Test Epoch 100] Top1: 32.250 Top5: 89.750
+Task-2 (current), Current Best Epoch for convnet: 29.0, Top1: 36.400, Top5: 93.650
+Evaluating convnet
+[Test Epoch 20] Top1: 17.667 Top5: 84.967
+[Test Epoch 40] Top1: 20.917 Top5: 86.450
+[Test Epoch 60] Top1: 21.450 Top5: 87.483
+[Test Epoch 80] Top1: 21.967 Top5: 88.467
+[Test Epoch 100] Top1: 21.900 Top5: 88.200
+Task- 0 to 2 (all), Current Best Epoch for convnet: 29.0, Top1: 21.967, Top5: 88.467
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 33.550 Top5: 85.750
+[Test Epoch 40] Top1: 33.950 Top5: 86.400
+[Test Epoch 60] Top1: 33.450 Top5: 88.600
+[Test Epoch 80] Top1: 32.950 Top5: 87.800
+[Test Epoch 100] Top1: 31.300 Top5: 88.100
+Task-0 (old), Current Best Epoch for convnet: 39.0, Top1: 33.950, Top5: 86.400
+Evaluating convnet
+[Test Epoch 20] Top1: 7.500 Top5: 83.250
+[Test Epoch 40] Top1: 4.900 Top5: 84.950
+[Test Epoch 60] Top1: 5.500 Top5: 89.650
+[Test Epoch 80] Top1: 3.750 Top5: 89.750
+[Test Epoch 100] Top1: 2.550 Top5: 91.400
+Task-1 (old), Current Best Epoch for convnet: 19.0, Top1: 30.500, Top5: 96.700
+Evaluating convnet
+[Test Epoch 20] Top1: 10.850 Top5: 83.300
+[Test Epoch 40] Top1: 19.000 Top5: 83.650
+[Test Epoch 60] Top1: 21.050 Top5: 87.350
+[Test Epoch 80] Top1: 24.750 Top5: 87.450
+[Test Epoch 100] Top1: 24.950 Top5: 86.350
+Task-2 (current), Current Best Epoch for convnet: 29.0, Top1: 36.400, Top5: 93.650
+Evaluating convnet
+[Test Epoch 20] Top1: 18.967 Top5: 86.550
+[Test Epoch 40] Top1: 20.500 Top5: 89.033
+[Test Epoch 60] Top1: 22.000 Top5: 89.600
+[Test Epoch 80] Top1: 22.367 Top5: 90.300
+[Test Epoch 100] Top1: 21.967 Top5: 90.633
+Task- 0 to 2 (all), Current Best Epoch for convnet: 39.0, Top1: 22.367, Top5: 90.300
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 33.500 Top5: 89.200
+[Test Epoch 40] Top1: 31.000 Top5: 88.350
+[Test Epoch 60] Top1: 33.100 Top5: 88.300
+[Test Epoch 80] Top1: 33.800 Top5: 88.500
+[Test Epoch 100] Top1: 33.400 Top5: 88.400
+Task-0 (old), Current Best Epoch for convnet: 39.0, Top1: 33.950, Top5: 86.400
+Evaluating convnet
+[Test Epoch 20] Top1: 6.850 Top5: 85.000
+[Test Epoch 40] Top1: 5.850 Top5: 92.450
+[Test Epoch 60] Top1: 4.600 Top5: 96.700
+[Test Epoch 80] Top1: 6.700 Top5: 97.850
+[Test Epoch 100] Top1: 6.050 Top5: 98.950
+Task-1 (old), Current Best Epoch for convnet: 19.0, Top1: 30.500, Top5: 96.700
+Evaluating convnet
+[Test Epoch 20] Top1: 29.950 Top5: 87.200
+[Test Epoch 40] Top1: 27.150 Top5: 84.200
+[Test Epoch 60] Top1: 28.950 Top5: 84.050
+[Test Epoch 80] Top1: 27.900 Top5: 83.800
+[Test Epoch 100] Top1: 28.850 Top5: 84.300
+Task-2 (current), Current Best Epoch for convnet: 29.0, Top1: 36.400, Top5: 93.650
+Evaluating convnet
+[Test Epoch 20] Top1: 25.267 Top5: 88.567
+[Test Epoch 40] Top1: 25.050 Top5: 90.167
+[Test Epoch 60] Top1: 25.283 Top5: 90.350
+[Test Epoch 80] Top1: 25.167 Top5: 90.817
+[Test Epoch 100] Top1: 25.150 Top5: 90.550
+Task- 0 to 2 (all), Current Best Epoch for convnet: 49.0, Top1: 25.283, Top5: 90.350
+Saving epoch-49 of Generator as best.pth
+/srv/share/skhose3/miniconda3/envs/dim2/lib/python3.10/site-packages/torch/utils/data/dataloader.py:560: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Namespace(ipc=50, batch_size=512, epochs=50, epochs_eval=100, epochs_match=100, epochs_match_train=16, lr=5e-06, eval_lr=0.0003, momentum=0.9, weight_decay=2e-05, match_coeff=0.001, match_model='convnet', match='grad', eval_model=['convnet', 'resnet10', 'resnet18'], dim_noise=100, num_workers=4, print_freq=100, eval_interval=10, test_interval=20, fix_disc=False, data='cifar10', num_classes=10, data_dir='./cifar10', output_dir='./results/pool-match-test/task-2', logs_dir='./logs/pool-match-test', weight='./results/test/task-2/last.pth', match_aug=False, aug_type='', mixup_net='cut', metric='l1', bias=False, fc=False, mix_p=-1.0, beta=1.0, tag='pool-match-test', seed=3407, tasknum=2, memory_filepath='./memory.pkl', samples_per_class=10, classes_per_task=2, samples_per_task=10000, half_batch_size=256)
+INFO : Loaded TRAIN data for TASK 2
+INFO : Loaded TEST data for TASK 2
+HALF BS :  256
+INFO : Loaded TEST data for TASK 0
+INFO : Loaded TEST data for TASK 1
+Augmentataion Matching:  
+Augmentataion Net update:  
+Random model: convnet
+Random model: convnet
+Random model: resnet10
+Random model: resnet18_ap
+Random model: resnet10_ap
+Random model: convnet
+Random model: resnet10_ap
+Random model: resnet18
+Random model: resnet18
+Random model: resnet18
+Evaluating convnet
+[Test Epoch 20] Top1: 38.950 Top5: 89.450
+[Test Epoch 40] Top1: 39.150 Top5: 88.200
+[Test Epoch 60] Top1: 36.100 Top5: 87.650
+[Test Epoch 80] Top1: 34.950 Top5: 87.850
+[Test Epoch 100] Top1: 33.250 Top5: 88.100
+Evaluating resnet10
+[Test Epoch 20] Top1: 2.450 Top5: 73.950
+[Test Epoch 40] Top1: 11.100 Top5: 79.200
+[Test Epoch 60] Top1: 16.200 Top5: 79.800
+[Test Epoch 80] Top1: 17.250 Top5: 78.100
+[Test Epoch 100] Top1: 19.200 Top5: 79.100
+Evaluating resnet18
+[Test Epoch 20] Top1: 44.650 Top5: 99.600
+[Test Epoch 40] Top1: 21.950 Top5: 84.950
+[Test Epoch 60] Top1: 20.900 Top5: 83.100
+[Test Epoch 80] Top1: 23.550 Top5: 83.950
+[Test Epoch 100] Top1: 18.550 Top5: 81.350
+Save model for convnet
+Task-0 (old), Current Best Epoch for convnet: 9.0, Top1: 39.150, Top5: 88.200
+Save model for resnet10
+Task-0 (old), Current Best Epoch for resnet10: 9.0, Top1: 19.200, Top5: 79.100
+Save model for resnet18
+Task-0 (old), Current Best Epoch for resnet18: 9.0, Top1: 44.650, Top5: 99.600
+Evaluating convnet
+[Test Epoch 20] Top1: 17.950 Top5: 94.950
+[Test Epoch 40] Top1: 13.500 Top5: 97.050
+[Test Epoch 60] Top1: 15.750 Top5: 99.450
+[Test Epoch 80] Top1: 13.600 Top5: 99.850
+[Test Epoch 100] Top1: 10.950 Top5: 99.950
+Evaluating resnet10
+[Test Epoch 20] Top1: 8.500 Top5: 71.150
+[Test Epoch 40] Top1: 12.400 Top5: 86.400
+[Test Epoch 60] Top1: 11.250 Top5: 86.300
+[Test Epoch 80] Top1: 13.050 Top5: 90.500
+[Test Epoch 100] Top1: 11.850 Top5: 91.100
+Evaluating resnet18
+[Test Epoch 20] Top1: 29.450 Top5: 93.650
+[Test Epoch 40] Top1: 11.500 Top5: 80.200
+[Test Epoch 60] Top1: 11.450 Top5: 81.950
+[Test Epoch 80] Top1: 15.100 Top5: 85.450
+[Test Epoch 100] Top1: 18.050 Top5: 88.650
+Save model for convnet
+Task-1 (old), Current Best Epoch for convnet: 9.0, Top1: 17.950, Top5: 94.950
+Save model for resnet10
+Task-1 (old), Current Best Epoch for resnet10: 9.0, Top1: 13.050, Top5: 90.500
+Save model for resnet18
+Task-1 (old), Current Best Epoch for resnet18: 9.0, Top1: 29.450, Top5: 93.650
+Evaluating convnet
+[Test Epoch 20] Top1: 24.750 Top5: 79.050
+[Test Epoch 40] Top1: 34.000 Top5: 82.250
+[Test Epoch 60] Top1: 34.900 Top5: 82.700
+[Test Epoch 80] Top1: 33.350 Top5: 82.200
+[Test Epoch 100] Top1: 35.450 Top5: 82.750
+Evaluating resnet10
+[Test Epoch 20] Top1: 0.500 Top5: 42.350
+[Test Epoch 40] Top1: 5.550 Top5: 65.150
+[Test Epoch 60] Top1: 12.200 Top5: 72.200
+[Test Epoch 80] Top1: 11.800 Top5: 79.000
+[Test Epoch 100] Top1: 11.700 Top5: 82.100
+Evaluating resnet18
+[Test Epoch 20] Top1: 9.500 Top5: 49.900
+[Test Epoch 40] Top1: 11.400 Top5: 74.450
+[Test Epoch 60] Top1: 24.750 Top5: 82.500
+[Test Epoch 80] Top1: 21.900 Top5: 81.150
+[Test Epoch 100] Top1: 18.000 Top5: 78.750
+Save model for convnet
+Task-2 (current), Current Best Epoch for convnet: 9.0, Top1: 35.450, Top5: 82.750
+Save model for resnet10
+Task-2 (current), Current Best Epoch for resnet10: 9.0, Top1: 12.200, Top5: 72.200
+Save model for resnet18
+Task-2 (current), Current Best Epoch for resnet18: 9.0, Top1: 24.750, Top5: 82.500
+Random model: resnet10
+Random model: convnet
+Random model: resnet18
+Random model: resnet18_ap
+Random model: resnet18_ap
+Random model: resnet10_ap
+Random model: resnet18
+Random model: resnet10
+Random model: resnet18_ap
+Random model: resnet18
+Evaluating convnet
+[Test Epoch 20] Top1: 32.500 Top5: 88.100
+[Test Epoch 40] Top1: 31.550 Top5: 86.800
+[Test Epoch 60] Top1: 30.150 Top5: 85.700
+[Test Epoch 80] Top1: 29.900 Top5: 86.250
+[Test Epoch 100] Top1: 29.650 Top5: 85.700
+Evaluating resnet10
+[Test Epoch 20] Top1: 2.350 Top5: 85.000
+[Test Epoch 40] Top1: 12.050 Top5: 81.200
+[Test Epoch 60] Top1: 21.250 Top5: 78.800
+[Test Epoch 80] Top1: 25.500 Top5: 75.650
+[Test Epoch 100] Top1: 26.550 Top5: 73.000
+Evaluating resnet18
+[Test Epoch 20] Top1: 12.200 Top5: 94.000
+[Test Epoch 40] Top1: 29.850 Top5: 94.550
+[Test Epoch 60] Top1: 21.350 Top5: 84.000
+[Test Epoch 80] Top1: 20.400 Top5: 79.900
+[Test Epoch 100] Top1: 21.650 Top5: 78.500
+Task-0 (old), Current Best Epoch for convnet: 9.0, Top1: 39.150, Top5: 88.200
+Save model for resnet10
+Task-0 (old), Current Best Epoch for resnet10: 19.0, Top1: 26.550, Top5: 73.000
+Task-0 (old), Current Best Epoch for resnet18: 9.0, Top1: 44.650, Top5: 99.600
+Evaluating convnet
+[Test Epoch 20] Top1: 4.900 Top5: 89.100
+[Test Epoch 40] Top1: 3.550 Top5: 96.450
+[Test Epoch 60] Top1: 7.800 Top5: 99.300
+[Test Epoch 80] Top1: 8.000 Top5: 99.500
+[Test Epoch 100] Top1: 8.050 Top5: 99.750
+Evaluating resnet10
+[Test Epoch 20] Top1: 44.250 Top5: 91.000
+[Test Epoch 40] Top1: 31.500 Top5: 95.300
+[Test Epoch 60] Top1: 19.800 Top5: 87.250
+[Test Epoch 80] Top1: 18.700 Top5: 87.050
+[Test Epoch 100] Top1: 15.950 Top5: 89.150
+Evaluating resnet18
+[Test Epoch 20] Top1: 0.150 Top5: 68.550
+[Test Epoch 40] Top1: 15.900 Top5: 86.250
+[Test Epoch 60] Top1: 15.900 Top5: 88.200
+[Test Epoch 80] Top1: 17.000 Top5: 91.200
+[Test Epoch 100] Top1: 16.450 Top5: 92.850
+Task-1 (old), Current Best Epoch for convnet: 9.0, Top1: 17.950, Top5: 94.950
+Save model for resnet10
+Task-1 (old), Current Best Epoch for resnet10: 19.0, Top1: 44.250, Top5: 91.000
+Task-1 (old), Current Best Epoch for resnet18: 9.0, Top1: 29.450, Top5: 93.650
+Evaluating convnet
+[Test Epoch 20] Top1: 28.100 Top5: 80.750
+[Test Epoch 40] Top1: 32.400 Top5: 86.250
+[Test Epoch 60] Top1: 29.800 Top5: 85.600
+[Test Epoch 80] Top1: 30.100 Top5: 86.250
+[Test Epoch 100] Top1: 30.400 Top5: 87.050
+Evaluating resnet10
+[Test Epoch 20] Top1: 1.750 Top5: 92.800
+[Test Epoch 40] Top1: 4.900 Top5: 94.100
+[Test Epoch 60] Top1: 7.150 Top5: 87.850
+[Test Epoch 80] Top1: 8.800 Top5: 86.300
+[Test Epoch 100] Top1: 12.550 Top5: 87.500
+Evaluating resnet18
+[Test Epoch 20] Top1: 25.000 Top5: 99.050
+[Test Epoch 40] Top1: 22.650 Top5: 96.500
+[Test Epoch 60] Top1: 14.900 Top5: 95.550
+[Test Epoch 80] Top1: 15.800 Top5: 96.000
+[Test Epoch 100] Top1: 13.700 Top5: 96.100
+Task-2 (current), Current Best Epoch for convnet: 9.0, Top1: 35.450, Top5: 82.750
+Save model for resnet10
+Task-2 (current), Current Best Epoch for resnet10: 19.0, Top1: 12.550, Top5: 87.500
+Save model for resnet18
+Task-2 (current), Current Best Epoch for resnet18: 19.0, Top1: 25.000, Top5: 99.050
+Random model: convnet
+Random model: convnet
+Random model: resnet18_ap
+Random model: convnet
+Random model: resnet10_ap
+Random model: resnet18
+Random model: convnet
+Random model: resnet10_ap
+Random model: resnet18
+Random model: resnet18_ap
+Evaluating convnet
+[Test Epoch 20] Top1: 36.200 Top5: 92.800
+[Test Epoch 40] Top1: 34.400 Top5: 89.750
+[Test Epoch 60] Top1: 32.650 Top5: 90.000
+[Test Epoch 80] Top1: 34.200 Top5: 90.500
+[Test Epoch 100] Top1: 33.100 Top5: 89.350
+Evaluating resnet10
+[Test Epoch 20] Top1: 38.500 Top5: 90.250
+[Test Epoch 40] Top1: 37.100 Top5: 96.950
+[Test Epoch 60] Top1: 32.450 Top5: 94.900
+[Test Epoch 80] Top1: 27.550 Top5: 86.400
+[Test Epoch 100] Top1: 27.100 Top5: 80.850
+Evaluating resnet18
+[Test Epoch 20] Top1: 0.050 Top5: 50.000
+[Test Epoch 40] Top1: 13.200 Top5: 75.050
+[Test Epoch 60] Top1: 21.350 Top5: 86.650
+[Test Epoch 80] Top1: 19.100 Top5: 82.200
+[Test Epoch 100] Top1: 21.450 Top5: 82.700
+Task-0 (old), Current Best Epoch for convnet: 9.0, Top1: 39.150, Top5: 88.200
+Save model for resnet10
+Task-0 (old), Current Best Epoch for resnet10: 29.0, Top1: 38.500, Top5: 90.250
+Task-0 (old), Current Best Epoch for resnet18: 9.0, Top1: 44.650, Top5: 99.600
+Evaluating convnet
+[Test Epoch 20] Top1: 10.000 Top5: 93.550
+[Test Epoch 40] Top1: 10.950 Top5: 99.200
+[Test Epoch 60] Top1: 10.650 Top5: 99.850
+[Test Epoch 80] Top1: 9.850 Top5: 99.900
+[Test Epoch 100] Top1: 11.750 Top5: 100.000
+Evaluating resnet10
+[Test Epoch 20] Top1: 29.150 Top5: 98.250
+[Test Epoch 40] Top1: 27.450 Top5: 95.800
+[Test Epoch 60] Top1: 21.200 Top5: 92.150
+[Test Epoch 80] Top1: 15.150 Top5: 91.250
+[Test Epoch 100] Top1: 11.200 Top5: 90.900
+Evaluating resnet18
+[Test Epoch 20] Top1: 0.000 Top5: 46.800
+[Test Epoch 40] Top1: 11.550 Top5: 82.800
+[Test Epoch 60] Top1: 19.150 Top5: 94.550
+[Test Epoch 80] Top1: 15.300 Top5: 95.200
+[Test Epoch 100] Top1: 8.800 Top5: 92.350
+Task-1 (old), Current Best Epoch for convnet: 9.0, Top1: 17.950, Top5: 94.950
+Task-1 (old), Current Best Epoch for resnet10: 19.0, Top1: 44.250, Top5: 91.000
+Task-1 (old), Current Best Epoch for resnet18: 9.0, Top1: 29.450, Top5: 93.650
+Evaluating convnet
+[Test Epoch 20] Top1: 27.500 Top5: 79.050
+[Test Epoch 40] Top1: 32.000 Top5: 81.500
+[Test Epoch 60] Top1: 30.450 Top5: 82.300
+[Test Epoch 80] Top1: 30.650 Top5: 83.400
+[Test Epoch 100] Top1: 29.600 Top5: 84.150
+Evaluating resnet10
+[Test Epoch 20] Top1: 0.050 Top5: 60.150
+[Test Epoch 40] Top1: 1.900 Top5: 91.150
+[Test Epoch 60] Top1: 8.150 Top5: 84.750
+[Test Epoch 80] Top1: 12.500 Top5: 83.700
+[Test Epoch 100] Top1: 16.150 Top5: 84.350
+Evaluating resnet18
+[Test Epoch 20] Top1: 1.050 Top5: 57.900
+[Test Epoch 40] Top1: 18.550 Top5: 82.800
+[Test Epoch 60] Top1: 22.350 Top5: 84.800
+[Test Epoch 80] Top1: 17.900 Top5: 84.900
+[Test Epoch 100] Top1: 17.750 Top5: 87.600
+Task-2 (current), Current Best Epoch for convnet: 9.0, Top1: 35.450, Top5: 82.750
+Save model for resnet10
+Task-2 (current), Current Best Epoch for resnet10: 29.0, Top1: 16.150, Top5: 84.350
+Task-2 (current), Current Best Epoch for resnet18: 19.0, Top1: 25.000, Top5: 99.050
+Random model: resnet10
+Random model: resnet18_ap
+Random model: resnet18_ap
+Random model: resnet18_ap
+Random model: resnet18_ap
+Random model: resnet10_ap
+Random model: resnet10_ap
+Random model: convnet
+Random model: resnet18
+Random model: resnet10
+Evaluating convnet
+[Test Epoch 20] Top1: 39.250 Top5: 91.150
+[Test Epoch 40] Top1: 35.050 Top5: 89.550
+[Test Epoch 60] Top1: 32.600 Top5: 88.500
+[Test Epoch 80] Top1: 31.350 Top5: 88.500
+[Test Epoch 100] Top1: 29.250 Top5: 88.500
+Evaluating resnet10
+[Test Epoch 20] Top1: 1.400 Top5: 52.150
+[Test Epoch 40] Top1: 8.150 Top5: 74.100
+[Test Epoch 60] Top1: 13.900 Top5: 79.050
+[Test Epoch 80] Top1: 16.800 Top5: 78.150
+[Test Epoch 100] Top1: 18.050 Top5: 77.250
+Evaluating resnet18
+[Test Epoch 20] Top1: 26.800 Top5: 99.550
+[Test Epoch 40] Top1: 29.850 Top5: 89.750
+[Test Epoch 60] Top1: 19.100 Top5: 78.700
+[Test Epoch 80] Top1: 20.300 Top5: 77.500
+[Test Epoch 100] Top1: 19.250 Top5: 73.350
+Save model for convnet
+Task-0 (old), Current Best Epoch for convnet: 39.0, Top1: 39.250, Top5: 91.150
+Task-0 (old), Current Best Epoch for resnet10: 29.0, Top1: 38.500, Top5: 90.250
+Task-0 (old), Current Best Epoch for resnet18: 9.0, Top1: 44.650, Top5: 99.600
+Evaluating convnet
+[Test Epoch 20] Top1: 9.650 Top5: 95.400
+[Test Epoch 40] Top1: 9.200 Top5: 99.850
+[Test Epoch 60] Top1: 11.700 Top5: 100.000
+[Test Epoch 80] Top1: 11.350 Top5: 100.000
+[Test Epoch 100] Top1: 12.350 Top5: 100.000
+Evaluating resnet10
+[Test Epoch 20] Top1: 1.700 Top5: 39.150
+[Test Epoch 40] Top1: 5.950 Top5: 76.550
+[Test Epoch 60] Top1: 11.550 Top5: 83.650
+[Test Epoch 80] Top1: 14.500 Top5: 88.400
+[Test Epoch 100] Top1: 16.400 Top5: 91.150
+Evaluating resnet18
+[Test Epoch 20] Top1: 4.500 Top5: 95.100
+[Test Epoch 40] Top1: 7.100 Top5: 87.800
+[Test Epoch 60] Top1: 7.800 Top5: 92.100
+[Test Epoch 80] Top1: 7.000 Top5: 95.200
+[Test Epoch 100] Top1: 8.600 Top5: 98.250
+Task-1 (old), Current Best Epoch for convnet: 9.0, Top1: 17.950, Top5: 94.950
+Task-1 (old), Current Best Epoch for resnet10: 19.0, Top1: 44.250, Top5: 91.000
+Task-1 (old), Current Best Epoch for resnet18: 9.0, Top1: 29.450, Top5: 93.650
+Evaluating convnet
+[Test Epoch 20] Top1: 29.700 Top5: 83.100
+[Test Epoch 40] Top1: 34.450 Top5: 85.050
+[Test Epoch 60] Top1: 33.000 Top5: 86.100
+[Test Epoch 80] Top1: 34.500 Top5: 86.800
+[Test Epoch 100] Top1: 33.350 Top5: 87.500
+Evaluating resnet10
+[Test Epoch 20] Top1: 30.300 Top5: 94.100
+[Test Epoch 40] Top1: 21.400 Top5: 97.200
+[Test Epoch 60] Top1: 18.350 Top5: 90.700
+[Test Epoch 80] Top1: 15.750 Top5: 85.550
+[Test Epoch 100] Top1: 14.600 Top5: 85.700
+Evaluating resnet18
+[Test Epoch 20] Top1: 35.150 Top5: 90.550
+[Test Epoch 40] Top1: 16.200 Top5: 80.300
+[Test Epoch 60] Top1: 17.100 Top5: 80.950
+[Test Epoch 80] Top1: 18.250 Top5: 81.300
+[Test Epoch 100] Top1: 18.000 Top5: 81.350
+Task-2 (current), Current Best Epoch for convnet: 9.0, Top1: 35.450, Top5: 82.750
+Save model for resnet10
+Task-2 (current), Current Best Epoch for resnet10: 39.0, Top1: 30.300, Top5: 94.100
+Save model for resnet18
+Task-2 (current), Current Best Epoch for resnet18: 39.0, Top1: 35.150, Top5: 90.550
+Random model: resnet18_ap
+Random model: resnet10
+Random model: resnet18
+Random model: resnet18_ap
+Random model: convnet
+Random model: convnet
+Random model: convnet
+Random model: resnet18_ap
+Random model: resnet18
+Random model: resnet10
+Evaluating convnet
+[Test Epoch 20] Top1: 42.150 Top5: 89.350
+[Test Epoch 40] Top1: 37.000 Top5: 87.450
+[Test Epoch 60] Top1: 35.400 Top5: 88.150
+[Test Epoch 80] Top1: 33.850 Top5: 88.100
+[Test Epoch 100] Top1: 33.850 Top5: 88.400
+Evaluating resnet10
+[Test Epoch 20] Top1: 43.550 Top5: 92.500
+[Test Epoch 40] Top1: 39.500 Top5: 93.500
+[Test Epoch 60] Top1: 33.850 Top5: 86.550
+[Test Epoch 80] Top1: 29.350 Top5: 81.650
+[Test Epoch 100] Top1: 26.250 Top5: 77.700
+Evaluating resnet18
+[Test Epoch 20] Top1: 45.600 Top5: 100.000
+[Test Epoch 40] Top1: 18.900 Top5: 92.900
+[Test Epoch 60] Top1: 16.650 Top5: 80.600
+[Test Epoch 80] Top1: 17.000 Top5: 79.200
+[Test Epoch 100] Top1: 15.800 Top5: 76.500
+Save model for convnet
+Task-0 (old), Current Best Epoch for convnet: 49.0, Top1: 42.150, Top5: 89.350
+Save model for resnet10
+Task-0 (old), Current Best Epoch for resnet10: 49.0, Top1: 43.550, Top5: 92.500
+Save model for resnet18
+Task-0 (old), Current Best Epoch for resnet18: 49.0, Top1: 45.600, Top5: 100.000
+Evaluating convnet
+[Test Epoch 20] Top1: 6.350 Top5: 94.200
+[Test Epoch 40] Top1: 7.600 Top5: 99.750
+[Test Epoch 60] Top1: 11.200 Top5: 99.900
+[Test Epoch 80] Top1: 12.900 Top5: 100.000
+[Test Epoch 100] Top1: 13.350 Top5: 100.000
+Evaluating resnet10
+[Test Epoch 20] Top1: 5.950 Top5: 69.600
+[Test Epoch 40] Top1: 8.650 Top5: 76.850
+[Test Epoch 60] Top1: 9.400 Top5: 83.950
+[Test Epoch 80] Top1: 10.250 Top5: 86.950
+[Test Epoch 100] Top1: 10.300 Top5: 90.000
+Evaluating resnet18
+[Test Epoch 20] Top1: 6.250 Top5: 62.700
+[Test Epoch 40] Top1: 14.500 Top5: 90.500
+[Test Epoch 60] Top1: 18.700 Top5: 95.000
+[Test Epoch 80] Top1: 17.050 Top5: 96.750
+[Test Epoch 100] Top1: 15.150 Top5: 96.600
+Task-1 (old), Current Best Epoch for convnet: 9.0, Top1: 17.950, Top5: 94.950
+Task-1 (old), Current Best Epoch for resnet10: 19.0, Top1: 44.250, Top5: 91.000
+Task-1 (old), Current Best Epoch for resnet18: 9.0, Top1: 29.450, Top5: 93.650
+Evaluating convnet
+[Test Epoch 20] Top1: 31.800 Top5: 84.050
+[Test Epoch 40] Top1: 33.050 Top5: 85.150
+[Test Epoch 60] Top1: 32.750 Top5: 85.550
+[Test Epoch 80] Top1: 32.300 Top5: 86.400
+[Test Epoch 100] Top1: 32.850 Top5: 86.900
+Evaluating resnet10
+[Test Epoch 20] Top1: 10.100 Top5: 47.450
+[Test Epoch 40] Top1: 14.600 Top5: 68.250
+[Test Epoch 60] Top1: 16.400 Top5: 77.450
+[Test Epoch 80] Top1: 16.450 Top5: 79.950
+[Test Epoch 100] Top1: 18.150 Top5: 81.650
+Evaluating resnet18
+[Test Epoch 20] Top1: 19.100 Top5: 68.650
+[Test Epoch 40] Top1: 16.350 Top5: 87.150
+[Test Epoch 60] Top1: 18.250 Top5: 88.000
+[Test Epoch 80] Top1: 15.850 Top5: 85.750
+[Test Epoch 100] Top1: 20.150 Top5: 87.850
+Task-2 (current), Current Best Epoch for convnet: 9.0, Top1: 35.450, Top5: 82.750
+Task-2 (current), Current Best Epoch for resnet10: 39.0, Top1: 30.300, Top5: 94.100
+Task-2 (current), Current Best Epoch for resnet18: 39.0, Top1: 35.150, Top5: 90.550
+/srv/share/skhose3/miniconda3/envs/dim2/lib/python3.10/site-packages/torch/utils/data/dataloader.py:560: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Namespace(ipc=50, batch_size=512, epochs=50, epochs_eval=100, lr=5e-06, eval_lr=0.0003, momentum=0.9, weight_decay=2e-05, eval_model=['convnet'], dim_noise=100, num_workers=4, print_freq=50, eval_interval=10, test_interval=20, data='cifar10', num_classes=10, data_dir='./cifar10', output_dir='./results/test/task-3', logs_dir='./logs/test', aug_type='', mixup_net='cut', bias=False, fc=False, mix_p=-1.0, beta=1.0, tag='test', seed=3407, tasknum=3, memory_filepath='./memory.pkl', samples_per_class=10, classes_per_task=2, samples_per_task=10000, half_batch_size=256)
+INFO : Loaded TRAIN data for TASK 3
+INFO : Loaded TEST data for TASK 3
+HALF BS :  256
+INFO : Loaded TEST data for TASK 0
+INFO : Loaded TEST data for TASK 1
+INFO : Loaded TEST data for TASK 2
+INFO : Loaded TEST data for TASK [0, 1, 2, 3]
+Augmentataion Matching:  
+Augmentataion Net update:  
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 7.700 Top5: 60.750
+[Test Epoch 40] Top1: 6.200 Top5: 52.350
+[Test Epoch 60] Top1: 7.600 Top5: 57.900
+[Test Epoch 80] Top1: 9.600 Top5: 58.700
+[Test Epoch 100] Top1: 6.000 Top5: 53.450
+Task-0 (old), Current Best Epoch for convnet: 9.0, Top1: 9.600, Top5: 58.700
+Evaluating convnet
+[Test Epoch 20] Top1: 4.950 Top5: 61.300
+[Test Epoch 40] Top1: 2.600 Top5: 60.300
+[Test Epoch 60] Top1: 3.100 Top5: 58.300
+[Test Epoch 80] Top1: 5.500 Top5: 65.300
+[Test Epoch 100] Top1: 2.750 Top5: 56.750
+Task-1 (old), Current Best Epoch for convnet: 9.0, Top1: 5.500, Top5: 65.300
+Evaluating convnet
+[Test Epoch 20] Top1: 20.550 Top5: 81.450
+[Test Epoch 40] Top1: 25.300 Top5: 85.050
+[Test Epoch 60] Top1: 19.650 Top5: 83.300
+[Test Epoch 80] Top1: 18.850 Top5: 80.350
+[Test Epoch 100] Top1: 18.800 Top5: 83.800
+Task-2 (old), Current Best Epoch for convnet: 9.0, Top1: 25.300, Top5: 85.050
+Evaluating convnet
+[Test Epoch 20] Top1: 9.550 Top5: 63.200
+[Test Epoch 40] Top1: 6.350 Top5: 55.700
+[Test Epoch 60] Top1: 9.900 Top5: 63.050
+[Test Epoch 80] Top1: 6.650 Top5: 58.850
+[Test Epoch 100] Top1: 5.400 Top5: 53.650
+Task-3 (current), Current Best Epoch for convnet: 9.0, Top1: 9.900, Top5: 63.050
+Evaluating convnet
+[Test Epoch 20] Top1: 11.062 Top5: 58.750
+[Test Epoch 40] Top1: 10.613 Top5: 59.538
+[Test Epoch 60] Top1: 11.113 Top5: 59.325
+[Test Epoch 80] Top1: 11.000 Top5: 59.550
+[Test Epoch 100] Top1: 10.637 Top5: 60.138
+Task- 0 to 3 (all), Current Best Epoch for convnet: 9.0, Top1: 11.113, Top5: 59.325
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 9.900 Top5: 59.050
+[Test Epoch 40] Top1: 10.500 Top5: 55.350
+[Test Epoch 60] Top1: 11.350 Top5: 59.950
+[Test Epoch 80] Top1: 12.200 Top5: 58.300
+[Test Epoch 100] Top1: 11.900 Top5: 57.800
+Task-0 (old), Current Best Epoch for convnet: 19.0, Top1: 12.200, Top5: 58.300
+Evaluating convnet
+[Test Epoch 20] Top1: 24.950 Top5: 70.650
+[Test Epoch 40] Top1: 29.050 Top5: 68.200
+[Test Epoch 60] Top1: 28.800 Top5: 68.850
+[Test Epoch 80] Top1: 25.900 Top5: 69.950
+[Test Epoch 100] Top1: 29.250 Top5: 71.750
+Task-1 (old), Current Best Epoch for convnet: 19.0, Top1: 29.250, Top5: 71.750
+Evaluating convnet
+[Test Epoch 20] Top1: 13.050 Top5: 65.450
+[Test Epoch 40] Top1: 11.800 Top5: 63.400
+[Test Epoch 60] Top1: 11.300 Top5: 65.100
+[Test Epoch 80] Top1: 10.050 Top5: 63.150
+[Test Epoch 100] Top1: 9.100 Top5: 62.500
+Task-2 (old), Current Best Epoch for convnet: 9.0, Top1: 25.300, Top5: 85.050
+Evaluating convnet
+[Test Epoch 20] Top1: 14.500 Top5: 69.800
+[Test Epoch 40] Top1: 19.050 Top5: 83.850
+[Test Epoch 60] Top1: 23.200 Top5: 84.300
+[Test Epoch 80] Top1: 23.450 Top5: 85.850
+[Test Epoch 100] Top1: 20.300 Top5: 81.000
+Task-3 (current), Current Best Epoch for convnet: 19.0, Top1: 23.450, Top5: 85.850
+Evaluating convnet
+[Test Epoch 20] Top1: 12.137 Top5: 64.938
+[Test Epoch 40] Top1: 12.162 Top5: 65.412
+[Test Epoch 60] Top1: 13.125 Top5: 65.213
+[Test Epoch 80] Top1: 12.800 Top5: 65.138
+[Test Epoch 100] Top1: 13.275 Top5: 65.675
+Task- 0 to 3 (all), Current Best Epoch for convnet: 19.0, Top1: 13.275, Top5: 65.675
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 6.600 Top5: 59.800
+[Test Epoch 40] Top1: 4.700 Top5: 54.400
+[Test Epoch 60] Top1: 13.050 Top5: 68.050
+[Test Epoch 80] Top1: 7.300 Top5: 59.650
+[Test Epoch 100] Top1: 10.500 Top5: 60.100
+Task-0 (old), Current Best Epoch for convnet: 29.0, Top1: 13.050, Top5: 68.050
+Evaluating convnet
+[Test Epoch 20] Top1: 11.100 Top5: 57.900
+[Test Epoch 40] Top1: 4.900 Top5: 53.550
+[Test Epoch 60] Top1: 7.450 Top5: 60.100
+[Test Epoch 80] Top1: 9.300 Top5: 69.700
+[Test Epoch 100] Top1: 5.850 Top5: 61.750
+Task-1 (old), Current Best Epoch for convnet: 19.0, Top1: 29.250, Top5: 71.750
+Evaluating convnet
+[Test Epoch 20] Top1: 10.900 Top5: 65.150
+[Test Epoch 40] Top1: 4.850 Top5: 66.800
+[Test Epoch 60] Top1: 6.650 Top5: 67.350
+[Test Epoch 80] Top1: 4.050 Top5: 62.700
+[Test Epoch 100] Top1: 4.150 Top5: 66.950
+Task-2 (old), Current Best Epoch for convnet: 9.0, Top1: 25.300, Top5: 85.050
+Evaluating convnet
+[Test Epoch 20] Top1: 7.900 Top5: 59.850
+[Test Epoch 40] Top1: 8.700 Top5: 57.450
+[Test Epoch 60] Top1: 14.350 Top5: 61.000
+[Test Epoch 80] Top1: 15.900 Top5: 61.150
+[Test Epoch 100] Top1: 17.350 Top5: 61.050
+Task-3 (current), Current Best Epoch for convnet: 19.0, Top1: 23.450, Top5: 85.850
+Evaluating convnet
+[Test Epoch 20] Top1: 11.575 Top5: 60.900
+[Test Epoch 40] Top1: 12.500 Top5: 63.325
+[Test Epoch 60] Top1: 13.012 Top5: 64.025
+[Test Epoch 80] Top1: 13.175 Top5: 64.350
+[Test Epoch 100] Top1: 13.250 Top5: 65.213
+Task- 0 to 3 (all), Current Best Epoch for convnet: 19.0, Top1: 13.275, Top5: 65.675
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 9.700 Top5: 62.400
+[Test Epoch 40] Top1: 7.200 Top5: 51.900
+[Test Epoch 60] Top1: 12.900 Top5: 57.950
+[Test Epoch 80] Top1: 14.650 Top5: 56.550
+[Test Epoch 100] Top1: 16.650 Top5: 57.900
+Task-0 (old), Current Best Epoch for convnet: 39.0, Top1: 16.650, Top5: 57.900
+Evaluating convnet
+[Test Epoch 20] Top1: 7.400 Top5: 56.800
+[Test Epoch 40] Top1: 6.100 Top5: 61.100
+[Test Epoch 60] Top1: 3.600 Top5: 60.150
+[Test Epoch 80] Top1: 2.400 Top5: 56.800
+[Test Epoch 100] Top1: 2.350 Top5: 60.950
+Task-1 (old), Current Best Epoch for convnet: 19.0, Top1: 29.250, Top5: 71.750
+Evaluating convnet
+[Test Epoch 20] Top1: 8.800 Top5: 52.000
+[Test Epoch 40] Top1: 13.700 Top5: 61.500
+[Test Epoch 60] Top1: 8.350 Top5: 59.450
+[Test Epoch 80] Top1: 5.300 Top5: 56.500
+[Test Epoch 100] Top1: 9.050 Top5: 59.200
+Task-2 (old), Current Best Epoch for convnet: 9.0, Top1: 25.300, Top5: 85.050
+Evaluating convnet
+[Test Epoch 20] Top1: 10.450 Top5: 63.200
+[Test Epoch 40] Top1: 16.600 Top5: 65.700
+[Test Epoch 60] Top1: 24.700 Top5: 68.800
+[Test Epoch 80] Top1: 29.450 Top5: 69.500
+[Test Epoch 100] Top1: 30.150 Top5: 70.750
+Task-3 (current), Current Best Epoch for convnet: 39.0, Top1: 30.150, Top5: 70.750
+Evaluating convnet
+[Test Epoch 20] Top1: 14.213 Top5: 65.588
+[Test Epoch 40] Top1: 16.012 Top5: 67.612
+[Test Epoch 60] Top1: 16.163 Top5: 67.475
+[Test Epoch 80] Top1: 15.600 Top5: 67.688
+[Test Epoch 100] Top1: 16.163 Top5: 67.600
+Task- 0 to 3 (all), Current Best Epoch for convnet: 39.0, Top1: 16.163, Top5: 67.475
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 31.050 Top5: 78.050
+[Test Epoch 40] Top1: 32.250 Top5: 77.100
+[Test Epoch 60] Top1: 29.400 Top5: 68.950
+[Test Epoch 80] Top1: 29.050 Top5: 67.800
+[Test Epoch 100] Top1: 29.850 Top5: 67.550
+Task-0 (old), Current Best Epoch for convnet: 49.0, Top1: 32.250, Top5: 77.100
+Evaluating convnet
+[Test Epoch 20] Top1: 5.650 Top5: 47.350
+[Test Epoch 40] Top1: 5.850 Top5: 56.100
+[Test Epoch 60] Top1: 6.050 Top5: 63.500
+[Test Epoch 80] Top1: 6.050 Top5: 65.950
+[Test Epoch 100] Top1: 7.450 Top5: 71.550
+Task-1 (old), Current Best Epoch for convnet: 19.0, Top1: 29.250, Top5: 71.750
+Evaluating convnet
+[Test Epoch 20] Top1: 4.500 Top5: 57.850
+[Test Epoch 40] Top1: 5.850 Top5: 66.300
+[Test Epoch 60] Top1: 7.150 Top5: 76.300
+[Test Epoch 80] Top1: 6.200 Top5: 77.450
+[Test Epoch 100] Top1: 9.600 Top5: 86.800
+Task-2 (old), Current Best Epoch for convnet: 9.0, Top1: 25.300, Top5: 85.050
+Evaluating convnet
+[Test Epoch 20] Top1: 21.850 Top5: 67.200
+[Test Epoch 40] Top1: 29.000 Top5: 62.400
+[Test Epoch 60] Top1: 31.150 Top5: 60.550
+[Test Epoch 80] Top1: 29.400 Top5: 57.000
+[Test Epoch 100] Top1: 27.250 Top5: 54.550
+Task-3 (current), Current Best Epoch for convnet: 49.0, Top1: 31.150, Top5: 60.550
+Evaluating convnet
+[Test Epoch 20] Top1: 15.150 Top5: 68.075
+[Test Epoch 40] Top1: 17.325 Top5: 69.812
+[Test Epoch 60] Top1: 17.775 Top5: 69.638
+[Test Epoch 80] Top1: 17.700 Top5: 70.062
+[Test Epoch 100] Top1: 17.625 Top5: 69.787
+Task- 0 to 3 (all), Current Best Epoch for convnet: 49.0, Top1: 17.775, Top5: 69.638
+Saving epoch-49 of Generator as best.pth
+/srv/share/skhose3/miniconda3/envs/dim2/lib/python3.10/site-packages/torch/utils/data/dataloader.py:560: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Namespace(ipc=50, batch_size=512, epochs=50, epochs_eval=100, epochs_match=100, epochs_match_train=16, lr=5e-06, eval_lr=0.0003, momentum=0.9, weight_decay=2e-05, match_coeff=0.001, match_model='convnet', match='grad', eval_model=['convnet', 'resnet10', 'resnet18'], dim_noise=100, num_workers=4, print_freq=100, eval_interval=10, test_interval=20, fix_disc=False, data='cifar10', num_classes=10, data_dir='./cifar10', output_dir='./results/pool-match-test/task-3', logs_dir='./logs/pool-match-test', weight='./results/test/task-3/last.pth', match_aug=False, aug_type='', mixup_net='cut', metric='l1', bias=False, fc=False, mix_p=-1.0, beta=1.0, tag='pool-match-test', seed=3407, tasknum=3, memory_filepath='./memory.pkl', samples_per_class=10, classes_per_task=2, samples_per_task=10000, half_batch_size=256)
+INFO : Loaded TRAIN data for TASK 3
+INFO : Loaded TEST data for TASK 3
+HALF BS :  256
+INFO : Loaded TEST data for TASK 0
+INFO : Loaded TEST data for TASK 1
+INFO : Loaded TEST data for TASK 2
+Augmentataion Matching:  
+Augmentataion Net update:  
+Random model: convnet
+Random model: convnet
+Random model: resnet10
+Random model: resnet18_ap
+Random model: resnet10_ap
+Random model: convnet
+Random model: resnet10_ap
+Random model: resnet18
+Random model: resnet18
+Random model: resnet18
+Evaluating convnet
+[Test Epoch 20] Top1: 32.850 Top5: 78.400
+[Test Epoch 40] Top1: 39.050 Top5: 79.000
+[Test Epoch 60] Top1: 36.200 Top5: 72.850
+[Test Epoch 80] Top1: 38.000 Top5: 73.850
+[Test Epoch 100] Top1: 37.900 Top5: 72.350
+Evaluating resnet10
+[Test Epoch 20] Top1: 2.550 Top5: 52.700
+[Test Epoch 40] Top1: 7.500 Top5: 57.000
+[Test Epoch 60] Top1: 13.400 Top5: 63.950
+[Test Epoch 80] Top1: 16.000 Top5: 64.650
+[Test Epoch 100] Top1: 16.150 Top5: 62.250
+Evaluating resnet18
+[Test Epoch 20] Top1: 42.300 Top5: 91.700
+[Test Epoch 40] Top1: 29.250 Top5: 80.700
+[Test Epoch 60] Top1: 24.000 Top5: 73.550
+[Test Epoch 80] Top1: 21.000 Top5: 65.750
+[Test Epoch 100] Top1: 19.900 Top5: 61.150
+Save model for convnet
+Task-0 (old), Current Best Epoch for convnet: 9.0, Top1: 39.050, Top5: 79.000
+Save model for resnet10
+Task-0 (old), Current Best Epoch for resnet10: 9.0, Top1: 16.150, Top5: 62.250
+Save model for resnet18
+Task-0 (old), Current Best Epoch for resnet18: 9.0, Top1: 42.300, Top5: 91.700
+Evaluating convnet
+[Test Epoch 20] Top1: 9.900 Top5: 73.600
+[Test Epoch 40] Top1: 6.250 Top5: 71.950
+[Test Epoch 60] Top1: 9.800 Top5: 85.350
+[Test Epoch 80] Top1: 7.100 Top5: 79.250
+[Test Epoch 100] Top1: 8.150 Top5: 77.650
+Evaluating resnet10
+[Test Epoch 20] Top1: 0.450 Top5: 51.200
+[Test Epoch 40] Top1: 2.500 Top5: 55.300
+[Test Epoch 60] Top1: 5.300 Top5: 60.850
+[Test Epoch 80] Top1: 6.600 Top5: 62.400
+[Test Epoch 100] Top1: 6.900 Top5: 63.850
+Evaluating resnet18
+[Test Epoch 20] Top1: 13.900 Top5: 75.050
+[Test Epoch 40] Top1: 12.400 Top5: 62.700
+[Test Epoch 60] Top1: 8.100 Top5: 59.400
+[Test Epoch 80] Top1: 9.850 Top5: 64.800
+[Test Epoch 100] Top1: 8.900 Top5: 66.250
+Save model for convnet
+Task-1 (old), Current Best Epoch for convnet: 9.0, Top1: 9.900, Top5: 73.600
+Save model for resnet10
+Task-1 (old), Current Best Epoch for resnet10: 9.0, Top1: 6.900, Top5: 63.850
+Save model for resnet18
+Task-1 (old), Current Best Epoch for resnet18: 9.0, Top1: 13.900, Top5: 75.050
+Evaluating convnet
+[Test Epoch 20] Top1: 15.550 Top5: 80.200
+[Test Epoch 40] Top1: 6.850 Top5: 80.350
+[Test Epoch 60] Top1: 9.550 Top5: 89.950
+[Test Epoch 80] Top1: 9.300 Top5: 85.150
+[Test Epoch 100] Top1: 8.950 Top5: 87.450
+Evaluating resnet10
+[Test Epoch 20] Top1: 0.250 Top5: 34.050
+[Test Epoch 40] Top1: 2.400 Top5: 41.150
+[Test Epoch 60] Top1: 6.300 Top5: 49.200
+[Test Epoch 80] Top1: 7.100 Top5: 55.950
+[Test Epoch 100] Top1: 7.250 Top5: 60.100
+Evaluating resnet18
+[Test Epoch 20] Top1: 1.800 Top5: 32.000
+[Test Epoch 40] Top1: 2.950 Top5: 40.850
+[Test Epoch 60] Top1: 8.950 Top5: 57.950
+[Test Epoch 80] Top1: 12.800 Top5: 60.200
+[Test Epoch 100] Top1: 10.150 Top5: 62.900
+Save model for convnet
+Task-2 (old), Current Best Epoch for convnet: 9.0, Top1: 15.550, Top5: 80.200
+Save model for resnet10
+Task-2 (old), Current Best Epoch for resnet10: 9.0, Top1: 7.250, Top5: 60.100
+Save model for resnet18
+Task-2 (old), Current Best Epoch for resnet18: 9.0, Top1: 12.800, Top5: 60.200
+Evaluating convnet
+[Test Epoch 20] Top1: 17.050 Top5: 64.350
+[Test Epoch 40] Top1: 28.600 Top5: 61.450
+[Test Epoch 60] Top1: 27.300 Top5: 54.850
+[Test Epoch 80] Top1: 27.450 Top5: 52.200
+[Test Epoch 100] Top1: 28.250 Top5: 52.300
+Evaluating resnet10
+[Test Epoch 20] Top1: 0.100 Top5: 48.550
+[Test Epoch 40] Top1: 1.100 Top5: 44.650
+[Test Epoch 60] Top1: 2.700 Top5: 45.350
+[Test Epoch 80] Top1: 4.200 Top5: 50.250
+[Test Epoch 100] Top1: 5.950 Top5: 54.000
+Evaluating resnet18
+[Test Epoch 20] Top1: 6.500 Top5: 87.650
+[Test Epoch 40] Top1: 7.200 Top5: 54.400
+[Test Epoch 60] Top1: 11.550 Top5: 57.150
+[Test Epoch 80] Top1: 16.450 Top5: 61.500
+[Test Epoch 100] Top1: 17.500 Top5: 61.150
+Save model for convnet
+Task-3 (current), Current Best Epoch for convnet: 9.0, Top1: 28.600, Top5: 61.450
+Save model for resnet10
+Task-3 (current), Current Best Epoch for resnet10: 9.0, Top1: 5.950, Top5: 54.000
+Save model for resnet18
+Task-3 (current), Current Best Epoch for resnet18: 9.0, Top1: 17.500, Top5: 61.150
+Random model: resnet10
+Random model: convnet
+Random model: resnet18
+Random model: resnet18_ap
+Random model: resnet18_ap
+Random model: resnet10_ap
+Random model: resnet18
+Random model: resnet10
+Random model: resnet18_ap
+Random model: resnet18
+Evaluating convnet
+[Test Epoch 20] Top1: 32.700 Top5: 79.000
+[Test Epoch 40] Top1: 31.850 Top5: 73.850
+[Test Epoch 60] Top1: 35.200 Top5: 74.950
+[Test Epoch 80] Top1: 32.300 Top5: 69.000
+[Test Epoch 100] Top1: 31.550 Top5: 67.750
+Evaluating resnet10
+[Test Epoch 20] Top1: 0.700 Top5: 39.350
+[Test Epoch 40] Top1: 8.250 Top5: 62.650
+[Test Epoch 60] Top1: 15.000 Top5: 69.400
+[Test Epoch 80] Top1: 16.550 Top5: 67.750
+[Test Epoch 100] Top1: 14.900 Top5: 63.050
+Evaluating resnet18
+[Test Epoch 20] Top1: 14.850 Top5: 66.950
+[Test Epoch 40] Top1: 20.900 Top5: 71.650
+[Test Epoch 60] Top1: 15.550 Top5: 62.650
+[Test Epoch 80] Top1: 15.200 Top5: 57.000
+[Test Epoch 100] Top1: 15.500 Top5: 53.500
+Task-0 (old), Current Best Epoch for convnet: 9.0, Top1: 39.050, Top5: 79.000
+Save model for resnet10
+Task-0 (old), Current Best Epoch for resnet10: 19.0, Top1: 16.550, Top5: 67.750
+Task-0 (old), Current Best Epoch for resnet18: 9.0, Top1: 42.300, Top5: 91.700
+Evaluating convnet
+[Test Epoch 20] Top1: 7.050 Top5: 65.200
+[Test Epoch 40] Top1: 4.600 Top5: 72.050
+[Test Epoch 60] Top1: 4.650 Top5: 72.650
+[Test Epoch 80] Top1: 5.950 Top5: 76.250
+[Test Epoch 100] Top1: 6.350 Top5: 78.400
+Evaluating resnet10
+[Test Epoch 20] Top1: 26.750 Top5: 58.700
+[Test Epoch 40] Top1: 20.400 Top5: 64.150
+[Test Epoch 60] Top1: 14.550 Top5: 64.100
+[Test Epoch 80] Top1: 13.900 Top5: 65.850
+[Test Epoch 100] Top1: 15.700 Top5: 70.850
+Evaluating resnet18
+[Test Epoch 20] Top1: 2.950 Top5: 24.050
+[Test Epoch 40] Top1: 9.600 Top5: 42.050
+[Test Epoch 60] Top1: 11.700 Top5: 49.400
+[Test Epoch 80] Top1: 9.900 Top5: 52.800
+[Test Epoch 100] Top1: 10.850 Top5: 60.500
+Task-1 (old), Current Best Epoch for convnet: 9.0, Top1: 9.900, Top5: 73.600
+Save model for resnet10
+Task-1 (old), Current Best Epoch for resnet10: 19.0, Top1: 26.750, Top5: 58.700
+Task-1 (old), Current Best Epoch for resnet18: 9.0, Top1: 13.900, Top5: 75.050
+Evaluating convnet
+[Test Epoch 20] Top1: 5.850 Top5: 64.700
+[Test Epoch 40] Top1: 4.300 Top5: 71.200
+[Test Epoch 60] Top1: 5.900 Top5: 82.200
+[Test Epoch 80] Top1: 5.900 Top5: 84.250
+[Test Epoch 100] Top1: 5.000 Top5: 86.350
+Evaluating resnet10
+[Test Epoch 20] Top1: 13.600 Top5: 66.000
+[Test Epoch 40] Top1: 8.600 Top5: 56.550
+[Test Epoch 60] Top1: 6.700 Top5: 51.100
+[Test Epoch 80] Top1: 5.500 Top5: 51.150
+[Test Epoch 100] Top1: 5.250 Top5: 54.500
+Evaluating resnet18
+[Test Epoch 20] Top1: 0.250 Top5: 32.150
+[Test Epoch 40] Top1: 5.350 Top5: 54.550
+[Test Epoch 60] Top1: 9.500 Top5: 63.550
+[Test Epoch 80] Top1: 11.700 Top5: 61.650
+[Test Epoch 100] Top1: 13.300 Top5: 64.400
+Task-2 (old), Current Best Epoch for convnet: 9.0, Top1: 15.550, Top5: 80.200
+Save model for resnet10
+Task-2 (old), Current Best Epoch for resnet10: 19.0, Top1: 13.600, Top5: 66.000
+Save model for resnet18
+Task-2 (old), Current Best Epoch for resnet18: 19.0, Top1: 13.300, Top5: 64.400
+Evaluating convnet
+[Test Epoch 20] Top1: 10.950 Top5: 51.850
+[Test Epoch 40] Top1: 25.350 Top5: 57.300
+[Test Epoch 60] Top1: 30.400 Top5: 57.300
+[Test Epoch 80] Top1: 30.300 Top5: 54.700
+[Test Epoch 100] Top1: 31.400 Top5: 54.350
+Evaluating resnet10
+[Test Epoch 20] Top1: 2.050 Top5: 50.900
+[Test Epoch 40] Top1: 6.600 Top5: 55.650
+[Test Epoch 60] Top1: 12.400 Top5: 60.250
+[Test Epoch 80] Top1: 14.150 Top5: 59.400
+[Test Epoch 100] Top1: 14.650 Top5: 56.350
+Evaluating resnet18
+[Test Epoch 20] Top1: 28.250 Top5: 88.250
+[Test Epoch 40] Top1: 19.200 Top5: 73.250
+[Test Epoch 60] Top1: 16.950 Top5: 65.750
+[Test Epoch 80] Top1: 14.700 Top5: 64.050
+[Test Epoch 100] Top1: 15.100 Top5: 66.800
+Save model for convnet
+Task-3 (current), Current Best Epoch for convnet: 19.0, Top1: 31.400, Top5: 54.350
+Save model for resnet10
+Task-3 (current), Current Best Epoch for resnet10: 19.0, Top1: 14.650, Top5: 56.350
+Save model for resnet18
+Task-3 (current), Current Best Epoch for resnet18: 19.0, Top1: 28.250, Top5: 88.250
+Random model: convnet
+Random model: convnet
+Random model: resnet18_ap
+Random model: convnet
+Random model: resnet10_ap
+Random model: resnet18
+Random model: convnet
+Random model: resnet10_ap
+Random model: resnet18
+Random model: resnet18_ap
+Evaluating convnet
+[Test Epoch 20] Top1: 25.450 Top5: 73.900
+[Test Epoch 40] Top1: 28.550 Top5: 66.550
+[Test Epoch 60] Top1: 33.700 Top5: 70.000
+[Test Epoch 80] Top1: 34.050 Top5: 66.950
+[Test Epoch 100] Top1: 36.050 Top5: 67.350
+Evaluating resnet10
+[Test Epoch 20] Top1: 14.400 Top5: 57.400
+[Test Epoch 40] Top1: 18.300 Top5: 71.650
+[Test Epoch 60] Top1: 18.400 Top5: 76.550
+[Test Epoch 80] Top1: 20.100 Top5: 71.100
+[Test Epoch 100] Top1: 20.850 Top5: 66.300
+Evaluating resnet18
+[Test Epoch 20] Top1: 32.600 Top5: 92.000
+[Test Epoch 40] Top1: 19.750 Top5: 77.250
+[Test Epoch 60] Top1: 13.650 Top5: 66.850
+[Test Epoch 80] Top1: 15.900 Top5: 64.100
+[Test Epoch 100] Top1: 15.900 Top5: 63.000
+Task-0 (old), Current Best Epoch for convnet: 9.0, Top1: 39.050, Top5: 79.000
+Save model for resnet10
+Task-0 (old), Current Best Epoch for resnet10: 29.0, Top1: 20.850, Top5: 66.300
+Task-0 (old), Current Best Epoch for resnet18: 9.0, Top1: 42.300, Top5: 91.700
+Evaluating convnet
+[Test Epoch 20] Top1: 2.750 Top5: 55.350
+[Test Epoch 40] Top1: 4.950 Top5: 70.450
+[Test Epoch 60] Top1: 5.600 Top5: 77.700
+[Test Epoch 80] Top1: 4.850 Top5: 76.750
+[Test Epoch 100] Top1: 5.850 Top5: 81.050
+Evaluating resnet10
+[Test Epoch 20] Top1: 16.950 Top5: 65.800
+[Test Epoch 40] Top1: 13.800 Top5: 65.750
+[Test Epoch 60] Top1: 10.150 Top5: 57.150
+[Test Epoch 80] Top1: 8.650 Top5: 55.250
+[Test Epoch 100] Top1: 8.350 Top5: 58.700
+Evaluating resnet18
+[Test Epoch 20] Top1: 34.350 Top5: 50.100
+[Test Epoch 40] Top1: 12.100 Top5: 54.200
+[Test Epoch 60] Top1: 12.700 Top5: 70.450
+[Test Epoch 80] Top1: 9.450 Top5: 67.350
+[Test Epoch 100] Top1: 7.100 Top5: 64.150
+Task-1 (old), Current Best Epoch for convnet: 9.0, Top1: 9.900, Top5: 73.600
+Task-1 (old), Current Best Epoch for resnet10: 19.0, Top1: 26.750, Top5: 58.700
+Save model for resnet18
+Task-1 (old), Current Best Epoch for resnet18: 29.0, Top1: 34.350, Top5: 50.100
+Evaluating convnet
+[Test Epoch 20] Top1: 11.650 Top5: 71.050
+[Test Epoch 40] Top1: 4.550 Top5: 75.050
+[Test Epoch 60] Top1: 6.200 Top5: 87.950
+[Test Epoch 80] Top1: 4.900 Top5: 86.450
+[Test Epoch 100] Top1: 4.300 Top5: 86.250
+Evaluating resnet10
+[Test Epoch 20] Top1: 0.300 Top5: 28.800
+[Test Epoch 40] Top1: 1.200 Top5: 35.300
+[Test Epoch 60] Top1: 3.500 Top5: 47.350
+[Test Epoch 80] Top1: 5.100 Top5: 55.200
+[Test Epoch 100] Top1: 4.500 Top5: 53.400
+Evaluating resnet18
+[Test Epoch 20] Top1: 15.200 Top5: 55.300
+[Test Epoch 40] Top1: 7.600 Top5: 59.600
+[Test Epoch 60] Top1: 9.850 Top5: 64.800
+[Test Epoch 80] Top1: 13.400 Top5: 72.150
+[Test Epoch 100] Top1: 9.900 Top5: 70.950
+Task-2 (old), Current Best Epoch for convnet: 9.0, Top1: 15.550, Top5: 80.200
+Task-2 (old), Current Best Epoch for resnet10: 19.0, Top1: 13.600, Top5: 66.000
+Save model for resnet18
+Task-2 (old), Current Best Epoch for resnet18: 29.0, Top1: 15.200, Top5: 55.300
+Evaluating convnet
+[Test Epoch 20] Top1: 20.350 Top5: 63.200
+[Test Epoch 40] Top1: 35.400 Top5: 62.150
+[Test Epoch 60] Top1: 36.950 Top5: 59.900
+[Test Epoch 80] Top1: 36.100 Top5: 57.650
+[Test Epoch 100] Top1: 35.300 Top5: 56.700
+Evaluating resnet10
+[Test Epoch 20] Top1: 1.250 Top5: 46.250
+[Test Epoch 40] Top1: 6.900 Top5: 63.500
+[Test Epoch 60] Top1: 11.300 Top5: 64.100
+[Test Epoch 80] Top1: 14.350 Top5: 61.700
+[Test Epoch 100] Top1: 15.500 Top5: 59.000
+Evaluating resnet18
+[Test Epoch 20] Top1: 0.000 Top5: 0.250
+[Test Epoch 40] Top1: 2.300 Top5: 27.150
+[Test Epoch 60] Top1: 14.500 Top5: 65.850
+[Test Epoch 80] Top1: 16.250 Top5: 66.100
+[Test Epoch 100] Top1: 14.300 Top5: 61.950
+Save model for convnet
+Task-3 (current), Current Best Epoch for convnet: 29.0, Top1: 36.950, Top5: 59.900
+Save model for resnet10
+Task-3 (current), Current Best Epoch for resnet10: 29.0, Top1: 15.500, Top5: 59.000
+Task-3 (current), Current Best Epoch for resnet18: 19.0, Top1: 28.250, Top5: 88.250
+Random model: resnet10
+Random model: resnet18_ap
+Random model: resnet18_ap
+Random model: resnet18_ap
+Random model: resnet18_ap
+Random model: resnet10_ap
+Random model: resnet10_ap
+Random model: convnet
+Random model: resnet18
+Random model: resnet10
+Evaluating convnet
+[Test Epoch 20] Top1: 26.750 Top5: 65.400
+[Test Epoch 40] Top1: 31.300 Top5: 69.200
+[Test Epoch 60] Top1: 33.500 Top5: 67.600
+[Test Epoch 80] Top1: 33.800 Top5: 65.950
+[Test Epoch 100] Top1: 34.200 Top5: 65.100
+Evaluating resnet10
+[Test Epoch 20] Top1: 39.150 Top5: 91.450
+[Test Epoch 40] Top1: 38.250 Top5: 87.150
+[Test Epoch 60] Top1: 34.350 Top5: 76.650
+[Test Epoch 80] Top1: 30.000 Top5: 70.650
+[Test Epoch 100] Top1: 26.600 Top5: 67.500
+Evaluating resnet18
+[Test Epoch 20] Top1: 9.450 Top5: 71.450
+[Test Epoch 40] Top1: 24.100 Top5: 76.550
+[Test Epoch 60] Top1: 19.050 Top5: 63.450
+[Test Epoch 80] Top1: 16.350 Top5: 53.650
+[Test Epoch 100] Top1: 16.400 Top5: 49.900
+Task-0 (old), Current Best Epoch for convnet: 9.0, Top1: 39.050, Top5: 79.000
+Save model for resnet10
+Task-0 (old), Current Best Epoch for resnet10: 39.0, Top1: 39.150, Top5: 91.450
+Task-0 (old), Current Best Epoch for resnet18: 9.0, Top1: 42.300, Top5: 91.700
+Evaluating convnet
+[Test Epoch 20] Top1: 10.050 Top5: 76.750
+[Test Epoch 40] Top1: 4.900 Top5: 74.350
+[Test Epoch 60] Top1: 7.400 Top5: 78.000
+[Test Epoch 80] Top1: 8.700 Top5: 80.000
+[Test Epoch 100] Top1: 7.350 Top5: 78.150
+Evaluating resnet10
+[Test Epoch 20] Top1: 24.050 Top5: 63.250
+[Test Epoch 40] Top1: 16.700 Top5: 64.550
+[Test Epoch 60] Top1: 14.250 Top5: 64.750
+[Test Epoch 80] Top1: 14.400 Top5: 66.950
+[Test Epoch 100] Top1: 14.750 Top5: 69.350
+Evaluating resnet18
+[Test Epoch 20] Top1: 12.600 Top5: 85.550
+[Test Epoch 40] Top1: 5.600 Top5: 56.550
+[Test Epoch 60] Top1: 3.150 Top5: 50.600
+[Test Epoch 80] Top1: 3.350 Top5: 58.100
+[Test Epoch 100] Top1: 4.200 Top5: 59.750
+Save model for convnet
+Task-1 (old), Current Best Epoch for convnet: 39.0, Top1: 10.050, Top5: 76.750
+Task-1 (old), Current Best Epoch for resnet10: 19.0, Top1: 26.750, Top5: 58.700
+Task-1 (old), Current Best Epoch for resnet18: 29.0, Top1: 34.350, Top5: 50.100
+Evaluating convnet
+[Test Epoch 20] Top1: 10.650 Top5: 80.450
+[Test Epoch 40] Top1: 3.500 Top5: 79.100
+[Test Epoch 60] Top1: 5.250 Top5: 86.900
+[Test Epoch 80] Top1: 6.450 Top5: 90.450
+[Test Epoch 100] Top1: 5.900 Top5: 89.800
+Evaluating resnet10
+[Test Epoch 20] Top1: 21.000 Top5: 71.900
+[Test Epoch 40] Top1: 17.900 Top5: 69.000
+[Test Epoch 60] Top1: 16.200 Top5: 68.800
+[Test Epoch 80] Top1: 14.400 Top5: 69.950
+[Test Epoch 100] Top1: 12.300 Top5: 69.200
+Evaluating resnet18
+[Test Epoch 20] Top1: 27.800 Top5: 97.050
+[Test Epoch 40] Top1: 10.900 Top5: 66.550
+[Test Epoch 60] Top1: 8.200 Top5: 58.950
+[Test Epoch 80] Top1: 12.800 Top5: 70.150
+[Test Epoch 100] Top1: 11.250 Top5: 70.100
+Task-2 (old), Current Best Epoch for convnet: 9.0, Top1: 15.550, Top5: 80.200
+Save model for resnet10
+Task-2 (old), Current Best Epoch for resnet10: 39.0, Top1: 21.000, Top5: 71.900
+Save model for resnet18
+Task-2 (old), Current Best Epoch for resnet18: 39.0, Top1: 27.800, Top5: 97.050
+Evaluating convnet
+[Test Epoch 20] Top1: 23.350 Top5: 64.350
+[Test Epoch 40] Top1: 34.100 Top5: 61.800
+[Test Epoch 60] Top1: 34.400 Top5: 57.950
+[Test Epoch 80] Top1: 32.550 Top5: 55.200
+[Test Epoch 100] Top1: 33.450 Top5: 54.150
+Evaluating resnet10
+[Test Epoch 20] Top1: 0.650 Top5: 47.450
+[Test Epoch 40] Top1: 8.900 Top5: 48.450
+[Test Epoch 60] Top1: 13.250 Top5: 51.400
+[Test Epoch 80] Top1: 12.900 Top5: 55.200
+[Test Epoch 100] Top1: 13.700 Top5: 59.900
+Evaluating resnet18
+[Test Epoch 20] Top1: 15.550 Top5: 47.300
+[Test Epoch 40] Top1: 5.200 Top5: 39.850
+[Test Epoch 60] Top1: 5.950 Top5: 50.150
+[Test Epoch 80] Top1: 10.050 Top5: 59.900
+[Test Epoch 100] Top1: 12.950 Top5: 63.000
+Task-3 (current), Current Best Epoch for convnet: 29.0, Top1: 36.950, Top5: 59.900
+Task-3 (current), Current Best Epoch for resnet10: 29.0, Top1: 15.500, Top5: 59.000
+Task-3 (current), Current Best Epoch for resnet18: 19.0, Top1: 28.250, Top5: 88.250
+Random model: resnet18_ap
+Random model: resnet10
+Random model: resnet18
+Random model: resnet18_ap
+Random model: convnet
+Random model: convnet
+Random model: convnet
+Random model: resnet18_ap
+Random model: resnet18
+Random model: resnet10
+Evaluating convnet
+[Test Epoch 20] Top1: 22.650 Top5: 66.800
+[Test Epoch 40] Top1: 26.800 Top5: 60.400
+[Test Epoch 60] Top1: 27.750 Top5: 62.150
+[Test Epoch 80] Top1: 28.850 Top5: 59.400
+[Test Epoch 100] Top1: 27.750 Top5: 56.650
+Evaluating resnet10
+[Test Epoch 20] Top1: 15.600 Top5: 49.400
+[Test Epoch 40] Top1: 20.800 Top5: 51.200
+[Test Epoch 60] Top1: 23.050 Top5: 54.600
+[Test Epoch 80] Top1: 20.850 Top5: 54.900
+[Test Epoch 100] Top1: 19.150 Top5: 52.650
+Evaluating resnet18
+[Test Epoch 20] Top1: 17.850 Top5: 89.000
+[Test Epoch 40] Top1: 23.250 Top5: 65.800
+[Test Epoch 60] Top1: 19.800 Top5: 54.600
+[Test Epoch 80] Top1: 18.200 Top5: 49.650
+[Test Epoch 100] Top1: 16.600 Top5: 43.700
+Task-0 (old), Current Best Epoch for convnet: 9.0, Top1: 39.050, Top5: 79.000
+Task-0 (old), Current Best Epoch for resnet10: 39.0, Top1: 39.150, Top5: 91.450
+Task-0 (old), Current Best Epoch for resnet18: 9.0, Top1: 42.300, Top5: 91.700
+Evaluating convnet
+[Test Epoch 20] Top1: 4.850 Top5: 61.350
+[Test Epoch 40] Top1: 2.350 Top5: 63.100
+[Test Epoch 60] Top1: 3.800 Top5: 71.250
+[Test Epoch 80] Top1: 4.050 Top5: 71.750
+[Test Epoch 100] Top1: 6.000 Top5: 75.300
+Evaluating resnet10
+[Test Epoch 20] Top1: 21.350 Top5: 94.750
+[Test Epoch 40] Top1: 16.950 Top5: 89.100
+[Test Epoch 60] Top1: 13.500 Top5: 77.650
+[Test Epoch 80] Top1: 9.650 Top5: 73.300
+[Test Epoch 100] Top1: 7.200 Top5: 72.450
+Evaluating resnet18
+[Test Epoch 20] Top1: 0.100 Top5: 39.250
+[Test Epoch 40] Top1: 6.950 Top5: 63.750
+[Test Epoch 60] Top1: 7.200 Top5: 64.800
+[Test Epoch 80] Top1: 9.700 Top5: 71.100
+[Test Epoch 100] Top1: 11.800 Top5: 77.000
+Task-1 (old), Current Best Epoch for convnet: 39.0, Top1: 10.050, Top5: 76.750
+Task-1 (old), Current Best Epoch for resnet10: 19.0, Top1: 26.750, Top5: 58.700
+Task-1 (old), Current Best Epoch for resnet18: 29.0, Top1: 34.350, Top5: 50.100
+Evaluating convnet
+[Test Epoch 20] Top1: 13.850 Top5: 78.950
+[Test Epoch 40] Top1: 7.650 Top5: 83.900
+[Test Epoch 60] Top1: 9.050 Top5: 89.200
+[Test Epoch 80] Top1: 8.800 Top5: 91.400
+[Test Epoch 100] Top1: 7.050 Top5: 89.250
+Evaluating resnet10
+[Test Epoch 20] Top1: 3.200 Top5: 76.100
+[Test Epoch 40] Top1: 6.000 Top5: 72.600
+[Test Epoch 60] Top1: 6.350 Top5: 71.900
+[Test Epoch 80] Top1: 6.950 Top5: 71.650
+[Test Epoch 100] Top1: 6.950 Top5: 71.250
+Evaluating resnet18
+[Test Epoch 20] Top1: 20.600 Top5: 93.800
+[Test Epoch 40] Top1: 8.750 Top5: 64.850
+[Test Epoch 60] Top1: 8.200 Top5: 62.800
+[Test Epoch 80] Top1: 10.450 Top5: 69.750
+[Test Epoch 100] Top1: 12.950 Top5: 74.900
+Task-2 (old), Current Best Epoch for convnet: 9.0, Top1: 15.550, Top5: 80.200
+Task-2 (old), Current Best Epoch for resnet10: 39.0, Top1: 21.000, Top5: 71.900
+Task-2 (old), Current Best Epoch for resnet18: 39.0, Top1: 27.800, Top5: 97.050
+Evaluating convnet
+[Test Epoch 20] Top1: 39.450 Top5: 72.400
+[Test Epoch 40] Top1: 47.700 Top5: 70.150
+[Test Epoch 60] Top1: 47.700 Top5: 67.900
+[Test Epoch 80] Top1: 46.300 Top5: 65.300
+[Test Epoch 100] Top1: 46.750 Top5: 65.950
+Evaluating resnet10
+[Test Epoch 20] Top1: 36.000 Top5: 91.750
+[Test Epoch 40] Top1: 23.500 Top5: 81.850
+[Test Epoch 60] Top1: 21.000 Top5: 74.950
+[Test Epoch 80] Top1: 21.100 Top5: 72.200
+[Test Epoch 100] Top1: 20.250 Top5: 70.050
+Evaluating resnet18
+[Test Epoch 20] Top1: 1.350 Top5: 56.200
+[Test Epoch 40] Top1: 7.450 Top5: 59.500
+[Test Epoch 60] Top1: 9.950 Top5: 58.650
+[Test Epoch 80] Top1: 12.900 Top5: 56.500
+[Test Epoch 100] Top1: 17.600 Top5: 58.350
+Save model for convnet
+Task-3 (current), Current Best Epoch for convnet: 49.0, Top1: 47.700, Top5: 70.150
+Save model for resnet10
+Task-3 (current), Current Best Epoch for resnet10: 49.0, Top1: 36.000, Top5: 91.750
+Task-3 (current), Current Best Epoch for resnet18: 19.0, Top1: 28.250, Top5: 88.250
+/srv/share/skhose3/miniconda3/envs/dim2/lib/python3.10/site-packages/torch/utils/data/dataloader.py:560: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Namespace(ipc=50, batch_size=512, epochs=50, epochs_eval=100, lr=5e-06, eval_lr=0.0003, momentum=0.9, weight_decay=2e-05, eval_model=['convnet'], dim_noise=100, num_workers=4, print_freq=50, eval_interval=10, test_interval=20, data='cifar10', num_classes=10, data_dir='./cifar10', output_dir='./results/test/task-4', logs_dir='./logs/test', aug_type='', mixup_net='cut', bias=False, fc=False, mix_p=-1.0, beta=1.0, tag='test', seed=3407, tasknum=4, memory_filepath='./memory.pkl', samples_per_class=10, classes_per_task=2, samples_per_task=10000, half_batch_size=256)
+INFO : Loaded TRAIN data for TASK 4
+INFO : Loaded TEST data for TASK 4
+HALF BS :  256
+INFO : Loaded TEST data for TASK 0
+INFO : Loaded TEST data for TASK 1
+INFO : Loaded TEST data for TASK 2
+INFO : Loaded TEST data for TASK 3
+INFO : Loaded TEST data for TASK [0, 1, 2, 3, 4]
+Augmentataion Matching:  
+Augmentataion Net update:  
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 5.850 Top5: 41.250
+[Test Epoch 40] Top1: 2.200 Top5: 32.600
+[Test Epoch 60] Top1: 3.350 Top5: 35.900
+[Test Epoch 80] Top1: 2.800 Top5: 27.350
+[Test Epoch 100] Top1: 5.600 Top5: 39.600
+Task-0 (old), Current Best Epoch for convnet: 9.0, Top1: 5.850, Top5: 41.250
+Evaluating convnet
+[Test Epoch 20] Top1: 3.450 Top5: 43.650
+[Test Epoch 40] Top1: 3.050 Top5: 53.400
+[Test Epoch 60] Top1: 2.950 Top5: 48.600
+[Test Epoch 80] Top1: 3.300 Top5: 50.550
+[Test Epoch 100] Top1: 2.550 Top5: 47.200
+Task-1 (old), Current Best Epoch for convnet: 9.0, Top1: 3.450, Top5: 43.650
+Evaluating convnet
+[Test Epoch 20] Top1: 31.750 Top5: 83.700
+[Test Epoch 40] Top1: 30.850 Top5: 82.300
+[Test Epoch 60] Top1: 29.050 Top5: 80.400
+[Test Epoch 80] Top1: 28.400 Top5: 77.650
+[Test Epoch 100] Top1: 25.400 Top5: 77.050
+Task-2 (old), Current Best Epoch for convnet: 9.0, Top1: 31.750, Top5: 83.700
+Evaluating convnet
+[Test Epoch 20] Top1: 12.550 Top5: 51.750
+[Test Epoch 40] Top1: 6.200 Top5: 35.400
+[Test Epoch 60] Top1: 6.600 Top5: 41.300
+[Test Epoch 80] Top1: 7.850 Top5: 42.150
+[Test Epoch 100] Top1: 7.050 Top5: 40.050
+Task-3 (old), Current Best Epoch for convnet: 9.0, Top1: 12.550, Top5: 51.750
+Evaluating convnet
+[Test Epoch 20] Top1: 5.850 Top5: 34.150
+[Test Epoch 40] Top1: 8.000 Top5: 42.700
+[Test Epoch 60] Top1: 8.100 Top5: 45.800
+[Test Epoch 80] Top1: 4.500 Top5: 32.400
+[Test Epoch 100] Top1: 5.350 Top5: 35.650
+Task-4 (current), Current Best Epoch for convnet: 9.0, Top1: 8.100, Top5: 45.800
+Evaluating convnet
+[Test Epoch 20] Top1: 13.350 Top5: 53.880
+[Test Epoch 40] Top1: 11.980 Top5: 53.660
+[Test Epoch 60] Top1: 12.160 Top5: 52.520
+[Test Epoch 80] Top1: 12.440 Top5: 52.690
+[Test Epoch 100] Top1: 12.180 Top5: 52.120
+Task- 0 to 4 (all), Current Best Epoch for convnet: 9.0, Top1: 13.350, Top5: 53.880
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 6.900 Top5: 55.450
+[Test Epoch 40] Top1: 6.000 Top5: 51.200
+[Test Epoch 60] Top1: 6.450 Top5: 52.950
+[Test Epoch 80] Top1: 10.950 Top5: 55.350
+[Test Epoch 100] Top1: 6.400 Top5: 50.200
+Task-0 (old), Current Best Epoch for convnet: 19.0, Top1: 10.950, Top5: 55.350
+Evaluating convnet
+[Test Epoch 20] Top1: 11.800 Top5: 47.250
+[Test Epoch 40] Top1: 15.700 Top5: 47.450
+[Test Epoch 60] Top1: 14.000 Top5: 45.700
+[Test Epoch 80] Top1: 15.200 Top5: 45.600
+[Test Epoch 100] Top1: 9.950 Top5: 42.150
+Task-1 (old), Current Best Epoch for convnet: 19.0, Top1: 15.700, Top5: 47.450
+Evaluating convnet
+[Test Epoch 20] Top1: 2.900 Top5: 28.700
+[Test Epoch 40] Top1: 3.950 Top5: 34.950
+[Test Epoch 60] Top1: 4.350 Top5: 35.400
+[Test Epoch 80] Top1: 2.650 Top5: 30.800
+[Test Epoch 100] Top1: 2.900 Top5: 32.800
+Task-2 (old), Current Best Epoch for convnet: 9.0, Top1: 31.750, Top5: 83.700
+Evaluating convnet
+[Test Epoch 20] Top1: 5.550 Top5: 38.400
+[Test Epoch 40] Top1: 1.850 Top5: 26.450
+[Test Epoch 60] Top1: 6.300 Top5: 37.950
+[Test Epoch 80] Top1: 2.100 Top5: 26.850
+[Test Epoch 100] Top1: 5.300 Top5: 37.350
+Task-3 (old), Current Best Epoch for convnet: 9.0, Top1: 12.550, Top5: 51.750
+Evaluating convnet
+[Test Epoch 20] Top1: 3.600 Top5: 29.850
+[Test Epoch 40] Top1: 2.750 Top5: 26.550
+[Test Epoch 60] Top1: 5.850 Top5: 39.950
+[Test Epoch 80] Top1: 2.100 Top5: 24.350
+[Test Epoch 100] Top1: 4.300 Top5: 36.900
+Task-4 (current), Current Best Epoch for convnet: 9.0, Top1: 8.100, Top5: 45.800
+Evaluating convnet
+[Test Epoch 20] Top1: 10.960 Top5: 52.820
+[Test Epoch 40] Top1: 12.660 Top5: 53.080
+[Test Epoch 60] Top1: 12.530 Top5: 53.280
+[Test Epoch 80] Top1: 13.050 Top5: 53.010
+[Test Epoch 100] Top1: 13.030 Top5: 52.730
+Task- 0 to 4 (all), Current Best Epoch for convnet: 9.0, Top1: 13.350, Top5: 53.880
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 12.650 Top5: 44.900
+[Test Epoch 40] Top1: 14.000 Top5: 50.100
+[Test Epoch 60] Top1: 19.150 Top5: 53.200
+[Test Epoch 80] Top1: 16.900 Top5: 47.700
+[Test Epoch 100] Top1: 18.950 Top5: 52.100
+Task-0 (old), Current Best Epoch for convnet: 29.0, Top1: 19.150, Top5: 53.200
+Evaluating convnet
+[Test Epoch 20] Top1: 7.500 Top5: 49.050
+[Test Epoch 40] Top1: 7.550 Top5: 47.700
+[Test Epoch 60] Top1: 10.600 Top5: 55.200
+[Test Epoch 80] Top1: 4.950 Top5: 41.400
+[Test Epoch 100] Top1: 6.300 Top5: 48.200
+Task-1 (old), Current Best Epoch for convnet: 19.0, Top1: 15.700, Top5: 47.450
+Evaluating convnet
+[Test Epoch 20] Top1: 8.100 Top5: 46.300
+[Test Epoch 40] Top1: 8.750 Top5: 54.000
+[Test Epoch 60] Top1: 7.550 Top5: 50.100
+[Test Epoch 80] Top1: 8.850 Top5: 50.700
+[Test Epoch 100] Top1: 6.750 Top5: 45.500
+Task-2 (old), Current Best Epoch for convnet: 9.0, Top1: 31.750, Top5: 83.700
+Evaluating convnet
+[Test Epoch 20] Top1: 4.900 Top5: 40.500
+[Test Epoch 40] Top1: 7.200 Top5: 48.500
+[Test Epoch 60] Top1: 8.550 Top5: 50.450
+[Test Epoch 80] Top1: 6.400 Top5: 47.200
+[Test Epoch 100] Top1: 4.450 Top5: 41.850
+Task-3 (old), Current Best Epoch for convnet: 9.0, Top1: 12.550, Top5: 51.750
+Evaluating convnet
+[Test Epoch 20] Top1: 10.150 Top5: 57.800
+[Test Epoch 40] Top1: 10.850 Top5: 52.450
+[Test Epoch 60] Top1: 15.350 Top5: 53.000
+[Test Epoch 80] Top1: 17.700 Top5: 59.750
+[Test Epoch 100] Top1: 17.350 Top5: 57.000
+Task-4 (current), Current Best Epoch for convnet: 29.0, Top1: 17.700, Top5: 59.750
+Evaluating convnet
+[Test Epoch 20] Top1: 10.470 Top5: 52.930
+[Test Epoch 40] Top1: 11.350 Top5: 53.350
+[Test Epoch 60] Top1: 10.870 Top5: 53.360
+[Test Epoch 80] Top1: 11.390 Top5: 53.520
+[Test Epoch 100] Top1: 11.450 Top5: 53.670
+Task- 0 to 4 (all), Current Best Epoch for convnet: 9.0, Top1: 13.350, Top5: 53.880
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 11.550 Top5: 48.000
+[Test Epoch 40] Top1: 16.300 Top5: 49.300
+[Test Epoch 60] Top1: 13.750 Top5: 47.200
+[Test Epoch 80] Top1: 16.550 Top5: 48.150
+[Test Epoch 100] Top1: 16.500 Top5: 45.550
+Task-0 (old), Current Best Epoch for convnet: 29.0, Top1: 19.150, Top5: 53.200
+Evaluating convnet
+[Test Epoch 20] Top1: 13.450 Top5: 61.500
+[Test Epoch 40] Top1: 6.950 Top5: 60.050
+[Test Epoch 60] Top1: 6.450 Top5: 60.450
+[Test Epoch 80] Top1: 5.350 Top5: 61.150
+[Test Epoch 100] Top1: 4.550 Top5: 59.800
+Task-1 (old), Current Best Epoch for convnet: 19.0, Top1: 15.700, Top5: 47.450
+Evaluating convnet
+[Test Epoch 20] Top1: 9.100 Top5: 52.900
+[Test Epoch 40] Top1: 11.350 Top5: 59.100
+[Test Epoch 60] Top1: 13.100 Top5: 64.200
+[Test Epoch 80] Top1: 11.050 Top5: 60.700
+[Test Epoch 100] Top1: 8.550 Top5: 58.900
+Task-2 (old), Current Best Epoch for convnet: 9.0, Top1: 31.750, Top5: 83.700
+Evaluating convnet
+[Test Epoch 20] Top1: 7.250 Top5: 49.000
+[Test Epoch 40] Top1: 5.450 Top5: 43.900
+[Test Epoch 60] Top1: 8.500 Top5: 53.550
+[Test Epoch 80] Top1: 7.800 Top5: 51.300
+[Test Epoch 100] Top1: 6.800 Top5: 49.700
+Task-3 (old), Current Best Epoch for convnet: 9.0, Top1: 12.550, Top5: 51.750
+Evaluating convnet
+[Test Epoch 20] Top1: 12.250 Top5: 53.200
+[Test Epoch 40] Top1: 26.400 Top5: 65.300
+[Test Epoch 60] Top1: 23.100 Top5: 58.250
+[Test Epoch 80] Top1: 25.350 Top5: 57.900
+[Test Epoch 100] Top1: 32.250 Top5: 63.350
+Task-4 (current), Current Best Epoch for convnet: 39.0, Top1: 32.250, Top5: 63.350
+Evaluating convnet
+[Test Epoch 20] Top1: 13.040 Top5: 52.480
+[Test Epoch 40] Top1: 13.410 Top5: 54.580
+[Test Epoch 60] Top1: 13.750 Top5: 54.860
+[Test Epoch 80] Top1: 14.380 Top5: 55.520
+[Test Epoch 100] Top1: 14.140 Top5: 54.840
+Task- 0 to 4 (all), Current Best Epoch for convnet: 39.0, Top1: 14.380, Top5: 55.520
+img and data saved!
+Evaluating convnet
+[Test Epoch 20] Top1: 2.150 Top5: 28.800
+[Test Epoch 40] Top1: 6.550 Top5: 35.300
+[Test Epoch 60] Top1: 10.600 Top5: 40.100
+[Test Epoch 80] Top1: 17.700 Top5: 50.500
+[Test Epoch 100] Top1: 14.500 Top5: 40.600
+Task-0 (old), Current Best Epoch for convnet: 29.0, Top1: 19.150, Top5: 53.200
+Evaluating convnet
+[Test Epoch 20] Top1: 8.550 Top5: 54.450
+[Test Epoch 40] Top1: 4.550 Top5: 45.850
+[Test Epoch 60] Top1: 5.000 Top5: 51.650
+[Test Epoch 80] Top1: 2.150 Top5: 43.550
+[Test Epoch 100] Top1: 2.450 Top5: 42.050
+Task-1 (old), Current Best Epoch for convnet: 19.0, Top1: 15.700, Top5: 47.450
+Evaluating convnet
+[Test Epoch 20] Top1: 12.800 Top5: 61.350
+[Test Epoch 40] Top1: 11.000 Top5: 59.350
+[Test Epoch 60] Top1: 10.300 Top5: 60.700
+[Test Epoch 80] Top1: 10.950 Top5: 65.150
+[Test Epoch 100] Top1: 6.150 Top5: 58.900
+Task-2 (old), Current Best Epoch for convnet: 9.0, Top1: 31.750, Top5: 83.700
+Evaluating convnet
+[Test Epoch 20] Top1: 5.050 Top5: 44.450
+[Test Epoch 40] Top1: 5.250 Top5: 46.150
+[Test Epoch 60] Top1: 6.000 Top5: 47.750
+[Test Epoch 80] Top1: 8.050 Top5: 54.550
+[Test Epoch 100] Top1: 7.750 Top5: 54.150
+Task-3 (old), Current Best Epoch for convnet: 9.0, Top1: 12.550, Top5: 51.750
+Evaluating convnet
+[Test Epoch 20] Top1: 13.150 Top5: 58.500
+[Test Epoch 40] Top1: 21.400 Top5: 57.750
+[Test Epoch 60] Top1: 24.250 Top5: 60.650
+[Test Epoch 80] Top1: 28.500 Top5: 62.900
+[Test Epoch 100] Top1: 31.300 Top5: 63.150
+Task-4 (current), Current Best Epoch for convnet: 39.0, Top1: 32.250, Top5: 63.350
+Evaluating convnet
+[Test Epoch 20] Top1: 12.890 Top5: 53.870
+[Test Epoch 40] Top1: 13.390 Top5: 54.560
+[Test Epoch 60] Top1: 13.800 Top5: 54.690
+[Test Epoch 80] Top1: 14.050 Top5: 54.850
+[Test Epoch 100] Top1: 14.480 Top5: 55.280
+Task- 0 to 4 (all), Current Best Epoch for convnet: 49.0, Top1: 14.480, Top5: 55.280
+Saving epoch-49 of Generator as best.pth
+/srv/share/skhose3/miniconda3/envs/dim2/lib/python3.10/site-packages/torch/utils/data/dataloader.py:560: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Namespace(ipc=50, batch_size=512, epochs=50, epochs_eval=100, epochs_match=100, epochs_match_train=16, lr=5e-06, eval_lr=0.0003, momentum=0.9, weight_decay=2e-05, match_coeff=0.001, match_model='convnet', match='grad', eval_model=['convnet', 'resnet10', 'resnet18'], dim_noise=100, num_workers=4, print_freq=100, eval_interval=10, test_interval=20, fix_disc=False, data='cifar10', num_classes=10, data_dir='./cifar10', output_dir='./results/pool-match-test/task-4', logs_dir='./logs/pool-match-test', weight='./results/test/task-4/last.pth', match_aug=False, aug_type='', mixup_net='cut', metric='l1', bias=False, fc=False, mix_p=-1.0, beta=1.0, tag='pool-match-test', seed=3407, tasknum=4, memory_filepath='./memory.pkl', samples_per_class=10, classes_per_task=2, samples_per_task=10000, half_batch_size=256)
+INFO : Loaded TRAIN data for TASK 4
+INFO : Loaded TEST data for TASK 4
+HALF BS :  256
+INFO : Loaded TEST data for TASK 0
+INFO : Loaded TEST data for TASK 1
+INFO : Loaded TEST data for TASK 2
+INFO : Loaded TEST data for TASK 3
+Augmentataion Matching:  
+Augmentataion Net update:  
+Random model: convnet
+Random model: convnet
+Random model: resnet10
+Random model: resnet18_ap
+Random model: resnet10_ap
+Random model: convnet
+Random model: resnet10_ap
+Random model: resnet18
+Random model: resnet18
+Random model: resnet18
+Evaluating convnet
+[Test Epoch 20] Top1: 18.250 Top5: 62.900
+[Test Epoch 40] Top1: 21.100 Top5: 63.000
+[Test Epoch 60] Top1: 25.700 Top5: 66.350
+[Test Epoch 80] Top1: 30.650 Top5: 65.050
+[Test Epoch 100] Top1: 33.200 Top5: 67.050
+Evaluating resnet10
+[Test Epoch 20] Top1: 1.800 Top5: 42.600
+[Test Epoch 40] Top1: 4.850 Top5: 45.550
+[Test Epoch 60] Top1: 7.050 Top5: 46.950
+[Test Epoch 80] Top1: 7.600 Top5: 48.550
+[Test Epoch 100] Top1: 8.850 Top5: 50.150
+Evaluating resnet18
+[Test Epoch 20] Top1: 23.350 Top5: 78.200
+[Test Epoch 40] Top1: 12.800 Top5: 59.700
+[Test Epoch 60] Top1: 8.650 Top5: 49.750
+[Test Epoch 80] Top1: 8.850 Top5: 48.900
+[Test Epoch 100] Top1: 7.250 Top5: 44.750
+Save model for convnet
+Task-0 (old), Current Best Epoch for convnet: 9.0, Top1: 33.200, Top5: 67.050
+Save model for resnet10
+Task-0 (old), Current Best Epoch for resnet10: 9.0, Top1: 8.850, Top5: 50.150
+Save model for resnet18
+Task-0 (old), Current Best Epoch for resnet18: 9.0, Top1: 23.350, Top5: 78.200
+Evaluating convnet
+[Test Epoch 20] Top1: 17.950 Top5: 66.800
+[Test Epoch 40] Top1: 10.100 Top5: 57.850
+[Test Epoch 60] Top1: 13.900 Top5: 69.200
+[Test Epoch 80] Top1: 9.900 Top5: 66.950
+[Test Epoch 100] Top1: 9.500 Top5: 66.700
+Evaluating resnet10
+[Test Epoch 20] Top1: 0.400 Top5: 38.200
+[Test Epoch 40] Top1: 2.450 Top5: 36.900
+[Test Epoch 60] Top1: 3.000 Top5: 36.250
+[Test Epoch 80] Top1: 3.050 Top5: 39.050
+[Test Epoch 100] Top1: 4.550 Top5: 44.500
+Evaluating resnet18
+[Test Epoch 20] Top1: 13.300 Top5: 61.550
+[Test Epoch 40] Top1: 11.250 Top5: 55.250
+[Test Epoch 60] Top1: 9.250 Top5: 53.950
+[Test Epoch 80] Top1: 9.600 Top5: 52.000
+[Test Epoch 100] Top1: 9.750 Top5: 52.250
+Save model for convnet
+Task-1 (old), Current Best Epoch for convnet: 9.0, Top1: 17.950, Top5: 66.800
+Save model for resnet10
+Task-1 (old), Current Best Epoch for resnet10: 9.0, Top1: 4.550, Top5: 44.500
+Save model for resnet18
+Task-1 (old), Current Best Epoch for resnet18: 9.0, Top1: 13.300, Top5: 61.550
+Evaluating convnet
+[Test Epoch 20] Top1: 8.800 Top5: 59.550
+[Test Epoch 40] Top1: 4.000 Top5: 52.650
+[Test Epoch 60] Top1: 3.350 Top5: 55.050
+[Test Epoch 80] Top1: 1.800 Top5: 46.600
+[Test Epoch 100] Top1: 1.700 Top5: 50.050
+Evaluating resnet10
+[Test Epoch 20] Top1: 0.300 Top5: 29.300
+[Test Epoch 40] Top1: 1.700 Top5: 27.750
+[Test Epoch 60] Top1: 3.950 Top5: 32.950
+[Test Epoch 80] Top1: 5.650 Top5: 40.150
+[Test Epoch 100] Top1: 6.750 Top5: 41.800
+Evaluating resnet18
+[Test Epoch 20] Top1: 0.500 Top5: 15.200
+[Test Epoch 40] Top1: 2.550 Top5: 23.400
+[Test Epoch 60] Top1: 8.250 Top5: 44.600
+[Test Epoch 80] Top1: 13.850 Top5: 53.000
+[Test Epoch 100] Top1: 10.300 Top5: 46.200
+Save model for convnet
+Task-2 (old), Current Best Epoch for convnet: 9.0, Top1: 8.800, Top5: 59.550
+Save model for resnet10
+Task-2 (old), Current Best Epoch for resnet10: 9.0, Top1: 6.750, Top5: 41.800
+Save model for resnet18
+Task-2 (old), Current Best Epoch for resnet18: 9.0, Top1: 13.850, Top5: 53.000
+Evaluating convnet
+[Test Epoch 20] Top1: 9.250 Top5: 53.800
+[Test Epoch 40] Top1: 3.700 Top5: 43.200
+[Test Epoch 60] Top1: 4.300 Top5: 50.950
+[Test Epoch 80] Top1: 3.000 Top5: 42.100
+[Test Epoch 100] Top1: 2.900 Top5: 46.950
+Evaluating resnet10
+[Test Epoch 20] Top1: 0.200 Top5: 41.600
+[Test Epoch 40] Top1: 2.500 Top5: 37.700
+[Test Epoch 60] Top1: 4.000 Top5: 37.600
+[Test Epoch 80] Top1: 5.200 Top5: 42.900
+[Test Epoch 100] Top1: 5.050 Top5: 44.550
+Evaluating resnet18
+[Test Epoch 20] Top1: 14.650 Top5: 72.850
+[Test Epoch 40] Top1: 6.350 Top5: 52.600
+[Test Epoch 60] Top1: 4.450 Top5: 44.450
+[Test Epoch 80] Top1: 4.850 Top5: 44.350
+[Test Epoch 100] Top1: 8.350 Top5: 56.100
+Save model for convnet
+Task-3 (old), Current Best Epoch for convnet: 9.0, Top1: 9.250, Top5: 53.800
+Save model for resnet10
+Task-3 (old), Current Best Epoch for resnet10: 9.0, Top1: 5.200, Top5: 42.900
+Save model for resnet18
+Task-3 (old), Current Best Epoch for resnet18: 9.0, Top1: 14.650, Top5: 72.850
+Evaluating convnet
+[Test Epoch 20] Top1: 16.400 Top5: 59.850
+[Test Epoch 40] Top1: 16.700 Top5: 59.000
+[Test Epoch 60] Top1: 23.050 Top5: 59.100
+[Test Epoch 80] Top1: 21.200 Top5: 54.900
+[Test Epoch 100] Top1: 23.500 Top5: 52.000
+Evaluating resnet10
+[Test Epoch 20] Top1: 17.800 Top5: 76.000
+[Test Epoch 40] Top1: 12.500 Top5: 68.550
+[Test Epoch 60] Top1: 9.000 Top5: 55.600
+[Test Epoch 80] Top1: 7.050 Top5: 47.850
+[Test Epoch 100] Top1: 7.550 Top5: 46.950
+Evaluating resnet18
+[Test Epoch 20] Top1: 15.250 Top5: 49.150
+[Test Epoch 40] Top1: 11.650 Top5: 54.950
+[Test Epoch 60] Top1: 13.050 Top5: 59.800
+[Test Epoch 80] Top1: 13.550 Top5: 58.500
+[Test Epoch 100] Top1: 13.550 Top5: 56.100
+Save model for convnet
+Task-4 (current), Current Best Epoch for convnet: 9.0, Top1: 23.500, Top5: 52.000
+Save model for resnet10
+Task-4 (current), Current Best Epoch for resnet10: 9.0, Top1: 17.800, Top5: 76.000
+Save model for resnet18
+Task-4 (current), Current Best Epoch for resnet18: 9.0, Top1: 15.250, Top5: 49.150
+Random model: resnet10
+Random model: convnet
+Random model: resnet18
+Random model: resnet18_ap
+Random model: resnet18_ap
+Random model: resnet10_ap
+Random model: resnet18
+Random model: resnet10
+Random model: resnet18_ap
+Random model: resnet18
+Evaluating convnet
+[Test Epoch 20] Top1: 26.850 Top5: 72.100
+[Test Epoch 40] Top1: 30.900 Top5: 67.550
+[Test Epoch 60] Top1: 36.300 Top5: 70.200
+[Test Epoch 80] Top1: 34.450 Top5: 66.250
+[Test Epoch 100] Top1: 32.450 Top5: 61.750
+Evaluating resnet10
+[Test Epoch 20] Top1: 12.700 Top5: 42.650
+[Test Epoch 40] Top1: 9.750 Top5: 36.750
+[Test Epoch 60] Top1: 8.200 Top5: 35.400
+[Test Epoch 80] Top1: 9.650 Top5: 39.500
+[Test Epoch 100] Top1: 11.000 Top5: 42.850
+Evaluating resnet18
+[Test Epoch 20] Top1: 23.600 Top5: 80.400
+[Test Epoch 40] Top1: 8.650 Top5: 34.700
+[Test Epoch 60] Top1: 7.650 Top5: 31.450
+[Test Epoch 80] Top1: 10.950 Top5: 43.650
+[Test Epoch 100] Top1: 12.850 Top5: 48.900
+Save model for convnet
+Task-0 (old), Current Best Epoch for convnet: 19.0, Top1: 36.300, Top5: 70.200
+Save model for resnet10
+Task-0 (old), Current Best Epoch for resnet10: 19.0, Top1: 12.700, Top5: 42.650
+Save model for resnet18
+Task-0 (old), Current Best Epoch for resnet18: 19.0, Top1: 23.600, Top5: 80.400
+Evaluating convnet
+[Test Epoch 20] Top1: 6.700 Top5: 43.350
+[Test Epoch 40] Top1: 6.650 Top5: 52.450
+[Test Epoch 60] Top1: 8.250 Top5: 62.100
+[Test Epoch 80] Top1: 4.300 Top5: 52.250
+[Test Epoch 100] Top1: 4.750 Top5: 54.600
+Evaluating resnet10
+[Test Epoch 20] Top1: 1.750 Top5: 49.250
+[Test Epoch 40] Top1: 7.400 Top5: 51.700
+[Test Epoch 60] Top1: 11.500 Top5: 55.150
+[Test Epoch 80] Top1: 11.800 Top5: 55.850
+[Test Epoch 100] Top1: 13.600 Top5: 58.500
+Evaluating resnet18
+[Test Epoch 20] Top1: 2.600 Top5: 17.750
+[Test Epoch 40] Top1: 7.700 Top5: 35.000
+[Test Epoch 60] Top1: 10.900 Top5: 45.200
+[Test Epoch 80] Top1: 10.400 Top5: 46.250
+[Test Epoch 100] Top1: 8.250 Top5: 45.100
+Task-1 (old), Current Best Epoch for convnet: 9.0, Top1: 17.950, Top5: 66.800
+Save model for resnet10
+Task-1 (old), Current Best Epoch for resnet10: 19.0, Top1: 13.600, Top5: 58.500
+Task-1 (old), Current Best Epoch for resnet18: 9.0, Top1: 13.300, Top5: 61.550
+Evaluating convnet
+[Test Epoch 20] Top1: 6.850 Top5: 49.150
+[Test Epoch 40] Top1: 4.100 Top5: 46.700
+[Test Epoch 60] Top1: 4.600 Top5: 56.250
+[Test Epoch 80] Top1: 1.350 Top5: 38.000
+[Test Epoch 100] Top1: 1.700 Top5: 46.950
+Evaluating resnet10
+[Test Epoch 20] Top1: 8.850 Top5: 48.300
+[Test Epoch 40] Top1: 12.600 Top5: 49.600
+[Test Epoch 60] Top1: 13.100 Top5: 53.150
+[Test Epoch 80] Top1: 12.400 Top5: 55.200
+[Test Epoch 100] Top1: 10.350 Top5: 53.550
+Evaluating resnet18
+[Test Epoch 20] Top1: 14.900 Top5: 81.050
+[Test Epoch 40] Top1: 13.000 Top5: 63.850
+[Test Epoch 60] Top1: 11.650 Top5: 58.000
+[Test Epoch 80] Top1: 10.750 Top5: 55.850
+[Test Epoch 100] Top1: 12.750 Top5: 61.750
+Task-2 (old), Current Best Epoch for convnet: 9.0, Top1: 8.800, Top5: 59.550
+Save model for resnet10
+Task-2 (old), Current Best Epoch for resnet10: 19.0, Top1: 13.100, Top5: 53.150
+Save model for resnet18
+Task-2 (old), Current Best Epoch for resnet18: 19.0, Top1: 14.900, Top5: 81.050
+Evaluating convnet
+[Test Epoch 20] Top1: 3.850 Top5: 44.300
+[Test Epoch 40] Top1: 5.250 Top5: 56.950
+[Test Epoch 60] Top1: 3.050 Top5: 48.650
+[Test Epoch 80] Top1: 1.450 Top5: 43.750
+[Test Epoch 100] Top1: 2.450 Top5: 50.650
+Evaluating resnet10
+[Test Epoch 20] Top1: 3.200 Top5: 52.200
+[Test Epoch 40] Top1: 3.850 Top5: 48.450
+[Test Epoch 60] Top1: 4.350 Top5: 46.000
+[Test Epoch 80] Top1: 6.050 Top5: 50.150
+[Test Epoch 100] Top1: 5.700 Top5: 49.050
+Evaluating resnet18
+[Test Epoch 20] Top1: 13.450 Top5: 47.350
+[Test Epoch 40] Top1: 8.950 Top5: 43.700
+[Test Epoch 60] Top1: 9.500 Top5: 42.450
+[Test Epoch 80] Top1: 8.500 Top5: 44.750
+[Test Epoch 100] Top1: 7.100 Top5: 44.300
+Task-3 (old), Current Best Epoch for convnet: 9.0, Top1: 9.250, Top5: 53.800
+Save model for resnet10
+Task-3 (old), Current Best Epoch for resnet10: 19.0, Top1: 6.050, Top5: 50.150
+Task-3 (old), Current Best Epoch for resnet18: 9.0, Top1: 14.650, Top5: 72.850
+Evaluating convnet
+[Test Epoch 20] Top1: 14.000 Top5: 60.350
+[Test Epoch 40] Top1: 26.350 Top5: 67.550
+[Test Epoch 60] Top1: 30.050 Top5: 66.200
+[Test Epoch 80] Top1: 33.750 Top5: 63.350
+[Test Epoch 100] Top1: 33.850 Top5: 62.300
+Evaluating resnet10
+[Test Epoch 20] Top1: 1.500 Top5: 32.700
+[Test Epoch 40] Top1: 4.450 Top5: 37.450
+[Test Epoch 60] Top1: 7.600 Top5: 41.000
+[Test Epoch 80] Top1: 10.700 Top5: 45.300
+[Test Epoch 100] Top1: 13.250 Top5: 48.100
+Evaluating resnet18
+[Test Epoch 20] Top1: 6.850 Top5: 43.900
+[Test Epoch 40] Top1: 11.800 Top5: 43.900
+[Test Epoch 60] Top1: 11.100 Top5: 45.250
+[Test Epoch 80] Top1: 10.800 Top5: 44.050
+[Test Epoch 100] Top1: 12.450 Top5: 45.650
+Save model for convnet
+Task-4 (current), Current Best Epoch for convnet: 19.0, Top1: 33.850, Top5: 62.300
+Task-4 (current), Current Best Epoch for resnet10: 9.0, Top1: 17.800, Top5: 76.000
+Task-4 (current), Current Best Epoch for resnet18: 9.0, Top1: 15.250, Top5: 49.150
+Random model: convnet
+Random model: convnet
+Random model: resnet18_ap
+Random model: convnet
+Random model: resnet10_ap
+Random model: resnet18
+Random model: convnet
+Random model: resnet10_ap
+Random model: resnet18
+Random model: resnet18_ap
+Evaluating convnet
+[Test Epoch 20] Top1: 10.350 Top5: 43.000
+[Test Epoch 40] Top1: 25.100 Top5: 55.450
+[Test Epoch 60] Top1: 28.800 Top5: 56.900
+[Test Epoch 80] Top1: 29.500 Top5: 53.400
+[Test Epoch 100] Top1: 31.250 Top5: 53.750
+Evaluating resnet10
+[Test Epoch 20] Top1: 22.550 Top5: 77.650
+[Test Epoch 40] Top1: 16.400 Top5: 66.250
+[Test Epoch 60] Top1: 13.500 Top5: 59.800
+[Test Epoch 80] Top1: 12.450 Top5: 56.300
+[Test Epoch 100] Top1: 12.500 Top5: 55.300
+Evaluating resnet18
+[Test Epoch 20] Top1: 7.650 Top5: 76.300
+[Test Epoch 40] Top1: 9.250 Top5: 55.300
+[Test Epoch 60] Top1: 6.350 Top5: 41.550
+[Test Epoch 80] Top1: 7.850 Top5: 46.500
+[Test Epoch 100] Top1: 9.200 Top5: 46.800
+Task-0 (old), Current Best Epoch for convnet: 19.0, Top1: 36.300, Top5: 70.200
+Save model for resnet10
+Task-0 (old), Current Best Epoch for resnet10: 29.0, Top1: 22.550, Top5: 77.650
+Task-0 (old), Current Best Epoch for resnet18: 19.0, Top1: 23.600, Top5: 80.400
+Evaluating convnet
+[Test Epoch 20] Top1: 10.350 Top5: 44.750
+[Test Epoch 40] Top1: 4.250 Top5: 42.100
+[Test Epoch 60] Top1: 3.450 Top5: 48.250
+[Test Epoch 80] Top1: 3.650 Top5: 49.700
+[Test Epoch 100] Top1: 3.500 Top5: 48.850
+Evaluating resnet10
+[Test Epoch 20] Top1: 2.950 Top5: 41.400
+[Test Epoch 40] Top1: 5.900 Top5: 40.000
+[Test Epoch 60] Top1: 6.950 Top5: 43.950
+[Test Epoch 80] Top1: 7.900 Top5: 48.100
+[Test Epoch 100] Top1: 7.550 Top5: 50.200
+Evaluating resnet18
+[Test Epoch 20] Top1: 38.050 Top5: 98.450
+[Test Epoch 40] Top1: 6.350 Top5: 51.200
+[Test Epoch 60] Top1: 5.700 Top5: 40.000
+[Test Epoch 80] Top1: 9.900 Top5: 52.650
+[Test Epoch 100] Top1: 10.950 Top5: 55.150
+Task-1 (old), Current Best Epoch for convnet: 9.0, Top1: 17.950, Top5: 66.800
+Task-1 (old), Current Best Epoch for resnet10: 19.0, Top1: 13.600, Top5: 58.500
+Save model for resnet18
+Task-1 (old), Current Best Epoch for resnet18: 29.0, Top1: 38.050, Top5: 98.450
+Evaluating convnet
+[Test Epoch 20] Top1: 4.800 Top5: 36.800
+[Test Epoch 40] Top1: 1.450 Top5: 32.750
+[Test Epoch 60] Top1: 0.500 Top5: 33.050
+[Test Epoch 80] Top1: 1.000 Top5: 39.950
+[Test Epoch 100] Top1: 0.700 Top5: 37.200
+Evaluating resnet10
+[Test Epoch 20] Top1: 10.200 Top5: 51.300
+[Test Epoch 40] Top1: 10.350 Top5: 50.800
+[Test Epoch 60] Top1: 9.900 Top5: 53.450
+[Test Epoch 80] Top1: 9.700 Top5: 54.700
+[Test Epoch 100] Top1: 7.950 Top5: 50.950
+Evaluating resnet18
+[Test Epoch 20] Top1: 10.550 Top5: 62.000
+[Test Epoch 40] Top1: 18.200 Top5: 59.450
+[Test Epoch 60] Top1: 14.950 Top5: 54.050
+[Test Epoch 80] Top1: 13.100 Top5: 54.450
+[Test Epoch 100] Top1: 14.550 Top5: 62.050
+Task-2 (old), Current Best Epoch for convnet: 9.0, Top1: 8.800, Top5: 59.550
+Task-2 (old), Current Best Epoch for resnet10: 19.0, Top1: 13.100, Top5: 53.150
+Save model for resnet18
+Task-2 (old), Current Best Epoch for resnet18: 29.0, Top1: 18.200, Top5: 59.450
+Evaluating convnet
+[Test Epoch 20] Top1: 9.250 Top5: 57.000
+[Test Epoch 40] Top1: 4.650 Top5: 55.050
+[Test Epoch 60] Top1: 4.100 Top5: 56.650
+[Test Epoch 80] Top1: 4.100 Top5: 65.550
+[Test Epoch 100] Top1: 2.800 Top5: 54.750
+Evaluating resnet10
+[Test Epoch 20] Top1: 1.000 Top5: 21.350
+[Test Epoch 40] Top1: 2.200 Top5: 27.200
+[Test Epoch 60] Top1: 5.200 Top5: 38.000
+[Test Epoch 80] Top1: 7.300 Top5: 44.150
+[Test Epoch 100] Top1: 8.200 Top5: 46.000
+Evaluating resnet18
+[Test Epoch 20] Top1: 1.900 Top5: 47.300
+[Test Epoch 40] Top1: 11.550 Top5: 58.650
+[Test Epoch 60] Top1: 13.500 Top5: 55.700
+[Test Epoch 80] Top1: 13.900 Top5: 57.650
+[Test Epoch 100] Top1: 17.300 Top5: 62.150
+Task-3 (old), Current Best Epoch for convnet: 9.0, Top1: 9.250, Top5: 53.800
+Save model for resnet10
+Task-3 (old), Current Best Epoch for resnet10: 29.0, Top1: 8.200, Top5: 46.000
+Save model for resnet18
+Task-3 (old), Current Best Epoch for resnet18: 29.0, Top1: 17.300, Top5: 62.150
+Evaluating convnet
+[Test Epoch 20] Top1: 2.150 Top5: 35.900
+[Test Epoch 40] Top1: 9.600 Top5: 60.000
+[Test Epoch 60] Top1: 19.700 Top5: 67.300
+[Test Epoch 80] Top1: 27.750 Top5: 65.850
+[Test Epoch 100] Top1: 29.800 Top5: 66.000
+Evaluating resnet10
+[Test Epoch 20] Top1: 9.050 Top5: 57.550
+[Test Epoch 40] Top1: 11.550 Top5: 62.800
+[Test Epoch 60] Top1: 13.900 Top5: 62.300
+[Test Epoch 80] Top1: 14.950 Top5: 60.500
+[Test Epoch 100] Top1: 12.300 Top5: 53.700
+Evaluating resnet18
+[Test Epoch 20] Top1: 24.700 Top5: 94.650
+[Test Epoch 40] Top1: 14.800 Top5: 67.450
+[Test Epoch 60] Top1: 13.200 Top5: 61.550
+[Test Epoch 80] Top1: 13.350 Top5: 61.600
+[Test Epoch 100] Top1: 15.650 Top5: 61.850
+Task-4 (current), Current Best Epoch for convnet: 19.0, Top1: 33.850, Top5: 62.300
+Task-4 (current), Current Best Epoch for resnet10: 9.0, Top1: 17.800, Top5: 76.000
+Save model for resnet18
+Task-4 (current), Current Best Epoch for resnet18: 29.0, Top1: 24.700, Top5: 94.650
+Random model: resnet10
+Random model: resnet18_ap
+Random model: resnet18_ap
+Random model: resnet18_ap
+Random model: resnet18_ap
+Random model: resnet10_ap
+Random model: resnet10_ap
+Random model: convnet
+Random model: resnet18
+Random model: resnet10
+Evaluating convnet
+[Test Epoch 20] Top1: 16.600 Top5: 55.950
+[Test Epoch 40] Top1: 29.950 Top5: 64.000
+[Test Epoch 60] Top1: 36.300 Top5: 64.500
+[Test Epoch 80] Top1: 36.950 Top5: 61.450
+[Test Epoch 100] Top1: 37.050 Top5: 60.000
+Evaluating resnet10
+[Test Epoch 20] Top1: 0.000 Top5: 12.400
+[Test Epoch 40] Top1: 1.000 Top5: 24.550
+[Test Epoch 60] Top1: 5.500 Top5: 38.950
+[Test Epoch 80] Top1: 8.900 Top5: 47.150
+[Test Epoch 100] Top1: 10.850 Top5: 51.300
+Evaluating resnet18
+[Test Epoch 20] Top1: 9.700 Top5: 52.400
+[Test Epoch 40] Top1: 10.350 Top5: 53.650
+[Test Epoch 60] Top1: 8.000 Top5: 51.100
+[Test Epoch 80] Top1: 11.300 Top5: 59.200
+[Test Epoch 100] Top1: 11.500 Top5: 55.450
+Save model for convnet
+Task-0 (old), Current Best Epoch for convnet: 39.0, Top1: 37.050, Top5: 60.000
+Task-0 (old), Current Best Epoch for resnet10: 29.0, Top1: 22.550, Top5: 77.650
+Task-0 (old), Current Best Epoch for resnet18: 19.0, Top1: 23.600, Top5: 80.400
+Evaluating convnet
+[Test Epoch 20] Top1: 4.350 Top5: 30.500
+[Test Epoch 40] Top1: 2.100 Top5: 28.650
+[Test Epoch 60] Top1: 4.150 Top5: 36.400
+[Test Epoch 80] Top1: 1.700 Top5: 28.600
+[Test Epoch 100] Top1: 2.200 Top5: 30.900
+Evaluating resnet10
+[Test Epoch 20] Top1: 3.700 Top5: 52.500
+[Test Epoch 40] Top1: 5.300 Top5: 50.750
+[Test Epoch 60] Top1: 6.450 Top5: 49.200
+[Test Epoch 80] Top1: 6.550 Top5: 48.250
+[Test Epoch 100] Top1: 7.450 Top5: 49.200
+Evaluating resnet18
+[Test Epoch 20] Top1: 13.500 Top5: 67.700
+[Test Epoch 40] Top1: 7.050 Top5: 58.250
+[Test Epoch 60] Top1: 6.550 Top5: 50.250
+[Test Epoch 80] Top1: 6.050 Top5: 50.600
+[Test Epoch 100] Top1: 8.100 Top5: 50.950
+Task-1 (old), Current Best Epoch for convnet: 9.0, Top1: 17.950, Top5: 66.800
+Task-1 (old), Current Best Epoch for resnet10: 19.0, Top1: 13.600, Top5: 58.500
+Task-1 (old), Current Best Epoch for resnet18: 29.0, Top1: 38.050, Top5: 98.450
+Evaluating convnet
+[Test Epoch 20] Top1: 2.900 Top5: 31.550
+[Test Epoch 40] Top1: 1.450 Top5: 35.050
+[Test Epoch 60] Top1: 0.850 Top5: 32.750
+[Test Epoch 80] Top1: 1.400 Top5: 43.500
+[Test Epoch 100] Top1: 1.400 Top5: 46.200
+Evaluating resnet10
+[Test Epoch 20] Top1: 25.800 Top5: 49.450
+[Test Epoch 40] Top1: 19.500 Top5: 46.300
+[Test Epoch 60] Top1: 12.650 Top5: 41.450
+[Test Epoch 80] Top1: 10.400 Top5: 45.050
+[Test Epoch 100] Top1: 9.300 Top5: 48.950
+Evaluating resnet18
+[Test Epoch 20] Top1: 11.150 Top5: 46.450
+[Test Epoch 40] Top1: 5.650 Top5: 45.150
+[Test Epoch 60] Top1: 6.350 Top5: 45.150
+[Test Epoch 80] Top1: 7.550 Top5: 51.400
+[Test Epoch 100] Top1: 8.500 Top5: 53.850
+Task-2 (old), Current Best Epoch for convnet: 9.0, Top1: 8.800, Top5: 59.550
+Save model for resnet10
+Task-2 (old), Current Best Epoch for resnet10: 39.0, Top1: 25.800, Top5: 49.450
+Task-2 (old), Current Best Epoch for resnet18: 29.0, Top1: 18.200, Top5: 59.450
+Evaluating convnet
+[Test Epoch 20] Top1: 15.250 Top5: 52.400
+[Test Epoch 40] Top1: 9.100 Top5: 49.750
+[Test Epoch 60] Top1: 7.200 Top5: 60.400
+[Test Epoch 80] Top1: 5.400 Top5: 58.300
+[Test Epoch 100] Top1: 5.200 Top5: 65.050
+Evaluating resnet10
+[Test Epoch 20] Top1: 9.150 Top5: 39.800
+[Test Epoch 40] Top1: 6.000 Top5: 31.950
+[Test Epoch 60] Top1: 5.150 Top5: 32.100
+[Test Epoch 80] Top1: 4.900 Top5: 35.600
+[Test Epoch 100] Top1: 4.350 Top5: 37.150
+Evaluating resnet18
+[Test Epoch 20] Top1: 0.100 Top5: 23.950
+[Test Epoch 40] Top1: 10.250 Top5: 55.650
+[Test Epoch 60] Top1: 11.900 Top5: 58.200
+[Test Epoch 80] Top1: 9.200 Top5: 51.500
+[Test Epoch 100] Top1: 7.400 Top5: 47.850
+Save model for convnet
+Task-3 (old), Current Best Epoch for convnet: 39.0, Top1: 15.250, Top5: 52.400
+Save model for resnet10
+Task-3 (old), Current Best Epoch for resnet10: 39.0, Top1: 9.150, Top5: 39.800
+Task-3 (old), Current Best Epoch for resnet18: 29.0, Top1: 17.300, Top5: 62.150
+Evaluating convnet
+[Test Epoch 20] Top1: 13.300 Top5: 52.200
+[Test Epoch 40] Top1: 28.000 Top5: 56.700
+[Test Epoch 60] Top1: 33.750 Top5: 56.400
+[Test Epoch 80] Top1: 35.600 Top5: 56.900
+[Test Epoch 100] Top1: 33.100 Top5: 53.650
+Evaluating resnet10
+[Test Epoch 20] Top1: 9.400 Top5: 60.800
+[Test Epoch 40] Top1: 10.750 Top5: 62.100
+[Test Epoch 60] Top1: 13.950 Top5: 57.800
+[Test Epoch 80] Top1: 15.400 Top5: 54.300
+[Test Epoch 100] Top1: 15.400 Top5: 48.850
+Evaluating resnet18
+[Test Epoch 20] Top1: 11.050 Top5: 55.350
+[Test Epoch 40] Top1: 13.300 Top5: 53.650
+[Test Epoch 60] Top1: 12.150 Top5: 49.850
+[Test Epoch 80] Top1: 14.800 Top5: 49.800
+[Test Epoch 100] Top1: 20.000 Top5: 54.200
+Save model for convnet
+Task-4 (current), Current Best Epoch for convnet: 39.0, Top1: 35.600, Top5: 56.900
+Task-4 (current), Current Best Epoch for resnet10: 9.0, Top1: 17.800, Top5: 76.000
+Task-4 (current), Current Best Epoch for resnet18: 29.0, Top1: 24.700, Top5: 94.650
+Random model: resnet18_ap
+Random model: resnet10
+Random model: resnet18
+Random model: resnet18_ap
+Random model: convnet
+Random model: convnet
+Random model: convnet
+Random model: resnet18_ap
+Random model: resnet18
+Random model: resnet10
+Evaluating convnet
+[Test Epoch 20] Top1: 11.900 Top5: 47.000
+[Test Epoch 40] Top1: 26.650 Top5: 54.650
+[Test Epoch 60] Top1: 30.800 Top5: 55.850
+[Test Epoch 80] Top1: 33.200 Top5: 54.700
+[Test Epoch 100] Top1: 33.550 Top5: 53.450
+Evaluating resnet10
+[Test Epoch 20] Top1: 15.000 Top5: 62.700
+[Test Epoch 40] Top1: 10.650 Top5: 67.600
+[Test Epoch 60] Top1: 12.150 Top5: 69.600
+[Test Epoch 80] Top1: 13.550 Top5: 70.000
+[Test Epoch 100] Top1: 13.300 Top5: 65.800
+Evaluating resnet18
+[Test Epoch 20] Top1: 0.050 Top5: 12.050
+[Test Epoch 40] Top1: 4.250 Top5: 40.600
+[Test Epoch 60] Top1: 15.550 Top5: 64.300
+[Test Epoch 80] Top1: 13.100 Top5: 61.300
+[Test Epoch 100] Top1: 10.100 Top5: 57.300
+Task-0 (old), Current Best Epoch for convnet: 39.0, Top1: 37.050, Top5: 60.000
+Task-0 (old), Current Best Epoch for resnet10: 29.0, Top1: 22.550, Top5: 77.650
+Task-0 (old), Current Best Epoch for resnet18: 19.0, Top1: 23.600, Top5: 80.400
+Evaluating convnet
+[Test Epoch 20] Top1: 5.450 Top5: 46.600
+[Test Epoch 40] Top1: 3.550 Top5: 51.850
+[Test Epoch 60] Top1: 3.400 Top5: 53.750
+[Test Epoch 80] Top1: 3.950 Top5: 56.600
+[Test Epoch 100] Top1: 3.450 Top5: 51.500
+Evaluating resnet10
+[Test Epoch 20] Top1: 34.700 Top5: 49.950
+[Test Epoch 40] Top1: 22.650 Top5: 48.150
+[Test Epoch 60] Top1: 10.250 Top5: 44.200
+[Test Epoch 80] Top1: 7.800 Top5: 46.300
+[Test Epoch 100] Top1: 7.100 Top5: 49.350
+Evaluating resnet18
+[Test Epoch 20] Top1: 4.800 Top5: 37.800
+[Test Epoch 40] Top1: 7.700 Top5: 42.600
+[Test Epoch 60] Top1: 7.950 Top5: 44.700
+[Test Epoch 80] Top1: 7.350 Top5: 43.250
+[Test Epoch 100] Top1: 8.650 Top5: 47.000
+Task-1 (old), Current Best Epoch for convnet: 9.0, Top1: 17.950, Top5: 66.800
+Save model for resnet10
+Task-1 (old), Current Best Epoch for resnet10: 49.0, Top1: 34.700, Top5: 49.950
+Task-1 (old), Current Best Epoch for resnet18: 29.0, Top1: 38.050, Top5: 98.450
+Evaluating convnet
+[Test Epoch 20] Top1: 3.550 Top5: 51.300
+[Test Epoch 40] Top1: 1.600 Top5: 47.450
+[Test Epoch 60] Top1: 2.150 Top5: 55.350
+[Test Epoch 80] Top1: 2.350 Top5: 61.100
+[Test Epoch 100] Top1: 1.000 Top5: 46.600
+Evaluating resnet10
+[Test Epoch 20] Top1: 0.400 Top5: 41.900
+[Test Epoch 40] Top1: 2.850 Top5: 40.150
+[Test Epoch 60] Top1: 3.950 Top5: 37.350
+[Test Epoch 80] Top1: 4.350 Top5: 39.200
+[Test Epoch 100] Top1: 4.150 Top5: 42.300
+Evaluating resnet18
+[Test Epoch 20] Top1: 0.450 Top5: 6.100
+[Test Epoch 40] Top1: 2.650 Top5: 25.650
+[Test Epoch 60] Top1: 7.150 Top5: 47.250
+[Test Epoch 80] Top1: 8.400 Top5: 53.900
+[Test Epoch 100] Top1: 7.700 Top5: 52.950
+Task-2 (old), Current Best Epoch for convnet: 9.0, Top1: 8.800, Top5: 59.550
+Task-2 (old), Current Best Epoch for resnet10: 39.0, Top1: 25.800, Top5: 49.450
+Task-2 (old), Current Best Epoch for resnet18: 29.0, Top1: 18.200, Top5: 59.450
+Evaluating convnet
+[Test Epoch 20] Top1: 5.700 Top5: 49.300
+[Test Epoch 40] Top1: 3.500 Top5: 52.700
+[Test Epoch 60] Top1: 3.900 Top5: 54.650
+[Test Epoch 80] Top1: 4.200 Top5: 56.200
+[Test Epoch 100] Top1: 6.500 Top5: 65.700
+Evaluating resnet10
+[Test Epoch 20] Top1: 0.300 Top5: 18.150
+[Test Epoch 40] Top1: 2.600 Top5: 26.550
+[Test Epoch 60] Top1: 6.150 Top5: 35.250
+[Test Epoch 80] Top1: 7.600 Top5: 39.600
+[Test Epoch 100] Top1: 9.100 Top5: 44.750
+Evaluating resnet18
+[Test Epoch 20] Top1: 29.850 Top5: 75.000
+[Test Epoch 40] Top1: 8.700 Top5: 49.700
+[Test Epoch 60] Top1: 8.300 Top5: 49.100
+[Test Epoch 80] Top1: 7.850 Top5: 50.800
+[Test Epoch 100] Top1: 5.600 Top5: 43.300
+Task-3 (old), Current Best Epoch for convnet: 39.0, Top1: 15.250, Top5: 52.400
+Task-3 (old), Current Best Epoch for resnet10: 39.0, Top1: 9.150, Top5: 39.800
+Save model for resnet18
+Task-3 (old), Current Best Epoch for resnet18: 49.0, Top1: 29.850, Top5: 75.000
+Evaluating convnet
+[Test Epoch 20] Top1: 17.550 Top5: 56.250
+[Test Epoch 40] Top1: 33.900 Top5: 59.800
+[Test Epoch 60] Top1: 31.850 Top5: 54.350
+[Test Epoch 80] Top1: 33.700 Top5: 53.100
+[Test Epoch 100] Top1: 33.550 Top5: 52.100
+Evaluating resnet10
+[Test Epoch 20] Top1: 9.450 Top5: 54.600
+[Test Epoch 40] Top1: 15.550 Top5: 54.400
+[Test Epoch 60] Top1: 17.050 Top5: 55.450
+[Test Epoch 80] Top1: 15.150 Top5: 52.650
+[Test Epoch 100] Top1: 15.250 Top5: 54.750
+Evaluating resnet18
+[Test Epoch 20] Top1: 18.300 Top5: 91.800
+[Test Epoch 40] Top1: 13.300 Top5: 53.050
+[Test Epoch 60] Top1: 11.700 Top5: 46.750
+[Test Epoch 80] Top1: 11.900 Top5: 49.200
+[Test Epoch 100] Top1: 10.100 Top5: 45.050
+Task-4 (current), Current Best Epoch for convnet: 39.0, Top1: 35.600, Top5: 56.900
+Task-4 (current), Current Best Epoch for resnet10: 9.0, Top1: 17.800, Top5: 76.000
+Task-4 (current), Current Best Epoch for resnet18: 29.0, Top1: 24.700, Top5: 94.650
