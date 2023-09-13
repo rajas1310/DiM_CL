@@ -473,6 +473,7 @@ if __name__ == '__main__':
     parser.add_argument('--classes-per-task', type=int, default=2) # Continual Learning
     parser.add_argument('--samples-per-task', type=int, default=10000) # Continual Learning
     # parser.add_argument('--counter', type=int) # Continual Learning
+    parser.add_argument('--weight', type=str, default='')
 
     
     args = parser.parse_args()
@@ -543,6 +544,18 @@ if __name__ == '__main__':
 
     optim_g = torch.optim.Adam(generator.parameters(), lr=args.lr, betas=(0, 0.9))
     optim_d = torch.optim.Adam(discriminator.parameters(), lr=args.lr, betas=(0, 0.9))
+
+    if args.tasknum > 0:
+        model_dict = torch.load(args.weight)
+        generator.load_state_dict(model_dict['generator'])
+        discriminator.load_state_dict(model_dict['discriminator'])
+        optim_g.load_state_dict(model_dict['optim_g'])
+        optim_d.load_state_dict(model_dict['optim_d'])
+        for g in optim_g.param_groups:
+            g['lr'] = args.lr
+        for g in optim_d.param_groups:
+            g['lr'] = args.lr
+
     criterion = nn.CrossEntropyLoss()
 
     aug, aug_rand = diffaug(args)

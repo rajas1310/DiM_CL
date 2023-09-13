@@ -25,6 +25,7 @@ from data import DiM_CL_Dataset #Continual
 import pickle #Continual
 from memory_replay import ExperienceReplay, combine_batch_and_list #Continual
 from copy import deepcopy
+import shutil
 
 def str2bool(v):
     """Cast string to boolean
@@ -124,8 +125,17 @@ def load_data(args):
                             )
         
         prevtasks_loaders.append(prevtask_testloader)
+    
+    # combined dataloader for all the tasks
+    tasklist = [x for x in range(0,args.tasknum+1)]
+    dataset_obj = DiM_CL_Dataset(tasklist, args.data_dir, tag='test')
+    alltestset = dataset_obj.get_dataset()
+    alltestloader = torch.utils.data.DataLoader(
+                            alltestset, batch_size=args.half_batch_size, shuffle=False,
+                            num_workers=args.num_workers
+                        )
 
-    return trainloader, testloader, prevtasks_loaders
+    return trainloader, testloader, prevtasks_loaders, alltestloader
 
 
 def define_model(args, num_classes, e_model=None):
@@ -639,7 +649,7 @@ if __name__ == '__main__':
                                 memory = memory)
 
 
-    trainloader, testloader, prevtask_loaders = load_data(args)
+    trainloader, testloader, prevtask_loaders, alltestloader = load_data(args)
 
     generator = Generator(args).cuda()
     discriminator = Discriminator(args).cuda()
@@ -662,9 +672,9 @@ if __name__ == '__main__':
     aug, aug_rand = diffaug(args)
 
     #continual learning
-    best_top1s = {}
-    best_top5s = {}
-    best_epochs = {}
+    best_top1s = {'all': np.zeros((len(args.eval_model),))}
+    best_top5s = {'all': np.zeros((len(args.eval_model),))}
+    best_epochs = {'all': np.zeros((len(args.eval_model),))}
     for i in range(args.tasknum+1):
         best_top1s[i] = np.zeros((len(args.eval_model),))
         best_top5s[i] = np.zeros((len(args.eval_model),))
@@ -737,3 +747,23 @@ if __name__ == '__main__':
                     print('Save model for {}'.format(e_model))
 
                 print('Task-{} (current), Current Best Epoch for {}: {}, Top1: {:.3f}, Top5: {:.3f}'.format(args.tasknum, e_model, best_epochs[args.tasknum][e_idx], best_top1s[args.tasknum][e_idx], best_top5s[args.tasknum][e_idx])) #Continual Learning
+
+            if args.tasknum > 0:
+                #Validate All Tasks Together
+                top1s, top5s = validate(args, generator, alltestloader, criterion, aug_rand)
+                for e_idx, e_model in enumerate(args.eval_model):
+                    if top1s[e_idx] > best_top1s['all'][e_idx]:
+                        best_top1s['all'][e_idx] = top1s[e_idx]
+                        best_top5s['all'][e_idx] = top5s[e_idx]
+                        best_epochs['all'][e_idx] = epoch
+
+                        model_dict = {'generator': generator.state_dict(),
+                                  'discriminator': discriminator.state_dict(),
+                                  'optim_g': optim_g.state_dict(),
+                                  'optim_d': optim_d.state_dict()}
+                        torch.save(
+                            model_dict,
+                            os.path.join(args.output_dir, 'model_dict_{}.pth'.format(e_model)))
+                        print('Save model for {}'.format(e_model))
+
+                    print('Task- 0 to {} (all), Current Best Epoch for {}: {}, Top1: {:.3f}, Top5: {:.3f}'.format(args.tasknum, e_model, best_epochs['all'][e_idx], best_top1s['all'][e_idx], best_top5s['all'][e_idx])) #Continual Learning
