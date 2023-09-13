@@ -456,7 +456,7 @@ if __name__ == '__main__':
     parser.add_argument('--data', type=str, default='cifar10')
     parser.add_argument('--num-classes', type=int, default=10)
     parser.add_argument('--data-dir', type=str, default='./data')
-    parser.add_argument('--output-dir', type=str, default='./results/')
+    parser.add_argument('--output-dir', type=str) #'./results/'
     parser.add_argument('--logs-dir', type=str, default='./logs/')
     parser.add_argument('--aug-type', type=str, default='')
     parser.add_argument('--mixup-net', type=str, default='cut')
@@ -485,8 +485,10 @@ if __name__ == '__main__':
     torch.manual_seed(args.seed)
     torch.backends.cudnn.deterministic = True
 
+    args.output_dir += '/results/' 
+
     if not os.path.exists(args.output_dir):
-        os.makedirs(args.output_dir)
+        os.makedirs(args.output_dir, exist_ok=True)
     args.output_dir = args.output_dir + args.tag
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir)

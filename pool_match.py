@@ -551,7 +551,7 @@ if __name__ == '__main__':
     parser.add_argument('--data', type=str, default='cifar10')
     parser.add_argument('--num-classes', type=int, default=10)
     parser.add_argument('--data-dir', type=str, default='./data')
-    parser.add_argument('--output-dir', type=str, default='./results/')
+    parser.add_argument('--output-dir', type=str) #'./results/'
     parser.add_argument('--logs-dir', type=str, default='./logs/')
     parser.add_argument('--weight', type=str, default='')
     parser.add_argument('--match-aug', action='store_true', default=False)
@@ -582,6 +582,8 @@ if __name__ == '__main__':
     np.random.seed(args.seed)
     torch.manual_seed(args.seed)
     torch.backends.cudnn.deterministic = True
+
+    args.output_dir += '/results/' 
 
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir)
