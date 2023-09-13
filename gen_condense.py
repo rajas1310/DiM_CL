@@ -564,14 +564,14 @@ if __name__ == '__main__':
         preserved_batch = train(args, epoch, generator, discriminator, optim_g, optim_d, trainloader, criterion, exp_replay, aug, aug_rand)
         
         # Continual Learning
-        if epoch == args.epochs - 1: # if last epoch is done
-            #TODO : Return last batch from training of the last epoch 
-            #        and Call update MEMORY function using that batch
-            memory = exp_replay.update_memory(preserved_batch, elapsed_examples=args.tasknum*args.samples_per_task)
-            with open('memory.pkl', 'wb') as f: # this file will be read and updated with the successive tasks 
-                pickle.dump(memory, f)
-            with open(f'memory_task_{args.tasknum}.pkl', 'wb') as f: #for saving a copy that will not be used later
-                pickle.dump(memory, f)
+        # if epoch == args.epochs - 1: # if last epoch is done
+        #     #TODO : Return last batch from training of the last epoch 
+        #     #        and Call update MEMORY function using that batch
+        #     memory = exp_replay.update_memory(preserved_batch, elapsed_examples=args.tasknum*args.samples_per_task)
+        #     with open('memory.pkl', 'wb') as f: # this file will be read and updated with the successive tasks 
+        #         pickle.dump(memory, f)
+        #     with open(f'memory_task_{args.tasknum}.pkl', 'wb') as f: #for saving a copy that will not be used later
+        #         pickle.dump(memory, f)
 
         # save image for visualization
         generator.eval()
