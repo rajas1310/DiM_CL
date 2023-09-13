@@ -486,10 +486,15 @@ if __name__ == '__main__':
     torch.manual_seed(args.seed)
     torch.backends.cudnn.deterministic = True
 
-    args.output_dir += '/results/' 
+    args.output_dir = './{}/results/'.format(args.output_dir) 
 
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir, exist_ok=True)
+
+    if args.tasknum>0 and args.weight == '':
+        # load best performing weights of the generator on the first eval_model from the previous task
+        args.weight = '{}/pool-match-test/task-{}/model_dict_{}.pth'.format(args.output_dir, args.tasknum-1, args.eval_model[0])
+
     args.output_dir = args.output_dir + args.tag
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir)
@@ -555,6 +560,7 @@ if __name__ == '__main__':
             g['lr'] = args.lr
         for g in optim_d.param_groups:
             g['lr'] = args.lr
+        print("LOADED WEIGHTS: Generators best weights from : ", args.weight)
 
     criterion = nn.CrossEntropyLoss()
 
