@@ -540,8 +540,8 @@ def validate(args, generator, testloader, criterion, aug_rand):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--ipc', type=int, default=50)
-    parser.add_argument('--batch-size', type=int, default=200) #128
-    parser.add_argument('--epochs', type=int, default=50)
+    parser.add_argument('--batch-size', type=int, default=1024) #128
+    parser.add_argument('--epochs', type=int, default=100)
     parser.add_argument('--epochs-eval', type=int, default=100) #1000
     parser.add_argument('--epochs-match', type=int, default=100)
     parser.add_argument('--epochs-match-train', type=int, default=16)
