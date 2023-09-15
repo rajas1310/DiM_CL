@@ -157,6 +157,8 @@ def define_model(args, num_classes, e_model=None):
 
     if model == 'convnet':
         return CN.ConvNet(num_classes, channel=nch)
+    elif model == 'shallowresnet':
+        return RN.ShallowResNet(args.data, 10, num_classes, nch=nch)
     elif model == 'resnet10':
         return RN.ResNet(args.data, 10, num_classes, nch=nch)
     elif model == 'resnet18':
@@ -550,7 +552,7 @@ if __name__ == '__main__':
     parser.add_argument('--match-coeff', type=float, default=0.001)
     parser.add_argument('--match-model', type=str, default='convnet')
     parser.add_argument('--match', type=str, default='grad')
-    parser.add_argument('--eval-model', type=str, nargs='+', default=['convnet', 'resnet10', 'resnet18'])
+    parser.add_argument('--eval-model', type=str, nargs='+', default=['convnet', 'resnet10', 'shallowresnet'])
     parser.add_argument('--dim-noise', type=int, default=100)
     parser.add_argument('--num-workers', type=int, default=4)
     parser.add_argument('--print-freq', type=int, default=100)

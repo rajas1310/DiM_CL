@@ -152,6 +152,8 @@ def define_model(args, num_classes, e_model=None):
 
     if model == 'convnet':
         return CN.ConvNet(num_classes, channel=nch)
+    elif model == 'shallowresnet':
+        return RN.ShallowResNet(args.data, 10, num_classes, nch=nch)
     elif model == 'resnet10':
         return RN.ResNet(args.data, 10, num_classes, nch=nch)
     elif model == 'resnet18':
