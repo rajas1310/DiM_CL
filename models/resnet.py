@@ -271,6 +271,139 @@ class ResNet(nn.Module):
         return features[idx_from:idx_to + 1]
 
 
+class ShallowResNet(nn.Module):
+    def __init__(self, dataset, depth, num_classes, norm_type='batch', size=-1, nch=3):
+        super(ResNet, self).__init__()
+        self.dataset = dataset
+        self.norm_type = norm_type
+
+        if self.dataset.startswith('cifar') or (0 < size and size <= 64):
+            self.net_size = 'small'
+        elif (64 < size and size <= 128):
+            self.net_size = 'mid'
+        else:
+            self.net_size = 'large'
+
+        # print(f"ResNet-{depth}-{self.net_size} norm: {self.norm_type}")
+        if self.dataset.startswith('cifar'):
+            self.inplanes = 32
+            n = int((depth - 2) / 6)
+            block = BasicBlock
+
+            self.layer0 = IntroBlock(self.net_size, self.inplanes, norm_type, nch=nch)
+            self.layer1 = self._make_layer(block, 32, n, stride=1)
+            self.layer2 = self._make_layer(block, 64, n, stride=2)
+            self.avgpool = nn.AvgPool2d(4)
+            self.fc = nn.Linear(256 * block.expansion, num_classes)
+
+        else:
+            blocks = {
+
+                10: BasicBlock,
+                18: BasicBlock,
+                34: BasicBlock,
+                50: Bottleneck,
+                101: Bottleneck,
+                152: Bottleneck,
+                200: Bottleneck
+            }
+            layers = {
+
+                10: [1, 1, 1, 1],
+                18: [2, 2, 2, 2],
+                34: [3, 4, 6, 3],
+                50: [3, 4, 6, 3],
+                101: [3, 4, 23, 3],
+                152: [3, 8, 36, 3],
+                200: [3, 24, 36, 3]
+            }
+            assert layers[
+                depth], 'invalid detph for ResNet (depth should be one of 18, 34, 50, 101, 152, and 200)'
+
+            self.inplanes = 64
+
+            self.layer0 = IntroBlock(self.net_size, self.inplanes, norm_type, nch=nch)
+            self.layer1 = self._make_layer(blocks[depth], 64, layers[depth][0])
+            self.layer2 = self._make_layer(blocks[depth], 128, layers[depth][1], stride=2)
+            self.avgpool = nn.AvgPool2d(7)
+            self.fc = nn.Linear(512 * blocks[depth].expansion, num_classes)
+
+        for m in self.modules():
+            if isinstance(m, nn.Conv2d):
+                n = m.kernel_size[0] * m.kernel_size[1] * m.out_channels
+                m.weight.data.normal_(0, math.sqrt(2. / n))
+            elif isinstance(m, nn.BatchNorm2d) or isinstance(m, nn.GroupNorm):
+                m.weight.data.fill_(1)
+                m.bias.data.zero_()
+
+    def _make_layer(self, block, planes, blocks, stride=1):
+        downsample = None
+        if stride != 1 or self.inplanes != planes * block.expansion:
+            downsample = nn.Sequential(
+                nn.Conv2d(self.inplanes,
+                          planes * block.expansion,
+                          kernel_size=1,
+                          stride=stride,
+                          bias=False),
+                normalization(planes * block.expansion, self.norm_type),
+            )
+
+        layers = []
+        layers.append(
+            block(self.inplanes,
+                  planes,
+                  norm_type=self.norm_type,
+                  stride=stride,
+                  downsample=downsample))
+        self.inplanes = planes * block.expansion
+        for i in range(1, blocks):
+            layers.append(block(self.inplanes, planes, norm_type=self.norm_type))
+
+        return nn.Sequential(*layers)
+
+    def forward(self, x, return_features=False):
+        x = self.layer0(x)
+        x = self.layer1(x)
+        x = self.layer2(x)
+
+        x = F.avg_pool2d(x, x.shape[-1])
+        x = x.view(x.size(0), -1)
+        logits = self.fc(x)
+
+        if return_features:
+            return x
+        else:
+            return logits
+
+    def get_feature(self, x, idx_from, idx_to=-1):
+        if idx_to == -1:
+            idx_to = idx_from
+
+        features = []
+        x = self.layer0(x)
+        features.append(x)  # starts from 0
+        if idx_to < len(features):
+            return features[idx_from:idx_to + 1]
+
+        x = self.layer1(x)
+        features.append(x)
+        if idx_to < len(features):
+            return features[idx_from:idx_to + 1]
+
+        x = self.layer2(x)
+        features.append(x)
+        if idx_to < len(features):
+            return features[idx_from:idx_to + 1]
+
+        x = F.avg_pool2d(x, x.shape[-1])
+        x = x.view(x.size(0), -1)
+        features.append(x)
+        if idx_to < len(features):
+            return features[idx_from:idx_to + 1]
+
+        x = self.fc(x)
+        features.append(x)  # logit is 6
+        return features[idx_from:idx_to + 1]
 if __name__ == "__main__":
     import torch
 
