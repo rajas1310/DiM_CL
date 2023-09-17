@@ -97,9 +97,9 @@ def load_data(args):
         testset = datasets.MNIST(args.data_dir, train=False, download=True,
                                  transform=transform_train)"""
 
-    dataset_obj = DiM_CL_Dataset(args.tasknum, args.data_dir, tag='train')
+    dataset_obj = DiM_CL_Dataset(args, args.tasknum, args.data_dir, tag='train')
     trainset = dataset_obj.get_dataset()
-    dataset_obj = DiM_CL_Dataset(args.tasknum, args.data_dir, tag='test')
+    dataset_obj = DiM_CL_Dataset(args, args.tasknum, args.data_dir, tag='test')
     testset = dataset_obj.get_dataset()
     print("HALF BS : ", args.half_batch_size)
     #current task dataloaders for training and validation
@@ -115,7 +115,7 @@ def load_data(args):
     #previous task dataloaders for validation
     prevtasks_loaders = []
     for prevtasknum in range(0,args.tasknum):
-        dataset_obj = DiM_CL_Dataset(prevtasknum, args.data_dir, tag='test')
+        dataset_obj = DiM_CL_Dataset(args, prevtasknum, args.data_dir, tag='test')
         prevtask_testset = dataset_obj.get_dataset()
         prevtask_testloader = torch.utils.data.DataLoader(
                                 prevtask_testset, batch_size=args.half_batch_size, shuffle=False,
@@ -126,7 +126,7 @@ def load_data(args):
     
     # combined dataloader for all the tasks
     tasklist = [x for x in range(0,args.tasknum+1)]
-    dataset_obj = DiM_CL_Dataset(tasklist, args.data_dir, tag='test')
+    dataset_obj = DiM_CL_Dataset(args, tasklist, args.data_dir, tag='test')
     alltestset = dataset_obj.get_dataset()
     alltestloader = torch.utils.data.DataLoader(
                             alltestset, batch_size=args.half_batch_size, shuffle=False,
