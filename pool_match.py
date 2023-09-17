@@ -145,8 +145,7 @@ def define_model(args, num_classes, e_model=None):
     if e_model:
         model = e_model
     else:
-        model_pool = ['convnet', 'resnet10', 'resnet18',
-                      'resnet10_ap', 'resnet18_ap']
+        model_pool = ['convnet', 'resnet10', 'shallowresnet']
         model = random.choice(model_pool)
         print('Random model: {}'.format(model))
 
