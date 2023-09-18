@@ -273,7 +273,7 @@ class ResNet(nn.Module):
 
 class ShallowResNet(nn.Module):
     def __init__(self, dataset, depth, num_classes, norm_type='batch', size=-1, nch=3):
-        super(ResNet, self).__init__()
+        super(ShallowResNet, self).__init__()
         self.dataset = dataset
         self.norm_type = norm_type
 
