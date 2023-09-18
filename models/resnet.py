@@ -326,7 +326,7 @@ class ShallowResNet(nn.Module):
             self.layer1 = self._make_layer(blocks[depth], 64, layers[depth][0])
             self.layer2 = self._make_layer(blocks[depth], 128, layers[depth][1], stride=2)
             self.avgpool = nn.AvgPool2d(7)
-            self.fc = nn.Linear(512 * blocks[depth].expansion, num_classes)
+            self.fc = nn.Linear(128, num_classes)
 
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
