@@ -424,8 +424,8 @@ def validate(args, generator, testloader, criterion, aug_rand):
             if (epoch_idx + 1) % args.test_interval == 0:
                 #save syn_imgs used for training the eval-model #Continual Learning
                 img_syn_grid = make_grid(img_syn, nrow=10)
-                results_dir = os.path.join(args.output_dir, 'results/', args.tag, '/task-{}'.format(args.tasknum)) 
-                save_image(img_syn_grid, os.path.join(results_dir, 'outputs/eval_img_{}.png'.format(epoch_idx)))
+                results_dir = os.path.join(args.output_dir, 'results', args.tag, 'task-{}'.format(args.tasknum)) 
+                save_image(img_syn_grid, os.path.join(results_dir, 'outputs', 'eval_img_{}.png'.format(epoch_idx)))
 
                 test_top1, test_top5, test_loss = test(args, model, testloader, criterion)
                 print('[Test Epoch {}] Top1: {:.3f} Top5: {:.3f}'.format(epoch_idx + 1, test_top1, test_top5))
