@@ -424,7 +424,8 @@ def validate(args, generator, testloader, criterion, aug_rand):
             if (epoch_idx + 1) % args.test_interval == 0:
                 #save syn_imgs used for training the eval-model #Continual Learning
                 img_syn_grid = make_grid(img_syn, nrow=10)
-                save_image(img_syn_grid, os.path.join(args.output_dir, 'outputs/eval_img_{}.png'.format(epoch_idx)))
+                results_dir = os.path.join(args.output_dir, 'results/', args.tag, '/task-{}'.format(args.tasknum)) 
+                save_image(img_syn_grid, os.path.join(results_dir, 'outputs/eval_img_{}.png'.format(epoch_idx)))
 
                 test_top1, test_top5, test_loss = test(args, model, testloader, criterion)
                 print('[Test Epoch {}] Top1: {:.3f} Top5: {:.3f}'.format(epoch_idx + 1, test_top1, test_top5))
@@ -466,11 +467,11 @@ if __name__ == '__main__':
     parser.add_argument('--fc', type=str2bool, default=False)
     parser.add_argument('--mix-p', type=float, default=-1.0)
     parser.add_argument('--beta', type=float, default=1.0)
-    parser.add_argument('--tag', type=str, default='test')
+    parser.add_argument('--tag', type=str, default='gen_condense')
     parser.add_argument('--seed', type=int, default=3407)
 
     parser.add_argument('--tasknum', type=int) # Continual Learning
-    parser.add_argument('--memory-filepath', type=str, default=None) # Continual Learning
+    # parser.add_argument('--memory-filepath', type=str, default=None) # Continual Learning
     parser.add_argument('--samples-per-class', type=int, default=10) # Continual Learning
     parser.add_argument('--classes-per-task', type=int, default=2) # Continual Learning
     parser.add_argument('--samples-per-task', type=int, default=10000) # Continual Learning
@@ -488,30 +489,37 @@ if __name__ == '__main__':
     torch.manual_seed(args.seed)
     torch.backends.cudnn.deterministic = True
 
-    args.output_dir = './{}/results/'.format(args.output_dir) 
+    # args.output_dir = './{}/results/'.format(args.output_dir) 
+    # if not os.path.exists(args.output_dir):
+    #     os.makedirs(args.output_dir, exist_ok=True)
 
-    if not os.path.exists(args.output_dir):
-        os.makedirs(args.output_dir, exist_ok=True)
+    results_dir = os.path.join(args.output_dir, 'results', args.tag, 'task-{}'.format(args.tasknum)) 
+    if not os.path.exists(results_dir):
+        os.makedirs(results_dir, exist_ok=True)
 
     if args.tasknum>0 and args.weight == '':
         # load best performing weights of the generator on the first eval_model from the previous task
-        args.weight = '{}/pool-match-test/task-{}/model_dict_{}.pth'.format(args.output_dir, args.tasknum-1, args.eval_model[0])
+        args.weight = '{}/results/pool_match/task-{}/model_dict_{}.pth'.format(args.output_dir, args.tasknum-1, args.eval_model[0])
 
-    args.output_dir = args.output_dir + args.tag
-    if not os.path.exists(args.output_dir):
-        os.makedirs(args.output_dir)
-    args.output_dir = args.output_dir + '/task-{}'.format(args.tasknum)
-    if not os.path.exists(args.output_dir):
-        os.makedirs(args.output_dir)
-    if not os.path.exists(args.output_dir + '/outputs'):
-        os.makedirs(args.output_dir + '/outputs')
+    # args.output_dir = args.output_dir + args.tag
+    # if not os.path.exists(args.output_dir):
+    #     os.makedirs(args.output_dir)
+    # args.output_dir = args.output_dir + '/task-{}'.format(args.tasknum)
+    # if not os.path.exists(args.output_dir):
+    #     os.makedirs(args.output_dir)
+    if not os.path.exists(results_dir + '/outputs'):
+        os.makedirs(results_dir + '/outputs')
 
-    if not os.path.exists(args.logs_dir):
-        os.makedirs(args.logs_dir)
-    args.logs_dir = args.logs_dir + args.tag
-    if not os.path.exists(args.logs_dir):
-        os.makedirs(args.logs_dir)
-    sys.stdout = Logger(os.path.join(args.logs_dir, 'logs-task-{}.txt'.format(args.tasknum)))
+    logs_dir = os.path.join(args.output_dir, args.logs_dir, args.tag)
+    if not os.path.exists(logs_dir):
+        os.makedirs(logs_dir, exist_ok=True)
+
+    # if not os.path.exists(args.logs_dir):
+    #     os.makedirs(args.logs_dir)
+    # args.logs_dir = args.logs_dir + args.tag
+    # if not os.path.exists(args.logs_dir):
+    #     os.makedirs(args.logs_dir)
+    sys.stdout = Logger(os.path.join(logs_dir, 'logs-task-{}.txt'.format(args.tasknum)))
 
     #continual learning # LR and decay as per task
     if args.tasknum == 0:
@@ -525,17 +533,25 @@ if __name__ == '__main__':
     
 
     #Load memory from previous task         #Continual Learning
-    if args.memory_filepath == None:
-        if args.tasknum == 0:
-            memory = []
-        else:
-            print(f"Continual-ERROR: Memory file is not specified for Task-{args.tasknum}")
-            raise FileNotFoundError
+    if args.tasknum == 0:
+        memory = []
     else:
         try:
-            memory = pickle.load(open(args.memory_filepath, 'rb'))
+            memory = pickle.load(open(f"{args.output_dir}/memory.pkl", 'rb'))
         except Exception as e:
             print(e)
+
+    # if args.memory_filepath == None:
+    #     if args.tasknum == 0:
+    #         memory = []
+    #     else:
+    #         print(f"Continual-ERROR: Memory file is not specified for Task-{args.tasknum}")
+    #         raise FileNotFoundError
+    # else:
+    #     try:
+    #         memory = pickle.load(open(args.memory_filepath, 'rb'))
+    #     except Exception as e:
+    #         print(e)
 
     print(args)
 
@@ -604,7 +620,7 @@ if __name__ == '__main__':
         test_noise = test_noise.cuda()
         test_img_syn = (generator(test_noise) + 1.0) / 2.0
         test_img_syn = make_grid(test_img_syn, nrow=10)
-        save_image(test_img_syn, os.path.join(args.output_dir, 'outputs/img_{}.png'.format(epoch)))
+        save_image(test_img_syn, os.path.join(results_dir, 'outputs/img_{}.png'.format(epoch)))
         generator.train()
 
         if (epoch + 1) % args.eval_interval == 0:
@@ -614,7 +630,7 @@ if __name__ == '__main__':
                           'optim_d': optim_d.state_dict()}
             torch.save(
                 model_dict,
-                os.path.join(args.output_dir, 'model_dict_{}.pth'.format(epoch)))
+                os.path.join(results_dir, 'model_dict_{}.pth'.format(epoch)))
             
             print("img and data saved!")
             
@@ -651,9 +667,9 @@ if __name__ == '__main__':
         best_epoch = int(best_epochs['all'][e_idx])
     else:
         best_epoch = int(best_epochs[args.tasknum][e_idx])
-    shutil.copy2(os.path.join(args.output_dir, 'model_dict_{}.pth'.format(best_epoch)),
-                os.path.join(args.output_dir, 'best.pth'))
-    shutil.copy2(os.path.join(args.output_dir, 'model_dict_{}.pth'.format(args.epochs - 1)),
-                os.path.join(args.output_dir, 'last.pth'))
+    shutil.copy2(os.path.join(results_dir, 'model_dict_{}.pth'.format(best_epoch)),
+                os.path.join(results_dir, 'best.pth'))
+    shutil.copy2(os.path.join(results_dir, 'model_dict_{}.pth'.format(args.epochs - 1)),
+                os.path.join(results_dir, 'last.pth'))
     print("Saving epoch-{} of Generator as best.pth".format(best_epoch))
     
