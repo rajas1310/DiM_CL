@@ -294,7 +294,7 @@ class ShallowResNet(nn.Module):
             self.layer1 = self._make_layer(block, 32, n, stride=1)
             self.layer2 = self._make_layer(block, 64, n, stride=2)
             self.avgpool = nn.AvgPool2d(4)
-            self.fc = nn.Linear(256 * block.expansion, num_classes)
+            self.fc = nn.Linear(64 * block.expansion, num_classes)
 
         else:
             blocks = {
@@ -404,6 +404,7 @@ class ShallowResNet(nn.Module):
         x = self.fc(x)
         features.append(x)  # logit is 6
         return features[idx_from:idx_to + 1]
+
 if __name__ == "__main__":
     import torch
 
