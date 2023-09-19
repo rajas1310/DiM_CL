@@ -349,7 +349,9 @@ def test(args, model, testloader, criterion):
 
     return top1.avg, top5.avg, losses.avg
 
-
+def train_model(args, epoch, generator, criterion, aug_rand):
+    #train once, test on different test loaders... Decrease time
+    pass
 
 def validate(args, generator, testloader, criterion, aug_rand):
 
