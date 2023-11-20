@@ -1,4 +1,4 @@
-This repository is an ongoing project to try and develop Synthetic images that could be used in continual learning and check whether such a trained model can outperform the SOTA CL methods.  
+This repository is an ongoing project to train a GAN that can create synthetic images in order to continually train a pool of CNNs. This approach is based on "[DiM: Distilling Dataset into Generative Model](https://arxiv.org/abs/2303.04707)". The goal is to check whether such a distillation of data in continual learning can outperform the SOTA methods.  
 
 
 # Distilling Dataset into Generative Models
