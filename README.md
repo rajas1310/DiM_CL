@@ -1,3 +1,6 @@
+This repository is an ongoing project to try and develop Synthetic images that could be used in continual learning and check whether such a trained model can outperform the SOTA CL methods.  
+
+
 # Distilling Dataset into Generative Models
 
 Official implementation of "[DiM: Distilling Dataset into Generative Model](https://arxiv.org/abs/2303.04707)". 
